@@ -1,7 +1,5 @@
 {
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
-  "/_document": "pages/_document.js",
-  "/customer-area/request/[request]": "pages/customer-area/request/[request].js",
-  "/customer-area/data": "pages/customer-area/data.js"
+  "/_document": "pages/_document.js"
 }
