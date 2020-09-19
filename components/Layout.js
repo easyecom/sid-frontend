@@ -18,7 +18,7 @@ const Layout = ({ children, title, description, url, image }) => {
     <footer>
       <div className="flex flex-center">
         <small>
-          &copy: Loja SID
+          copy: Loja SID
         </small>
       </div>
     </footer>

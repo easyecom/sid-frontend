@@ -13,7 +13,7 @@ const Head = props => (
       <meta
           name="description"
           content={props.description || defaultDescricao} />
-      <meta name="viewport" content="width=device=width, initial-scale=1" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
       <link rel="icon" href="/static/favicon.ico" />
       <meta property="og:url" content={props.url || defaultOGURL} />
       <meta property="og:title" content={props.title || ""} />
