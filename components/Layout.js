@@ -1,4 +1,3 @@
-import React from 'react';
 import Head from './Head';
 
 import Style from './Style';
@@ -17,7 +16,7 @@ const Layout = ({ children, title, description, url, image }) => (
         <footer>
             <div className="flex flex-center">
                 <small>
-                    &copy; Loja IT - Curso Criando um Ecommerce do Zero
+                    &copy; Loja Sid Surf Store
                 </small>
             </div>
         </footer>

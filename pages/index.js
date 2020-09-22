@@ -3,22 +3,22 @@ import React, { Component } from 'react';
 import Layout from '../components/Layout';
 
 import Cabecalho from '../containers/Cabecalho';
-// import Banners from '../containers/Banners';
-// import Beneficios from '../containers/Beneficios';
-// import ProdutosPaginaInicial from '../containers/ProdutosPaginaInicial';
-// import Rodape from '../containers/Rodape';
+import Banners from '../containers/Banners';
+import Beneficios from '../containers/Beneficios';
+import ProdutosPaginaInicial from '../containers/ProdutosPaginaInicial';
+import Rodape from '../containers/Rodape';
 
 
 class Index extends Component {
 
   render() {
     return (
-      <Layout title="LOJA SID">
+      <Layout title="Sid Surf Store | Estilo e bom gosto">
         <Cabecalho simples />
-        {/* <Banners />
+        <Banners />
         <Beneficios />
         <ProdutosPaginaInicial />
-        <Rodape /> */}
+        <Rodape />
       </Layout>
       
     )
