@@ -10,7 +10,7 @@ class Pesquisa extends Component {
   render() {
     return (
       <div className="flex-3 flex flex-center">
-        <input 
+        <input
           name="pesquisa"
           value={this.state.termo}
           onChange={e => this.setState({ termo: e.target.value })}

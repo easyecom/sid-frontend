@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Logo from '../../components/Logo/Cabecalho';
 import CampoPesquisa from '../../components/Campos/Pesquisa';
 import CardCarrinho from '../../components/Cards/Carrinho';
+import Categorias from '../../components/Listas/Categorias';
 
 class Cabecalho extends React.Component {
   renderCabecalhoNormal() {
@@ -14,12 +15,15 @@ class Cabecalho extends React.Component {
           <CampoPesquisa />
           <CardCarrinho />
         </div>
+        <div className="categorias-wrapper">
+          <Categorias />
+        </div>
       </div>
     )
   }
 
   renderCabecalhoSimples() {
-    return(
+    return (
       <div className="Header No-Links Header-Simples">
         <div className="header-wrapper">
           <Logo />
@@ -30,8 +34,8 @@ class Cabecalho extends React.Component {
 
   render() {
     const { simples } = this.props;
-    return simples ? 
-      this.renderCabecalhoSimples() : 
+    return simples ?
+      this.renderCabecalhoSimples() :
       this.renderCabecalhoNormal()
   }
 }

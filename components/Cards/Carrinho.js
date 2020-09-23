@@ -16,7 +16,7 @@ class CardCarrinho extends Component {
         <Link href="/cart">
           <div className="item-cabecalho cart">
             <i className="fa fa-shopping-cart"></i>
-            <span>{ this.state.cartQtd || 0 }</span>
+            <span>{this.state.cartQtd || 0}</span>
           </div>
         </Link>
       </div>

@@ -5,7 +5,7 @@ import { initStore } from '../redux';
 
 class Main extends App {
   static async getInitialProps({ Component, ctx }) {
-    return { 
+    return {
       pageProps: Component.getInitialProps ? await Component.getInitialProps(ctx) : {}
     }
   }
@@ -14,7 +14,7 @@ class Main extends App {
     const { Component, pageProps, store } = this.props;
     return (
       <Container>
-        <Provider store = {store}>
+        <Provider store={store}>
           <Component {...pageProps} />
         </Provider>
       </Container>

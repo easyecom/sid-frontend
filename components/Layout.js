@@ -11,7 +11,7 @@ const Layout = ({ children, title, description, url, image }) => (
             ogImage={image}></Head>
         <Style />
         <div className="body">
-            { children }
+            {children}
         </div>
         <footer>
             <div className="flex flex-center">

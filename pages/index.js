@@ -14,13 +14,13 @@ class Index extends Component {
   render() {
     return (
       <Layout title="Sid Surf Store | Estilo e bom gosto">
-        <Cabecalho />
+        <Cabecalho  />
         {/* <Banners />
         <Beneficios />
         <ProdutosPaginaInicial />
         <Rodape /> */}
       </Layout>
-      
+
     )
   }
 }
