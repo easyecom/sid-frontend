@@ -5,10 +5,10 @@ class Categorias extends Component {
   state = {
     categorias: [
       { id: 1, nome: "Acessorios" },
-      { id: 2, nome: "Teclado" },
-      { id: 3, nome: "Mouse Gamer" },
-      { id: 4, nome: "Mouse pad" },
-      { id: 5, nome: "Webcam" }
+      { id: 2, nome: "Tenis" },
+      { id: 3, nome: "Camisetas" },
+      { id: 4, nome: "Shorts" },
+      { id: 5, nome: "Moletom" }
     ]
   }
 
