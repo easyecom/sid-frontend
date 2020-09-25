@@ -15,7 +15,7 @@ const PRODUTOS = [
     fotos: ["/static/img/mouse-4.png"],
     titulo: "Mouse Gamer 2 haifiuay kiufio kdhiigpdp",
     preco: 55,
-    promocao: 45
+    promocao: 55
   },
   {
     id: 95456,
