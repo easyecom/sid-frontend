@@ -12,6 +12,18 @@ export default () => (
     body, * {
       font-family: "Helvetica Neue", Heveltica, Arial, sans-serif;
     }
+
+    .container, 
+    .container-big {
+      width: calc(100% - 20px);
+      padding: 0 10px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .container-big {
+      max-width: 1440px;
+    }
     
     .flex { 
       display: flex;
@@ -29,116 +41,38 @@ export default () => (
       flex: 3;
     }
 
+    .vertical {
+      flex-direction: column;
+    }
+
     .flex-center {
       justify-content: center;
       align-items: center;
     }
 
-    .Header {
-      max-height: 150px;
+    .flex-start {
+      justify-content: flex-start;
+      align-items: center;
     }
 
-    .header-wrapper, .categorias {
-      max-width: 1200px;
-      margin 0 auto;
-      width: 100%;
-      display: flex;
+    .text-center {
+      text-align: center;
     }
 
     @media screen and (max-width: 720px) {
-      .Header {
-        max-height: 250px;
+      .wrap-mb {
+        flex-wrap: wrap;
       }
 
-      .header-wrapper {
-        flex-direction: column;
+      .wrap-2-mb {
+        flex-basis: calc(50% - 20px);
+        max-width: 50%;
       }
 
-      .categorias {
-        overflow-x: scroll;
+      .horizontal-mb {
+        flex-direction: row;
       }
     }
-
-    .logo {
-      max-width: 230px;
-      cursor: pointer;
-    }
-
-    .input-pesquisa {
-      font-size: 1rem;
-      color: #333;
-      padding: 10px 25px;
-      width: 90%;
-      border: 1px solid #aaa;
-      border-radius: 10px;
-      margin: 0 10px;
-    }
-
-    .button-pesquisa {
-      margin-left: -45px;
-      font-size: 1.2rem;
-      color: #333;
-      background-color: transparent;
-      border: 0;
-      cursor: pointer;
-    }
-
-    .itens-cabecalho {
-      padding: 20px 0;
-    }
-
-    .item-cabecalho {
-      cursor: pointer;
-    }
-
-    .item-cabecalho i {
-      color: #FF8E45;
-      font-size: 1.7rem;
-      margin: 0 5px;
-    }
-
-    .item-cabecalho span {
-      color: #777;
-      font-size: 14px;
-    }
-
-    .item-cabecalho.cart {
-      margin-left: 15px;
-    }
-
-    .item-cabecalho.cart span {
-      font-size: 1rem;
-      background-color: #222;
-      color: #fff;
-      border-radius: 100px;
-      padding: 0 5px;
-      margin-left: -15px;
-      position: relative;
-      top: -15px;
-    }
-
-    .categorias-wrapper {
-      background-color: #ffedd9;
-    }
-
-    .categoria-item {
-      padding: 10px 5px;
-      border-right: 1px solid #FF8E45;
-      cursor: pointer;
-      font-weight: bold;
-      color: rgb(153, 153, 153);
-      text-transform: uppercase;
-    }
-
-    .categoria-item:hover {
-      background-color: #FF8E45;
-      color: #fff;
-    }
-
-    .categoria-item:  last-child {
-      border-right: 0;
-    }
-
 
 
   `}</style>
