@@ -20,7 +20,7 @@ class Categorias extends Component {
           categorias.map(categoria => (
             <Link href={`/category/${categoria.nome}?id=${categoria.id}`}>
               <div className="categoria-item flex-1 flex flex-center">
-                <span>{categoria.nome}</span>
+                <span className="text-center">{categoria.nome}</span>
               </div>
             </Link>
           ))
