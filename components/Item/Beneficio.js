@@ -6,4 +6,4 @@ export default ({ icone, texto }) => (
     <span className="text-center">{texto}</span>
     
   </div>
-)
+);

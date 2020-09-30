@@ -9,7 +9,7 @@ class Banners extends Component {
   state = {
     img: IMAGES[0],
     idx: 0
-  }
+  };
 
   onChange = (index) => {
     let opcao = (index < 0) ?
@@ -35,16 +35,16 @@ class Banners extends Component {
       <div className="flex-1 banner">
         <img src={img} className="banner" alt="banner" width="100%" />
       </div>
-    )
-  }
+    );
+  };
 
   render() {
     return (
       <div className="Banners flex">
         { this.renderBanners()}
       </div>
-    )
-  }
-}
+    );
+  };
+};
 
 export default Banners;

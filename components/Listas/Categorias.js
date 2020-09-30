@@ -10,7 +10,7 @@ class Categorias extends Component {
       { id: 4, nome: "Shorts" },
       { id: 5, nome: "Moletom" }
     ]
-  }
+  };
 
   render() {
     const { categorias } = this.state;
@@ -24,12 +24,12 @@ class Categorias extends Component {
               </div>
             </Link>
           ))
-        }
+        };
 
       </div>
-    )
-  }
+    );
+  };
 
-}
+};
 
 export default Categorias;

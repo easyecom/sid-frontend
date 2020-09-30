@@ -23,7 +23,7 @@ class Pesquisa extends Component {
         </button>
       </div>
     )
-  }
-}
+  };
+};
 
 export default Pesquisa;

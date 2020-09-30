@@ -19,8 +19,8 @@ class Cabecalho extends React.Component {
           <Categorias />
         </div>
       </div>
-    )
-  }
+    );
+  };
 
   renderCabecalhoSimples() {
     return (
@@ -29,15 +29,15 @@ class Cabecalho extends React.Component {
           <Logo />
         </div>
       </div>
-    )
-  }
+    );
+  };
 
   render() {
     const { simples } = this.props;
     return simples ?
       this.renderCabecalhoSimples() :
       this.renderCabecalhoNormal()
-  }
-}
+  };
+};
 
 export default Cabecalho;

@@ -25,10 +25,10 @@ class Produtos extends Component {
               key={item.id}
               porLinha={itensPorLinha} />
           ))
-        }
+        };
       </div>
-    )
-  }
-}
+    );
+  };
+};
 
 export default Produtos;

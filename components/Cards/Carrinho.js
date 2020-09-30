@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Link from 'next/link';
 
 class CardCarrinho extends Component {
-  state = { cartQtd: 0 }
+  state = { cartQtd: 0 };
 
   render() {
     return (
@@ -20,8 +20,8 @@ class CardCarrinho extends Component {
           </div>
         </Link>
       </div>
-    )
-  }
-}
+    );
+  };
+};
 
 export default CardCarrinho;

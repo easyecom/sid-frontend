@@ -6,7 +6,7 @@ import Cabecalho from '../containers/Cabecalho';
 import Banners from '../containers/Banners';
 import Beneficios from '../containers/Beneficios';
 import ProdutosPaginaInicial from '../containers/Lista/ProdutosPaginaInicial';
-// import Rodape from '../containers/Rodape';
+import Rodape from '../containers/Rodape';
 
 
 class Index extends Component {
@@ -18,7 +18,7 @@ class Index extends Component {
         <Banners />
         <Beneficios />
         <ProdutosPaginaInicial />
-        {/* <Rodape /> */}
+        <Rodape />
       </Layout>
 
     )

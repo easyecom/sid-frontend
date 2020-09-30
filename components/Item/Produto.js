@@ -33,8 +33,8 @@ class Produto extends Component {
               </div>
           </div>
       </Link>
-    )
-  }
-}
+    );
+  };
+};
 
 export default Produto;

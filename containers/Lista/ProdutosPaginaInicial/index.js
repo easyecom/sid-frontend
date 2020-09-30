@@ -43,8 +43,8 @@ class ProdutosPaginaInicial extends Component {
           produtos={PRODUTOS}
           itensPorLinha={4} />
       </div>
-    )
-  }
-}
+    );
+  };
+};
 
 export default ProdutosPaginaInicial;
