@@ -1,11 +1,18 @@
 import React, { Component } from 'react';
 
+import Layout from '../../components/Layout';
+import Cabecalho from '../../containers/Cabecalho';
+import ProdutosCategoria from '../../containers/Lista/ProdutosCategoria';
+import Rodape from '../../containers/Rodape';
+
 export default class Category extends Component {
   render() {
-    return(
-      <div>
-        <h2>Loja SID - Categoria</h2>
-      </div>
-    )
-  }
-}
+    return (
+      <Layout title = "Acessórios | LOJA SID SURF STORE">
+        <Cabecalho />
+        <ProdutosCategoria />
+        <Rodape />
+      </Layout>
+    );
+  };
+};
