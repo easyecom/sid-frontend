@@ -5,7 +5,7 @@ import Cabecalho from '../../containers/Cabecalho';
 import Produto from '../../containers/Produto';
 import Rodape from '../../containers/Rodape';
 
-export default class Product extends Component {
+export default class ProductPage extends Component {
   render() {
     return(
      <Layout title="Tenis | SID SURF STORE">
@@ -13,6 +13,6 @@ export default class Product extends Component {
        <Produto />
        <Rodape />
      </Layout>
-    )
-  }
-}
+    );
+  };
+};
