@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import Hero from './Hero';
-// import Descricao from './Descricao';
+import Descricao from './Descricao';
 // import Avaliacoes from './Avaliacoes';
 
 export default class ProdutoContainer extends Component {
@@ -9,8 +9,8 @@ export default class ProdutoContainer extends Component {
     return (
       <div className="constiner-big Produto">
         <Hero />
-        {/* <Descricao />
-        <Avaliacoes /> */}
+        <Descricao />
+        {/* <Avaliacoes /> */}
       </div>
     );
   };
