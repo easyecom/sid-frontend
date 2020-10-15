@@ -38,13 +38,13 @@ export default class Hero extends Component {
           <label>Selecione uma opção:</label>
         </div>
         <div className={"variacoes flex wrap"}>
-          <div className="variacoes flex-1 flex flex-center wrap-4">
+          <div className="variacao flex-1 flex flex-center wrap-4">
             <span className="variacao-item">P</span>
           </div>
-          <div className="variacoes flex-1 flex flex-center wrap-4">
+          <div className="variacao flex-1 flex flex-center wrap-4">
             <span className="variacao-item">M</span>
           </div>
-          <div className="variacoes flex-1 flex flex-center wrap-4">
+          <div className="variacao flex-1 flex flex-center wrap-4">
             <span className="variacao-item">G</span>
           </div>
         </div>
@@ -63,24 +63,24 @@ export default class Hero extends Component {
           <h2>Meia Stance</h2>
         </div>
         <div className="categoria">
-          <p>Categoria:&nbsp;Meias</p>
+          <p>Categoria:&nbsp;<span className="categoria-link">Meias</span></p>
         </div>
         <br />
         <div className="precos">
           <h2 className="preco-original preco-por">
             R$ 55,00
           </h2>
-          <h2 className="preco-promocao preco-por">
+          <h2 className="preco-promocao">
             R$ 45,00
           </h2>
-          <h4 className="preco-promocao preco-por">
+          <h4 className="preco-parcelado">
             ou em 6x de 7,50 sem juros
           </h4>
         </div>
         <br />
         { this.renderVariacoes()}
         <div className="opcoes">
-          <div className="opcao">
+          <div className="opcao flex vertical">
             <label className="opcao-tab">Quantidade</label>
             <input
               className="opcao-input"
@@ -102,7 +102,7 @@ export default class Hero extends Component {
 
   render() {
     return (
-      <div className="flex horizontal">
+      <div className="Produto-Hero flex horizontal">
         { this.renderPhotos()}
         { this.renderDetalhes()}
       </div>
