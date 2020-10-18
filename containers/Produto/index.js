@@ -8,7 +8,7 @@ import ProdutosRelacionados from './ProdutosRelacionados';
 export default class ProdutoContainer extends Component {
   render() {
     return (
-      <div className="constiner-big Produto">
+      <div className="container-big Produto">
         <Hero />
         <Descricao />
         <Avaliacoes />

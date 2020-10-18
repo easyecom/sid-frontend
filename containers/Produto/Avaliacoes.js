@@ -68,7 +68,7 @@ class Avaliacoes extends Component {
   renderFormularioDeAvaliacoes() {
     return (
       <div className="avaliacoes-form">
-        <h4>Envie sua avaliacão</h4>
+        <h4>Envie sua avaliação</h4>
         <div className="flex vertical">
           <div className="flex horizontal">
             <label>Pontuação:&nbsp;</label>
@@ -83,7 +83,7 @@ class Avaliacoes extends Component {
           <div className="flex vertical">
             <label>Avaliação:</label><br/>
             <textarea 
-              rows="4" style={{ resize: "none", width: "100%", maxWidth: "500px" }}
+              rows="3" style={{ resize: "none", width: "100%", maxWidth: "500px" }}
               placeholder="Digite aqui a sua avaliação...">
             </textarea>
           </div>

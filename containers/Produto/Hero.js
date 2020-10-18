@@ -7,7 +7,7 @@ const PHOTOS = [
 ];
 
 export default class Hero extends Component {
-  state = { fotos: PHOTOS[0] }
+  state = { foto: PHOTOS[0] }
 
   renderPhotos() {
     return (
@@ -81,7 +81,7 @@ export default class Hero extends Component {
         { this.renderVariacoes()}
         <div className="opcoes">
           <div className="opcao flex vertical">
-            <label className="opcao-tab">Quantidade</label>
+            <label className="opcao-tab">Quantidade:</label>
             <input
               className="opcao-input"
               type="number"
@@ -103,8 +103,8 @@ export default class Hero extends Component {
   render() {
     return (
       <div className="Produto-Hero flex horizontal">
-        { this.renderPhotos()}
-        { this.renderDetalhes()}
+        { this.renderPhotos() }
+        { this.renderDetalhes() }
       </div>
     );
   };

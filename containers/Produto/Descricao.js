@@ -4,7 +4,7 @@ const DESC = "Produtos originais.\n\nSuper estilosos e confortáveis\n\nInvista 
 
 const Descricao = () => (
   <div className="Descricao flex vertical">
-    <h2>Descricao</h2>
+    <h2>Descrição</h2>
     <br/>
     <div>
       {DESC.split("\n").map((item, idx) => <p key={idx}>{item}</p>)}
