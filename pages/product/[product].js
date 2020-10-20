@@ -8,7 +8,7 @@ import Rodape from '../../containers/Rodape';
 export default class ProductPage extends Component {
   render() {
     return(
-     <Layout title="Tenis | SID SURF STORE">
+     <Layout title="Tenis | LOJA SID SURF STORE">
        <Cabecalho />
        <Produto />
        <Rodape />

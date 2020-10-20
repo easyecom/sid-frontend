@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Link from 'next/link';
 
-const formatMoney = (value) => "R$ " + (value || 0).toFixed(2).replace(".", ",");
+import { formatMoney } from '../../utils';
 
 class Produto extends Component {
   render() {
