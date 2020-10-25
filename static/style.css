@@ -383,6 +383,67 @@
   margin: 15px 0;
 }
 
+/* CARRINHO */
+
+.Carrinho > h2 {
+  font-size: 2rem;
+}
+
+.Carrinho .produto-image {
+  height: auto;
+}
+
+.Carrinho .produto-quantidade {
+  font-size: 1rem;
+  padding: 10px 15px;
+  width: 60px;
+  border: 1px solid #aaaa;
+}
+
+.Carrinho .fa-trash {
+  color: #999;
+  cursor: pointer;
+}
+
+.Carrinho .carrinho-item {
+  margin: 10px 0;
+  border-bottom: 1px solid #aaaa;
+  padding-bottom: 10px;
+}
+
+.Carrinho .carrinho-item:last-child {
+  border-bottom: 0;
+}
+
+.Carrinho .carrinho-cabecalho {
+  background-color: #999;
+  color: #fff;
+}
+
+.dados-do-carrinho-container {
+  margin-top: 20px;
+}
+
+.dados-do-carrinho-item {
+  padding: 10px 0;
+  border-top: 1px solid #aaaa;
+}
+
+.Carrinho select {
+  font-size: 1rem;
+  padding: 5px 10px;
+}
+
+.Carrinho .valor-frete {
+  margin: 0;
+}
+
+.Carrinho .limpar-CEP {
+  color: #999;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
 /* RODAPÉ */
 
 .Rodape {
