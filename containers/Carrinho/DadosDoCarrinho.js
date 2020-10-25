@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { formatMoney } from '../../utils';
+
+import Frete from '../../components/Item/Frete';
 
 class DadosDoCarrinho extends Component {
 
@@ -24,9 +27,14 @@ class DadosDoCarrinho extends Component {
             {formatMoney(105.35)}
           </div>
         </div>
+        <div className="flex flex-right">
+          <button className="btn btn-success btn-cta">
+            <span>Finalizar Pedido</span>
+          </button>
+        </div>
       </div>
-    )
-  }
+    );
+  };
 
   render() {
     return (
