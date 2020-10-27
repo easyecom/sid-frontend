@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 
-import DadosCliente from './DadosDoCliente';
-import DadosEntrega from './DadosEntrega';
-import SubmitDadosCliente from './SubmitDadosCliente';
-import DadosFrete from './DadosFrete';
-import DadosPagamento from './DadosPagamento';
-import DadosPedido from './DadosPedido';
-import CheckoutButton from './CheckoutButton';
+import DadosCliente from './DadosCliente';
+// import DadosEntrega from './DadosEntrega';
+// import SubmitDadosCliente from './SubmitDadosCliente';
+// import DadosFrete from './DadosFrete';
+// import DadosPagamento from './DadosPagamento';
+// import DadosPedido from './DadosPedido';
+// import CheckoutButton from './CheckoutButton';
 
 class CheckoutContainer extends Component {
   render() {
@@ -15,12 +15,12 @@ class CheckoutContainer extends Component {
         <h2>CONCLUINDO SEU PEDIDO</h2>
         <br/>
         <DadosCliente />
-        <DadosEntrega />
+        {/* <DadosEntrega />
         <SubmitDadosCliente />
         <DadosFrete />
         <DadosPagamento />
         <DadosPedido />
-        <CheckoutButton />
+        <CheckoutButton /> */}
       </div>
     );
   };
