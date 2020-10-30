@@ -96,6 +96,21 @@ class DadosPagamento extends Component {
             label="Ano"
             onChange={(e) => this.onChange("anoCartao", e)} />
         </div>
+        <br/>
+        <div>
+          <strong>Parcelas</strong>
+        </div>
+        <div className="flex">
+          <select name="parcela">
+            <option>Selecione a quantidade de parcelas para pagamento</option>
+            <option value="1">1x de R$ 105,00 sem juros</option>
+            <option value="2">2x de R$ 62,50 sem juros</option>
+            <option value="3">3x de R$ 35,00 sem juros</option>
+            <option value="4">4x de R$ 31,75 sem juros</option>
+            <option value="5">5x de R$ 21,00 sem juros</option>
+            <option value="6">6x de R$ 17,50 sem juros</option>
+          </select>
+        </div>
       </div>
     );
   }
