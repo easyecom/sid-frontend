@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import DadosCliente from './DadosCliente';
 import DadosEntrega from './DadosEntrega';
-// import SubmitDadosCliente from './SubmitDadosCliente';
+import SubmitDadosCliente from './SubmitDadosCliente';
 // import DadosFrete from './DadosFrete';
 // import DadosPagamento from './DadosPagamento';
 // import DadosPedido from './DadosPedido';
@@ -16,8 +16,8 @@ class CheckoutContainer extends Component {
         <br/>
         <DadosCliente />
         <DadosEntrega />
-        {/* <SubmitDadosCliente />
-        <DadosFrete />
+        <SubmitDadosCliente />
+        {/* <DadosFrete />
         <DadosPagamento />
         <DadosPedido />
         <CheckoutButton /> */}
