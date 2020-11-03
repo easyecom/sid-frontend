@@ -389,7 +389,8 @@
   font-size: 2rem;
 }
 
-.Carrinho .produto-image {
+.Carrinho .produto-image,
+.checkout .produto-image {
   height: auto;
 }
 
@@ -444,12 +445,69 @@
   cursor: pointer;
 }
 
+/* CHECKOUT */
+.form-input {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-check {
+  flex-direction: row;
+  align-items: center;
+}
+
+.form-input label {
+  margin: 10px 0 5px;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.form-input .form-check label {
+  margin: 0;
+}
+
+.form-input input {
+  max-width: 400px;
+  font-size: 1rem;
+  padding: 5px 8px;
+  margin: 0 5px 5px 0;
+  border: 1px solid #aaaa;
+  border-radius: 5px;
+}
+
+.checkout select {
+  max-width: 300px;
+  font-size: 1rem;
+  margin: 0 5px 5px 0;
+}
+
+.checkout .slash-pagamento {
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.checkout h2 {
+  border-top: 1px solid #aaaa;
+  margin-top: 80px;
+  padding-top: 30px;
+}
+
+.checkout > h2 {
+  border-top: 0;
+  margin-bottom: 0;
+  padding-top: 0;
+}
+
 /* RODAPÉ */
 
 .Rodape {
   background: #111111;
   padding: 60px 0;
   color: #fff;
+  margin-top: 100px;
 }
 
 .Rodape a {

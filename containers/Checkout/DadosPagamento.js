@@ -76,10 +76,10 @@ class DadosPagamento extends Component {
             onChange={(e) => this.onChange("CVCartao", e)} />
           </div>
         </div>
-        <div>
-          <strong>
+        <div className="form-input">
+          <label>
             Data de Validade
-          </strong>
+          </label>
         </div>
         <div className="flex">
         <FormSimples
@@ -88,7 +88,7 @@ class DadosPagamento extends Component {
             placeholder="MM"
             label="Mês"
             onChange={(e) => this.onChange("mesCartao", e)} />
-          <span>&nbsp;/&nbsp;</span>
+          <span className="slash-pagamento">&nbsp;/&nbsp;</span>
           <FormSimples
             value={anoCartao}
             name="anoCartao"
@@ -97,8 +97,8 @@ class DadosPagamento extends Component {
             onChange={(e) => this.onChange("anoCartao", e)} />
         </div>
         <br/>
-        <div>
-          <strong>Parcelas</strong>
+        <div className="form-input">
+          <label>Parcelas</label>
         </div>
         <div className="flex">
           <select name="parcela">
