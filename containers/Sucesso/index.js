@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 
 class SucessoContainer extends Component {
   state = { 
-    pedidoSucesso: false,
-    formaPagamento: "cartao"
+    pedidoSucesso: true,
+    formaPagamento: "boleto"
   }
 
   renderBoleto() {

@@ -1,11 +1,18 @@
 import React, { Component } from 'react';
 
+import Layout from '../../components/Layout';
+import Cabecalho from '../../containers/Cabecalho';
+import AreaDoClienteContainer from '../../containers/AreaDoCliente';
+import Rodape from '../../containers/Rodape';
+
 export default class CustomerArea extends Component {
   render() {
     return(
-      <div>
-        <h2>Loja SID - Area do cliente</h2>
-      </div>
-    )
-  }
-}
+     <Layout title="Minha Conta | LOJA SID SURF STORE">
+       <Cabecalho />
+       <AreaDoClienteContainer />
+       <Rodape />
+     </Layout>
+    );
+  };
+};
