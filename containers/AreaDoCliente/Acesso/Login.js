@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import FormSimples from '../../../components/Inputs/FormSimples';
+
 class LoginContainer extends Component {
   state = {
     email: "",
@@ -15,13 +17,17 @@ class LoginContainer extends Component {
         <hr/>
         <br/>
         <div className="from-input">
-          <FormInput value={email} name="email" type="email" placeholder="Email" />
-          <FormInput value={senha} name="senha" type="password" placeholder="Senha" />
+          <FormSimples value={email} name="email" type="email" placeholder="Email" />
+          <FormSimples value={senha} name="senha" type="password" placeholder="Senha" />
           <br/>
           <div className="flex flex-center">
             <button className="btn btn-primary">
               ENTRAR
             </button>
+          </div>
+          <br/>
+          <div className="text-center">
+                <span onClick={this.props.changeAcesso}>Não tem conta? Clique aqui para cadastrar</span>
           </div>
         </div>
       </div>
