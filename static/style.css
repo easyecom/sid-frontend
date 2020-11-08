@@ -383,6 +383,12 @@
   margin: 15px 0;
 }
 
+.btn-sm {
+  font-size: 0.85rem;
+  padding: 5px 8px;
+  border-radius: 10px;
+}
+
 /* CARRINHO */
 
 .Carrinho > h2 {
@@ -557,6 +563,21 @@
   box-shadow: 0 0 5px #cccc;
   padding: 20px;
   border-radius: 15px;
+}
+
+.menu-pedidos {
+  background-color: #999;
+  color: #fff;
+}
+
+.Pedido-Card {
+  padding: 15px 0;
+  border-bottom: 1px solid #aaa;
+}
+
+.menu-pedidos > div,
+.Pedido-Card > div {
+  padding: 0 10px;
 }
 
 /* RODAPÉ */
