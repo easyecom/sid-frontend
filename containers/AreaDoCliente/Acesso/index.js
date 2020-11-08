@@ -4,7 +4,7 @@ import LoginContainer from './Login';
 import CadastroContainer from './Cadastro';
 
 export default class AcessoContainer extends Component {
-  state = { paraLogar: false }
+  state = { paraLogar: true }
 
   changeAcesso = () => this.setState({ paraLogar: !this.state.paraLogar })
 
