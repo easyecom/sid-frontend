@@ -24,13 +24,13 @@ class DadosDoPedido extends Component {
     const carrinho = [
       {
         "Produto": "Meia Stance - Tam. Unico",
-        "Preço Und": formatMoney(55),
+        "Preço Und.": formatMoney(55),
         "Quantidade": 1,
         "Preço Total": formatMoney(55)
       },
       {
         "Produto": "Short Green - M",
-        "Preço Und": formatMoney(105),
+        "Preço Und.": formatMoney(105),
         "Quantidade": 1,
         "Preço Total": formatMoney(105)
       }

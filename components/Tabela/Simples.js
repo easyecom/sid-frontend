@@ -5,7 +5,7 @@ const TabelaSimples = ({ cabecalho, dados }) => (
     <table className="simples">
       <thead>
         <tr>
-          { cabecalho.map((item, idx) => (<tr key={idx}>{item}</tr>)) }
+          { cabecalho.map((item, idx) => (<th key={idx}>{item}</th>)) }
         </tr>
       </thead>
       <tbody>
