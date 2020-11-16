@@ -534,7 +534,10 @@
   text-decoration: underline;
 }
 
-.Pedidos-Container {
+.Pedidos-Container,
+.Pedido-Container,
+.Dados-Container,
+.Senha-Container {
   margin-top: 30px !important;
 }
 
