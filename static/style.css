@@ -588,6 +588,50 @@
   max-width: 700px;
 }
 
+table.simples {
+  border-collapse: collapse;
+}
+
+table.simples th,
+table.simples td {
+  padding: 10px 15px;
+}
+
+table.simples th {
+  background-color: #ff8e45;
+  color: #fff;
+}
+
+table.simples td {
+  border-bottom: 1px solid #dddd;
+}
+
+.Status-Item {
+  border-left: 3px solid rgb(1, 78, 1);
+  border-bottom: 1px solid #dddd;
+  padding: 5px 10px;
+  margin: 3px 0;
+  width: 90%;
+}
+
+/* ALERT */
+
+.alert {
+  margin: 10px 0;
+  padding: 10px 15px;
+  border: 2px solid #dddd;
+  background-color: #eee;
+  color: #555;
+  font-size: 0.9rem;
+  border-radius: 10px;
+}
+
+.alert-danger {
+  border: 2px solid rgba(100, 0, 0);
+  background-color: rgb(255, 190, 190);
+  color: rgb(155, 0, 0);
+}
+
 /* RODAPÉ */
 
 .Rodape {
