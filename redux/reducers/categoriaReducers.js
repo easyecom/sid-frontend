@@ -8,7 +8,7 @@ export default ( state = initialState, action ) => {
     case FETCH_CATEGORIAS:
       return {
         ...state,
-        categorias: action.payload.categorias
+        categorias: action.payload
       }
     default:
       return state;

@@ -1,26 +1,19 @@
 import React, { Component } from "react";
+import { connect } from 'react-redux';
 import Link from 'next/link';
 
 class Categorias extends Component {
-  state = {
-    categorias: [
-      { id: 1, nome: "Acessorios" },
-      { id: 2, nome: "Tenis" },
-      { id: 3, nome: "Camisetas" },
-      { id: 4, nome: "Shorts" },
-      { id: 5, nome: "Moletom" }
-    ]
-  }
 
   render() {
-    const { categorias } = this.state;
+    const { categorias } = this.props;
+  
     return (
       <div className="categorias flex horizontal-mb">
         {
           categorias.map(categoria => (
-            <Link href={`/category/${categoria.nome}?id=${categoria.id}`}>
+            <Link href={`/category/${categoria.categoryName}?id=${categoria.categoryId}`} key={categoria.categoryId}>
               <div className="categoria-item flex-1 flex flex-center">
-                <span className="text-center">{categoria.nome}</span>
+                <span className="text-center">{categoria.categoryName}</span>
               </div>
             </Link>
           ))
@@ -32,4 +25,8 @@ class Categorias extends Component {
 
 };
 
-export default Categorias;
+const mapStateToProps = state => ({
+  categorias: state.categoria.categorias
+});
+
+export default connect(mapStateToProps)(Categorias);

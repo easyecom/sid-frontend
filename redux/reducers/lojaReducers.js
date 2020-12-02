@@ -7,7 +7,7 @@ export default (state = initialState, action) => {
     case FETCH_DADOS:
       return {
         ...state,
-        loja: action.payload.loja
+        loja: action.payload
       };
     default:
       return state;

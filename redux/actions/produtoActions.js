@@ -11,6 +11,7 @@ export const fetchProdutosPaginaInicial = () => (dispatch) => {
   .catch(e => console.log(e));
 }
 
+
 export default {
   fetchProdutosPaginaInicial
 };
