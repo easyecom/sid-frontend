@@ -1,5 +1,7 @@
 import {
-  FETCH_CATEGORIAS
+  FETCH_CATEGORIAS,
+  FETCH_CATEGORIA,
+  FETCH_CATEGORIA_PRODUTOS
 } from '../types';
 import axios from 'axios';
 import { API, loja } from '../../config';
@@ -19,6 +21,20 @@ export const fetchCategorias = () => (dispatch) => {
       .catch((e) => console.log(e));
 };
 
+export const fetchCategoria = (id) => dispatch => {
+  axios.get(`${API}/stores/${loja}/categories/${id}`)
+  .then(response => dispatch({ type: FETCH_CATEGORIA, payload: response.data }))
+  .catch(e => console.log(e));
+}
+
+export const fetchProdutosCategoria = (atual = 1, limit = 2) => dispatch => {
+  axios.get(`${API}/stores/${loja}/variations?page=${atual}&limit=${limit}`)
+  .then(response => dispatch({ type: FETCH_CATEGORIA_PRODUTOS, payload: response.data }))
+  .catch(e => console.log(e));
+}
+
 export default {
-  fetchCategorias
+  fetchCategorias,
+  fetchCategoria,
+  fetchProdutosCategoria
 };

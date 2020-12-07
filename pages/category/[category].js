@@ -5,10 +5,25 @@ import Cabecalho from '../../containers/Cabecalho';
 import ProdutosCategoria from '../../containers/Lista/ProdutosCategoria';
 import Rodape from '../../containers/Rodape';
 
-export default class Category extends Component {
+import { connect } from 'react-redux';
+import actions from '../../redux/actions';
+import initialize from '../../utils/initialize';
+import callBaseData from '../../utils/callBaseData';
+
+class Category extends Component {
+  static async getInitialProps(ctx){
+    // initialize(ctx);
+    return callBaseData([
+      actions.fetchProdutosCategoria.bind(null, ctx.query.id),
+      actions.fetchCategoria.bind(null, ctx.query.id),
+    ], ctx);
+  }
+
   render() {
+    const { categoria }  = this.props;
+   
     return (
-      <Layout title = "Acessórios | LOJA SID SURF STORE">
+      <Layout title = {`${categoria ? categoria.categoryName : "-"} | LOJA SID SURF STORE`}>
         <Cabecalho />
         <ProdutosCategoria />
         <Rodape />
@@ -16,3 +31,9 @@ export default class Category extends Component {
     );
   };
 };
+
+const mapStateToProps = (state) => ({
+  categoria: state.categoria.categoria
+})
+
+export default connect(mapStateToProps, actions)(Category);
