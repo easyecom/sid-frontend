@@ -5,12 +5,14 @@ import { formatMoney } from '../../utils';
 import { baseImg } from '../../config';
 
 class Produto extends Component {
+
+  
   render() {
     const { item, porLinha } = this.props;
-    const { variationId, title, salesPrice, promotion, name } = item;
-    const temPromo = promotion && salesPrice !== promotion;
+    const { productId, title, salesPrice, offerPrice, name } = item;
+    const temPromo = offerPrice && salesPrice !== offerPrice;
     return (
-      <Link href={`/product/${title}?produto=${variationId}`}>
+      <Link href={`/product/${title}?produto=${productId}`}>
         <div className={`produto flex-1 flex vertical wrap-${porLinha} wrap-2-mb`}>
           <div className="produto-image flex flex-center">
             <img
@@ -21,13 +23,13 @@ class Produto extends Component {
           </div>
           <br />
           <div className={`produto-preco ${temPromo ? "produto-por" : ""} flex flex-center`}>
-            {/* <h2>{formatMoney(salesPrice)}</h2> */}
-            <h2>{salesPrice}</h2>
+            <h2>{formatMoney(salesPrice)}</h2>
+            {/* <h2>{salesPrice}</h2> */}
           </div>
           {temPromo && (
               <div className={`produto-preco-promocao flex flex-center`}>
-                {/* <h2>{formatMoney(promotion)}</h2> */}
-                <h2>{promotion}</h2>
+                <h2>{formatMoney(offerPrice)}</h2>
+                {/* <h2>{offerPrice}</h2> */}
               </div>
            )
           }

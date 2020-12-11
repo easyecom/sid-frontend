@@ -5,7 +5,7 @@ import {
 import { API, loja } from '../../config';
 
 export const fetchProdutosPaginaInicial = () => (dispatch) => {
-  axios.get(`${API}/stores/${loja}/variations`)
+  axios.get(`${API}/stores/${loja}/products`)
   // ${API}/produtos/disponiveis?loja=${loja}&offset=${0}&limit=${4}&sortType=${preco-crescente}
   .then((response) => dispatch({ type: FETCH_PRODUTOS, payload: response.data }))
   .catch(e => console.log(e));

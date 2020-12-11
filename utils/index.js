@@ -1,4 +1,4 @@
-export const formatMoney = (value) => "R$ " + (value || 0).toFixed(2).replace(".", ",");
+export const formatMoney = (value) => "R$ " + (parseInt(value || 0).toFixed(2).replace(".", ","));
 
 export const ESTADOS = {
   "AC": "Acre",
