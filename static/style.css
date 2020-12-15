@@ -26,6 +26,7 @@
 .logo {
   max-width: 230px;
   cursor: pointer;
+  margin-bottom: 10px;
 }
 
 .input-pesquisa {
