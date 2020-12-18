@@ -18,8 +18,8 @@ class DadosDaLoja extends React.Component {
           <p className="loja-cnpj">CNPJ: {loja.cnpj}</p>
           <p className="loja-nome">E-mail: <a href={`mailto:${loja.email}`}>{loja.email}</a></p>
           <p className="loja-telefones">Telefones: <a href={`phone:${loja.cellPhone}`}>{loja.cellPhone}</a></p>
-          {/* <p className="loja-endereço">{endereco.local}, {endereco.numero} - {endereco.bairro}</p>
-                <p className="loja-cidade">{endereco.cidadade}/{endereco.estado} - {endereco.cep}</p> */}
+          <p className="loja-endereço">{loja.street}, {loja.number} - {loja.neighborhood}</p>
+          <p className="loja-cidade">{loja.city}/{loja.state_code} - {loja.zipcode}</p>
       </div>
     )
   }
