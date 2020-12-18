@@ -24,17 +24,15 @@ class Produto extends Component {
           <br />
           <div className={`produto-preco ${temPromo ? "produto-por" : ""} flex flex-center`}>
             <h2>{formatMoney(salesPrice)}</h2>
-            {/* <h2>{salesPrice}</h2> */}
           </div>
           {temPromo && (
               <div className={`produto-preco-promocao flex flex-center`}>
                 <h2>{formatMoney(offerPrice)}</h2>
-                {/* <h2>{offerPrice}</h2> */}
               </div>
            )
           }
           <div className={`produto-preco-parcelado flex flex-center`}>
-                {/* <h4>ou 6x de {formatMoney((temPromo ? promotion : salesPrice) / 6)} sem juros</h4> */}
+                <h4>ou 6x de {formatMoney((temPromo ? offerPrice : salesPrice) / 6)} sem juros</h4>
               </div>
           </div>
       </Link>
