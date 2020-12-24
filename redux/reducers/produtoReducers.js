@@ -11,7 +11,7 @@ export default (state = initialState, action) => {
     case FETCH_PRODUTOS:
       return {
         ...state,
-        produtos: action.payload
+        produtos: action.payload // ajuste
       }
     default:
       return state;

@@ -25,7 +25,7 @@ class Produtos extends Component {
               key={item.productId}
               porLinha={itensPorLinha} />
           ))
-        };
+        }
       </div>
     );
   };
