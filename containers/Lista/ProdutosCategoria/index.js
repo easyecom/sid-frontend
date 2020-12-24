@@ -34,6 +34,7 @@ class ProdutosCategoria extends Component {
   }
 }
 
+
 const mapStateToProps = (state) => ({
   categoria: state.categoria.categoria,
   produtosCategoria: state.categoria.produtosCategoria,
