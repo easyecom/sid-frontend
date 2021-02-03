@@ -12,10 +12,11 @@ class ProdutosCategoria extends Component {
 
   render() {
     const { produtosCategoria, categoria } = this.props;
-    // console.log(produtosCategoria, categoria);
+    console.log(this.props)
     return (
       <div className="container Categoria-Produtos">
-        <h1>{categoria ? categoria[0].categoryName : "-"}</h1>
+        {/* ajuste -[0] */}
+        <h1>{categoria ? categoria.categoryName : ""}</h1> 
         <br /> <br />
         <div className="flex flex-center"></div>
         <br />
@@ -33,7 +34,6 @@ class ProdutosCategoria extends Component {
     );
   }
 }
-
 
 const mapStateToProps = (state) => ({
   categoria: state.categoria.categoria,

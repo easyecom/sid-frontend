@@ -1,12 +1,11 @@
 import React, { Component } from "react";
-import { connect } from 'react-redux';
-import Link from 'next/link';
+import { connect } from "react-redux";
+import Link from "next/link";
 
 class Categorias extends Component {
-
   render() {
     const { categorias } = this.props;
-  
+    // console.log(this.props); // ajuste
     return (
       <div className="categorias flex horizontal-mb">
         {
@@ -18,15 +17,13 @@ class Categorias extends Component {
             </Link>
           ))
         }
-
       </div>
-    )
-  };
+    );
+  }
+}
 
-};
-
-const mapStateToProps = state => ({
-  categorias: state.categoria.categorias
+const mapStateToProps = (state) => ({
+  categorias: state.categoria.categorias,
 });
 
 export default connect(mapStateToProps)(Categorias);
