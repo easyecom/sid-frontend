@@ -6,6 +6,7 @@ const defaultDescricao = '';
 const defaultOGURL = '';
 const defaultOGImage = "/static/logo.png";
 
+
 const Head = props => (
   <NextHead>
     <meta charSet="UTF-8" />
