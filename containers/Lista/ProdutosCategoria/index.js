@@ -2,7 +2,10 @@ import React, { Component } from "react";
 
 import Produtos from "../../../components/Listas/Produtos";
 import Paginacao from "../../../components/Paginacao";
+
 import { connect } from "react-redux";
+import actions from '../../../redux/actions';
+
 
 class ProdutosCategoria extends Component {
   state = {
@@ -10,26 +13,37 @@ class ProdutosCategoria extends Component {
     limit: 20,
   };
 
+  getProdutos() {
+    const { atual, limit } = this.state;
+    const categoria = this.props;
+    this.props.fetchProdutosCategoria(categoria.categoryId, atual, limit);
+  }
+
+  changeNumeroAtual = (atual) => {
+    this.setState({ atual }, () => this.getProdutos());
+  }
+
+
   render() {
     const { produtosCategoria, categoria } = this.props;
     console.log(this.props)
     return (
       <div className="container Categoria-Produtos">
         {/* ajuste -[0] */}
-        <h1>{categoria ? categoria.categoryName : ""}</h1> 
         <br /> <br />
-        <div className="flex flex-center"></div>
+        <div className="flex flex-center">
+          <h1>{categoria ? categoria.categoryName : "-"}</h1>
+        </div>
         <br />
         <Produtos
           produtos={produtosCategoria ? produtosCategoria : []}
           itensPorLinha={4}
         />
-        {/* <Paginacao
-          atual={this.state.atual || 0}
-          // total={PRODUTOS.length * 4}
-          limite={this.state.limit}
-          onClick={(numeroAtual) => this.state({ atual: numeroAtual })}
-        /> */}
+        <Paginacao
+          atual={this.state.atual || 1}
+          total={produtosCategoria.infos.total}
+          limit={this.state.limit}
+          onClick={(numeroAtual) => this.changeNumeroAtual(numeroAtual) } />
       </div>
     );
   }
@@ -40,4 +54,4 @@ const mapStateToProps = (state) => ({
   produtosCategoria: state.categoria.produtosCategoria,
 });
 
-export default connect(mapStateToProps)(ProdutosCategoria);
+export default connect(mapStateToProps, actions)(ProdutosCategoria);
