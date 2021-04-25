@@ -32,6 +32,7 @@ export const fetchCategoria = (id) => (dispatch) => {
 
 export const fetchProdutosCategoria = (atual = 1, limit = 2) => (dispatch) => {
   axios
+    // .get(`${API}/stores/${loja}/category/3/products?page=${atual}&limit=${limit}`) | LASTCHANGE
     .get(`${API}/stores/${loja}/products?page=${atual}&limit=${limit}`)
     .then((response) =>
       dispatch({ type: FETCH_CATEGORIA_PRODUTOS, payload: response.data })
