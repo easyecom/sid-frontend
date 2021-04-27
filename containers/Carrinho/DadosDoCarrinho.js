@@ -21,7 +21,7 @@ class DadosDoCarrinho extends Component {
           </div>
           <div className="flex-1 flex flex-center">{formatMoney(105.35)}</div>
         </div>
-        <Link href="/checkout"> {/* LASTCHANGE */}
+        <Link href="/checkout">
           <div className="dados-do-carrinho-item flex flex-right">
             <button className="btn btn-success btn-cta">
               <span>Finalizar Pedido</span>
