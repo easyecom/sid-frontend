@@ -30,10 +30,10 @@ export const fetchCategoria = (id) => (dispatch) => {
     .catch((e) => console.log(e));
 };
 
-export const fetchProdutosCategoria = (id, atual = 0, limit = 20) => (dispatch) => {
+export const fetchProdutosCategoria = (atual = 1, limit = 2) => (dispatch) => {
   axios
-    .get(`${API}/stores/${loja}/category/${id}/products`)
-    // .get(`${API}/stores/${loja}/category/${id}/products?page=${atual}&limit=${limit}`)
+    // .get(`${API}/stores/${loja}/category/3/products?page=${atual}&limit=${limit}`) | LASTCHANGE
+    .get(`${API}/stores/${loja}/products?page=${atual}&limit=${limit}`)
     .then((response) =>
       dispatch({ type: FETCH_CATEGORIA_PRODUTOS, payload: response.data })
     )
