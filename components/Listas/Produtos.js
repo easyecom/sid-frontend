@@ -19,7 +19,7 @@ class Produtos extends Component {
     return (
       <div className="Produtos flex wrap">
         {
-          produtos.data.map(item => ( // change results to data | LASTCHANGE
+          produtos.data.map(item => ( 
             <Produto
               item={item}
               key={item.productId}

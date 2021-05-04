@@ -7,23 +7,23 @@ import { baseImg } from "../../config";
 class Produto extends Component {
   render() {
     const { item, porLinha } = this.props;
-    const { productId, productName, salesPrice, offerPrice, images } = item; // LASTCHANGE
+    const { productId, variationName, productName, salesPrice, offerPrice, images } = item; 
 
     const temPromo = offerPrice && salesPrice !== offerPrice;
     return (
-      <Link href={`/product/${productName}?produto=${productId}`}>
+      <Link href={`/product/${variationName || productName}?produto=${productId}`}>
         <div
           className={`produto   flex-1 flex vertical wrap-${porLinha} wrap-2-mb`}
         >
           <div className="produto-image flex flex-center">
             <img
               src={`${images[0].path}`} // ajuste
-              alt={productName}
+              alt={variationName || productName}
               style={{ maxWidth: "95%" }}
             />
           </div>
           <div className="produto-title flex flex-center">
-            <h3>{productName}</h3>
+            <h3>{variationName || productName}</h3>
           </div>
           <br />
           <div

@@ -41,7 +41,7 @@ class ProdutosCategoria extends Component {
         />
         <Paginacao
           atual={this.state.atual || 1}
-          total={produtosCategoria.infos.total}
+          total={produtosCategoria.params.total}
           limit={this.state.limit}
           onClick={(numeroAtual) => this.changeNumeroAtual(numeroAtual) } />
       </div>
