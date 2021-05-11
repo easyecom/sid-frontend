@@ -17,7 +17,7 @@ class Produto extends Component {
         >
           <div className="produto-image flex flex-center">
             <img
-              src={`${images[0].path}`} // ajuste
+              src={`${images}`} // ajuste
               alt={variationName || productName}
               style={{ maxWidth: "95%" }}
             />
