@@ -2,10 +2,10 @@ import Head from './Head';
 
 import Style from './Style';
 
-const Layout = ({ children, productName, description, url, image }) => ( // mudei de title para productName
+const Layout = ({ children, title, description, url, image }) => ( 
     <div>
         <Head
-            productName={productName} // mudei de title para productName | LASTCHANGE
+            title={title} 
             description={description}
             url={url}
             ogImage={image}></Head>
