@@ -1,13 +1,17 @@
 import {
   FETCH_PRODUTOS,
   FETCH_PESQUISA,
-  FETCH_PRODUTOS_PESQUISA
+  FETCH_PRODUTOS_PESQUISA,
+  FETCH_PRODUTO,
+  FETCH_PRODUTO_AVALIACOES,
+  FETCH_PRODUTO_VARIACOES
 } from '../types';
 
 const initialState = {
   produtos: null,
   termo: "",
-  produtosPesquisa: null
+  produtosPesquisa: null,
+  produto: null
 };
 
 export default (state = initialState, action) => {
@@ -28,6 +32,21 @@ export default (state = initialState, action) => {
         produtosPesquisa: action.payload.produtos,
         termo: action.termo
       }
+    case FETCH_PRODUTO:
+      return {
+        ...state,
+        produto: action.payload
+      }
+    // case FETCH_PRODUTO_AVALIACOES:
+    //   return {
+    //     ...state,
+    //     avaliacoes: action.payload
+    //   }
+    // case FETCH_PRODUTO_VARIACOES:
+    //   return {
+    //     ...state,
+    //     variacoes: action.payload
+    //   }
     default:
       return state;
   }

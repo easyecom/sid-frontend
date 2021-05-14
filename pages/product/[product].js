@@ -5,14 +5,40 @@ import Cabecalho from '../../containers/Cabecalho';
 import Produto from '../../containers/Produto';
 import Rodape from '../../containers/Rodape';
 
-export default class ProductPage extends Component {
+import { connect } from 'react-redux';
+import actions from '../../redux/actions';
+import initialize from '../../utils/initialize';
+import callBaseData from '../../utils/callBaseData';
+
+class ProductPage extends Component {
+  static async getInitialProps(ctx) {
+    // initialize(ctx);
+    return callBaseData([
+      actions.fetchProduto.bind(null, ctx.query.id),
+      // actions.fetchAvaliacoes.bind(null, ctx.query.id),
+      // actions.fetchVariacoes.bind(null, ctx.query.id)
+    ], ctx);
+  }
+
+  async componentDidMount() {
+    await this.props.getUser({ token: this.props.token });
+  }
+
   render() {
-    return(
-     <Layout title="Tenis | LOJA SID SURF STORE">
-       <Cabecalho />
-       <Produto />
-       <Rodape />
-     </Layout>
+    const { produto } = this.props;
+    return (
+      <Layout title={`${produto ? produto[0].productName : ""} | LOJA SID SURF STORE`}>
+        <Cabecalho />
+        <Produto />
+        <Rodape />
+      </Layout>
     );
   };
 };
+
+const mapStateToProps = (state) => ({
+  produto: state.produto.produto,
+  token: state.auth.token
+});
+
+export default connect(mapStateToProps, actions)(ProductPage);

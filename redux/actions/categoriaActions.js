@@ -6,17 +6,12 @@ import {
 import axios from "axios";
 import { API, loja } from "../../config";
 
-// export const fetchCategorias = () => (dispatch) => {
-//   axios.get(`${API}/stores/${loja}/categories`)
-//   .then(response => dispatch({ type: FETCH_CATEGORIAS, payload: response.data.categories }))
-//   .catch(e => console.log(e));
-// }
 
 export const fetchCategorias = () => (dispatch) => {
   return axios
     .get(`${API}/stores/${loja}/categories`)
     .then(({ data }) => {
-      dispatch({ type: FETCH_CATEGORIAS, payload: data }); // ajuste
+      dispatch({ type: FETCH_CATEGORIAS, payload: data }); 
     })
     .catch((e) => console.log(e));
 };
@@ -33,7 +28,6 @@ export const fetchCategoria = (id) => (dispatch) => {
 export const fetchProdutosCategoria = (id, atual = 1, limit = 20) => (dispatch) => {
   axios
     .get(`${API}/stores/${loja}/category/${id}/products?page=${atual}&limit=${limit}`)
-    // .get(`${API}/stores/${loja}/products?page=${atual}&limit=${limit}`)
     .then((response) => {
       console.log(response)
       dispatch({ type: FETCH_CATEGORIA_PRODUTOS, payload: response.data })

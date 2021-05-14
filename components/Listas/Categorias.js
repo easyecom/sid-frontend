@@ -5,6 +5,7 @@ import Link from "next/link";
 class Categorias extends Component {
   render() {
     const { categorias } = this.props;
+
     return (
       <div className="categorias flex horizontal-mb">
         {

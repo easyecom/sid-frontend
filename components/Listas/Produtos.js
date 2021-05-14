@@ -16,16 +16,17 @@ class Produtos extends Component {
 
   render() {
     const { produtos, itensPorLinha } = this.props;
+    console.log(this.props, "hello")
     return (
       <div className="Produtos flex wrap">
-        {
+        {/* {
           produtos.data.map(item => ( 
             <Produto
               item={item}
               key={item.productId}
               porLinha={itensPorLinha} /> 
           ))
-        }
+        } */}
       </div>
     );
   };
