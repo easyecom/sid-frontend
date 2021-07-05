@@ -11,7 +11,7 @@ class Produto extends Component {
 
     const temPromo = offerPrice && salesPrice !== offerPrice;
     return (
-      <Link href={`/product/${productName}?id=1`}>
+      <Link href={`/product/${productName}?id=${productId}`}>
         <div
           className={`produto   flex-1 flex vertical wrap-${porLinha} wrap-2-mb`}
         >
