@@ -4,13 +4,13 @@ export default () => (
   <style jsx global> {`
     
   
-    body {
+    * {
       margin: 0;
       padding: 0;
     }
   
-    body, * {
-      font-family: "Helvetica Neue", Heveltica, Arial, sans-serif;
+    body {
+      font-family: Arial, Helvetica, sans-serif;
     }
 
     .container, 
