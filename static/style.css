@@ -1,13 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap');
+
 .Header {
-  max-height: 150px;
+  max-height: 165px;
+}
+
+.header-wrapper {
+  padding-top: 15px;
 }
 
 .header-wrapper, .categorias {
-  max-width: 1200px;
+  max-width: 100%;
   margin: 0 auto;
   width: 100%;
   display: flex;
 }
+
 
 @media screen and (max-width: 720px) {
   .Header {
@@ -30,21 +37,24 @@
 }
 
 .input-pesquisa {
-  font-size: 1rem;
-  color: #333;
-  padding: 10px 25px;
-  width: 90%;
-  border: 1px solid #aaa;
-  border-radius: 10px;
+  padding-left: 20px;
+  width: 550px;
+  height: 38px;
+  border: 1px solid #ddd;
   margin: 0 10px;
+  border-radius: 8px;
+}
+
+.input-pesquisa::placeholder {
+  color: #999;
 }
 
 .button-pesquisa {
   margin-left: -45px;
   font-size: 1.2rem;
-  color: #333;
+  color: #999;
   background-color: transparent;
-  border: 0;
+  border: none;
   cursor: pointer;
 }
 
@@ -57,14 +67,27 @@
 }
 
 .item-cabecalho i {
-  color: #FF8E45;
-  font-size: 1.7rem;
-  margin: 0 5px;
+  color: #999;
+  font-size: 1.5rem;
+  margin: 1px 3px;
+  transition: opacity 0.2s
+}
+
+.item-cabecalho i:hover {
+  opacity: 0.7;
 }
 
 .item-cabecalho span {
-  color: #777;
-  font-size: 14px;
+  text-transform: uppercase;
+  transition: opacity 0.2s;
+  color: #999;
+  font-size: 12px;
+  letter-spacing: 1px;
+  font-family: 'Fjalla One', sans-serif;
+}
+
+.item-cabecalho span:hover {
+  opacity: 0.7;
 }
 
 .item-cabecalho.cart {
@@ -72,32 +95,28 @@
 }
 
 .item-cabecalho.cart span {
-  font-size: 1rem;
-  background-color: #222;
+  font-size: 0.7rem;
+  background-color: #ff8c00;
   color: #fff;
   border-radius: 100px;
-  padding: 0 5px;
+  padding: 1px 3px;
   margin-left: -15px;
   position: relative;
   top: -15px;
 }
 
-.categorias-wrapper {
-  background-color: #ffedd9;
-}
-
 .categoria-item {
   padding: 10px 5px;
-  border-right: 1px solid #FF8E45;
   cursor: pointer;
-  font-weight: bold;
+  letter-spacing: 3px;
+  font-size: 12px;
   color: rgb(153, 153, 153);
   text-transform: uppercase;
+  font-family: 'Fjalla One', sans-serif;
 }
 
 .categoria-item:hover {
-  background-color: #FF8E45;
-  color: #fff;
+  color: #ff8c00;
 }
 
 .categoria-item:last-child {
