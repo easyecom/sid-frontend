@@ -3,6 +3,7 @@ import React from 'react';
 export default () => (
   <style jsx global> {`
     
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
   
     * {
       margin: 0;
@@ -10,7 +11,7 @@ export default () => (
     }
   
     body {
-      font-family: Arial, Helvetica, sans-serif;
+      font-family: 'Montserrat', Helvetica, sans-serif;
     }
 
     .container, 
