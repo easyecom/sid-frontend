@@ -7,16 +7,20 @@ const Beneficios = () => (
     <div className="container flex horizontal-mb wrap-mb">
       <ItemBeneficio
         icone="fa-truck"
-        texto="FRETE GRATIS | acima de R$100" />
-      <ItemBeneficio
-        icone="fa-globe"
-        texto="EM 12X SEM JUROS | PARA TODO O SITE" />
-      <ItemBeneficio
-        icone="fa-home"
-        texto="LOJA FISICA | troque na loja" />
+        texto="frete gratuito"
+        paragrafo="Acima de R$100" />
       <ItemBeneficio
         icone="fa-dollar"
-        texto="GANHE R$20 | na primeira compra" />
+        texto="sem juros"
+        paragrafo="A partir de R$ 100" />
+      <ItemBeneficio
+        icone="fa-home"
+        texto="loja fisica" 
+        paragrafo="Troque na loja" />
+      <ItemBeneficio
+        icone="fa-refresh"
+        texto="troca grátis" 
+        paragrafo="Em até 30 dias" />
     </div>
   </div>
 );

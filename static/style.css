@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap');
 
 .Header {
-  max-height: 165px;
+  max-height: 165gti pull oripx;
 }
 
 .header-wrapper {
@@ -129,14 +129,26 @@
   padding: 25px 0;
 }
 
+.advantages {
+  display: flex;
+  justify-content: space-around;
+}
+
+.box {
+  align-items: center;
+}
+
 .Beneficios i {
   color: #666666;
+  padding-right: 5px;
 }
 
 .Beneficios span {
-  color: #666666;
+  color: rgb(102, 102, 102);
   text-transform: uppercase;
-  font-size: 0.75rem;
+  font-family: 'Fjalla One', sans-serif;
+  letter-spacing: 1px;
+  font-size: 18px;
   font-weight: bold;
 }
 
