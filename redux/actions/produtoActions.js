@@ -38,11 +38,13 @@ export const fetchProduto = (id) => dispatch => {
 //   .catch(e => console.log(e));
 // }
 
-// export const fetchVariacoes = (id) => dispatch => {
-//   axios.get(`${API}/stores/${loja}/variations/${id}}`)
-//     .then((response) => dispatch({ type: FETCH_PRODUTO_VARIACOES, payload: response.data }))
-//     .catch(e => console.log(e));
-// }
+export const fetchVariacoes = () => dispatch => {
+  axios.get(`${API}/stores/${loja}/variations`)
+    .then(({data}) => {
+      dispatch({ type: FETCH_PRODUTO_VARIACOES, payload: data })
+    })
+    .catch(e => console.log(e));
+}
 
 
 export default {
@@ -51,5 +53,5 @@ export default {
   // fetchProdutosPesquisa,
   fetchProduto,
   // fetchAvaliacoes,
-  // fetchVariacoes
+  fetchVariacoes
 };

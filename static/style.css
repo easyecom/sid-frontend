@@ -228,6 +228,10 @@
 
 /* PAGINA DE PRODUTOS */
 
+.Produto-Hero {
+  padding-top: 30px;
+}
+
 .Produto-Hero .titulo {
   font-size: 1.8rem;
   color: #222;
@@ -312,9 +316,10 @@
 }
 
 .mini-foto {
-  border: 1px solid #999;
+  padding-top: 10px;
+  border: 0.3px solid rgb(236, 236, 236);
   max-width: 100px;
-  margin-right: 10px;
+  margin: 0 0 0 30px;
   cursor: pointer;
   opacity: 0.8;
 }
@@ -324,7 +329,7 @@
 }
 
 .Descricao {
-  margin-top: 50px;
+  /* margin-top: 10px; */
   max-width: 800px;
 }
 

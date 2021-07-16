@@ -9,7 +9,7 @@ export default class CustomerArea extends Component {
   render() {
     return(
      <Layout title="Minha Conta | LOJA SID SURF STORE">
-       <Cabecalho />
+       <Cabecalho simples />
        <AreaDoClienteContainer />
        <Rodape />
      </Layout>

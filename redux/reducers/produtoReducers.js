@@ -11,7 +11,8 @@ const initialState = {
   produtos: null,
   termo: "",
   produtosPesquisa: null,
-  produto: null
+  produto: null,
+  variacoes: null
 };
 
 export default (state = initialState, action) => {
@@ -42,11 +43,11 @@ export default (state = initialState, action) => {
     //     ...state,
     //     avaliacoes: action.payload
     //   }
-    // case FETCH_PRODUTO_VARIACOES:
-    //   return {
-    //     ...state,
-    //     variacoes: action.payload
-    //   }
+    case FETCH_PRODUTO_VARIACOES:
+      return {
+        ...state,
+        variacoes: action.payload
+      }
     default:
       return state;
   }

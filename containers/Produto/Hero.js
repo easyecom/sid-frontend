@@ -1,37 +1,59 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import actions from "../../redux/actions";
 import { formatMoney } from "../../utils";
-
-const PHOTOS = [
-  "/static/img/meia-stance.jpg",
-  "/static/img/short-green.jpg",
-  "/static/img/tenis-nike-air-max.jpg",
-];
+import { addCart } from "../../utils/cart";
 
 class Hero extends Component {
-  state = { foto: PHOTOS[0] };
+  constructor(props) {
+    super();
+    const { produto } = props;
+    this.state = {
+      foto: produto.variations
+        ? produto.variations[0].images[0].path || null
+        : null,
+      fotos: produto.variations
+        ? produto.variations[0].images.map((item) => item.path) || []
+        : [],
+      qtd: 1,
+      variacao:
+        produto.variations && produto.variations.length >= 1
+          ? produto.variations[0].variationId
+          : null,
+    };
+  }
+
+  componentDidUpdate(prevProps) {
+    if (!prevProps.produto.variations && this.props.produto.variations) {
+      const { fotos } = this.props.produto.variations[0].images.map(
+        (item) => item.path
+      );
+      this.setState({ foto: fotos[0], fotos });
+    }
+    if (!prevProps.produto.variations && this.props.produto.variations) {
+      const variacao = this.props.produto.variations[0];
+      if (!variacao) return null;
+      this.setState({ variacao: variacao[0].variationId });
+    }
+  }
 
   renderPhotos() {
-    const { produto } = this.props;
-    console.log(produto, "product");
-
-
     return (
       <div className="fotos flex-2 flex vertical">
-        <div className="foto-principal flex-6 flex flex-center">
-          <img src={this.state.foto} width="95%" />
-        </div>
-        <div className="mini-fotos flex-1 flex">
-          {PHOTOS.map((foto, index) => (
-            <div
-              key={index}
-              className="mini-foto flex-1 flex flex-center"
-              onClick={() => this.setState({ foto })}
-            >
-              <img src={foto} width="90%" />
-            </div>
-          ))}
+        <div className="box-images flex flex-1">
+          <div className="mini-fotos">
+            {this.state.fotos.map((foto, index) => (
+              <div
+                key={index}
+                className="mini-foto flex-1 flex flex-center"
+                onClick={() => this.setState({ foto })}
+              >
+                <img src={foto} width="90%" />
+              </div>
+            ))}
+          </div>
+          <div className="foto-principal flex-6 flex flex-center">
+            <img src={this.state.foto} width="95%" />
+          </div>
         </div>
       </div>
     );
@@ -59,14 +81,26 @@ class Hero extends Component {
   }
 
   addCart() {
-    alert("Adicionado ao carrinho");
+    const { variacao, qtd } = this.state;
+    const { produto } = this.props;
+    addCart(
+      {
+        produto: produto.productId,
+        variacao,
+        quantidade: qtd,
+        precoUnitario: produto.variations[0].offerPrice
+          ? produto.variations[0].offerPrice
+          : produto.variations[0].prices,
+      },
+      true
+    );
   }
 
   renderDetalhes() {
     const { produto } = this.props;
 
     return (
-      <div className="flex-2 produto-detalhes">
+      <div className="flex-1 produto-detalhes">
         <div className="titulo">
           <h2>{produto.variations[0].variationName}</h2>
         </div>
@@ -77,9 +111,19 @@ class Hero extends Component {
         </div>
         <br />
         <div className="precos">
-          <h2 className="preco-original preco-por">{formatMoney(produto.variations[0].prices)}</h2>
-          <h2 className="preco-promocao">{formatMoney(produto.variations[0].offerPrice) || produto.variations[0].prices}</h2>
-          <h4 className="preco-parcelado">ou em 6x de {formatMoney(produto.variations[0].offerPrice / 6) || produto.variations[0].prices / 6} sem juros</h4>
+          <h2 className="preco-original preco-por">
+            {formatMoney(produto.variations[0].prices)}
+          </h2>
+          <h2 className="preco-promocao">
+            {formatMoney(produto.variations[0].offerPrice) ||
+              produto.variations[0].prices}
+          </h2>
+          <h4 className="preco-parcelado">
+            ou em 6x de{" "}
+            {formatMoney(produto.variations[0].offerPrice / 6) ||
+              produto.variations[0].prices / 6}{" "}
+            sem juros
+          </h4>
         </div>
         <br />
         {this.renderVariacoes()}
@@ -108,7 +152,6 @@ class Hero extends Component {
 
   render() {
     // const { produto } = this.props;
-    // console.log(produto, "product");
     return (
       <div className="Produto-Hero flex horizontal">
         {this.renderPhotos()}
@@ -120,7 +163,8 @@ class Hero extends Component {
 
 const mapStateToProps = (state) => ({
   produto: state.produto.produto,
+  variacoes: state.produto.variacoes,
   token: state.auth.token,
 });
 
-export default connect(mapStateToProps, actions)(Hero);
+export default connect(mapStateToProps)(Hero);

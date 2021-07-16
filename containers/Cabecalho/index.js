@@ -1,10 +1,10 @@
-import React from 'react';
-import Link from 'next/link';
+import React from "react";
+import Link from "next/link";
 
-import Logo from '../../components/Logo/Cabecalho';
-import CampoPesquisa from '../../components/Campos/Pesquisa';
-import CardCarrinho from '../../components/Cards/Carrinho';
-import Categorias from '../../components/Listas/Categorias';
+import Logo from "../../components/Logo/Cabecalho";
+import CampoPesquisa from "../../components/Campos/Pesquisa";
+import CardCarrinho from "../../components/Cards/Carrinho";
+import Categorias from "../../components/Listas/Categorias";
 
 class Cabecalho extends React.Component {
   renderCabecalhoNormal() {
@@ -20,7 +20,7 @@ class Cabecalho extends React.Component {
         </div>
       </div>
     );
-  };
+  }
 
   renderCabecalhoSimples() {
     return (
@@ -30,14 +30,14 @@ class Cabecalho extends React.Component {
         </div>
       </div>
     );
-  };
+  }
 
   render() {
     const { simples } = this.props;
-    return simples ?
-      this.renderCabecalhoSimples() :
-      this.renderCabecalhoNormal()
-  };
-};
+    return simples
+      ? this.renderCabecalhoSimples()
+      : this.renderCabecalhoNormal();
+  }
+}
 
 export default Cabecalho;
