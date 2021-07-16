@@ -308,7 +308,7 @@
 }
 
 .foto-principal {
-  height: 550px;
+  height: 500px;
 }
 
 .foto-principal img {
@@ -318,7 +318,7 @@
 .mini-foto {
   padding-top: 10px;
   border: 0.3px solid rgb(236, 236, 236);
-  max-width: 100px;
+  max-width: 120px;
   margin: 0 0 0 30px;
   cursor: pointer;
   opacity: 0.8;
