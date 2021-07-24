@@ -85,12 +85,14 @@ class Hero extends Component {
     const { produto } = this.props;
     addCart(
       {
+        productName: produto.productName,
         produto: produto.productId,
         variacao,
         quantidade: qtd,
         precoUnitario: produto.variations[0].offerPrice
           ? produto.variations[0].offerPrice
           : produto.variations[0].prices,
+        foto: produto.variations[0].images[0].path || null,
       },
       true
     );
