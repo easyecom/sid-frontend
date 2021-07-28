@@ -39,11 +39,11 @@ class ListaPedidos extends Component {
         <h2>MEUS PEDIDOS</h2>
         <br/>
         <Pedidos pedidos={PEDIDOS} />
-        <Paginacao
+        {/* <Paginacao
           atual={this.state.atual || 0}
           total={PEDIDOS.length * 4}
           limite={PEDIDOS.length}
-          onClick={(numeroAtual) => this.setState({ atual: numeroAtual })} />
+          onClick={(numeroAtual) => this.setState({ atual: numeroAtual })} /> */}
       </div>
     );
   };
