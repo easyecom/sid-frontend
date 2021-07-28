@@ -108,7 +108,7 @@ class Hero extends Component {
         </div>
         <div className="categoria">
           <p>
-            Categoria:&nbsp;<span className="categoria-link">Meias</span>
+            Categoria:&nbsp;<span className="categoria-link">{produto.categoryName}</span>
           </p>
         </div>
         <br />
