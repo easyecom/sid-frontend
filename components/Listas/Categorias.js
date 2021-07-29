@@ -5,7 +5,7 @@ import Link from "next/link";
 class Categorias extends Component {
   render() {
     const { categorias } = this.props;
-    console.log(categorias, "hello")
+    
     return (
       // <div></div>
       <div className="categorias flex horizontal-mb">
