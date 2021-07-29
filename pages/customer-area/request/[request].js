@@ -9,7 +9,7 @@ export default class Request extends Component {
   render() {
     return(
       <Layout title="Pedido | LOJA SID SURF STORE">
-        <Cabecalho />
+        <Cabecalho simples/>
         <PedidoContainer />
         <Rodape />
       </Layout>
