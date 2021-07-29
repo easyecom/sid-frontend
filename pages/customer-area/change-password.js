@@ -9,7 +9,7 @@ export default class ChangePassword extends Component {
   render() {
     return(
       <Layout title="Alterar Senha | LOJA SID SURF STORE">
-       <Cabecalho />
+       <Cabecalho simples/>
        <AlterarSenhaContainer />
        <Rodape />
      </Layout>
