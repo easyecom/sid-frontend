@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Link from 'next/link';
 import { connect } from "react-redux";
 import { formatMoney } from "../../utils";
 import { addCart } from "../../utils/cart";
@@ -141,11 +142,19 @@ class Hero extends Component {
           </div>
         </div>
         <div className="comprar">
+          <Link href="/cart">
+            <button
+              className="btn btn-success btn-cta "
+              onClick={() => this.addCart()}
+            >
+              COMPRAR AGORA
+            </button>
+          </Link>
           <button
-            className="btn btn-success btn-cta"
+            className="btn btn-cta btn-add"
             onClick={() => this.addCart()}
           >
-            COMPRAR
+            ADICIONAR AO CARRINHO
           </button>
         </div>
       </div>

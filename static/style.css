@@ -391,20 +391,32 @@
 
 /* BOTAO */
 
+.comprar {
+  display: flex;
+  gap: 5px;
+}
+
 .btn {
   font-size: 1.2rem;
   padding: 10px 20px;
   margin: 10px 0;
   border: 1px solid #999;
+  border-radius: 5px;
   background: transparent;
   font-weight: bold;
   cursor: pointer;
 }
 
+.btn-add {
+  background-color: #fff;
+  color: #00a063;
+  border: 1px solid #00a063;
+}
+
 .btn-success {
-  background-color: rgb(3, 123, 17);
+  background-color: #00a063;
   color: #fff;
-  border: 0;
+  border: 1px solid #00a063;
 }
 
 .btn-primary {
@@ -415,7 +427,7 @@
 
 .btn-cta {
   padding: 15px 25px;
-  font-size: 1.3rem;
+  font-size: 0.9rem;
   margin: 15px 0;
 }
 
