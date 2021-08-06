@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Link from 'next/link';
+import Link from "next/link";
 import { connect } from "react-redux";
 import { formatMoney } from "../../utils";
 import { addCart } from "../../utils/cart";
@@ -109,7 +109,8 @@ class Hero extends Component {
         </div>
         <div className="categoria">
           <p>
-            Categoria:&nbsp;<span className="categoria-link">{produto.categoryName}</span>
+            Categoria:&nbsp;
+            <span className="categoria-link">{produto.categoryName}</span>
           </p>
         </div>
         <br />

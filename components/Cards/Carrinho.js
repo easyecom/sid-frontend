@@ -2,11 +2,17 @@ import React, { Component } from "react";
 import Link from "next/link";
 import { getCountItemsCart } from "../../utils/cart";
 
+
 class CardCarrinho extends Component {
   state = { cartQtd: 0 };
 
   componentDidMount() {
     this.setState({ cartQtd: getCountItemsCart() });
+  }
+
+  componentWillReceiveProps = (nextProps) => {
+    console.log("a")
+    console.log(nextProps)
   }
 
   render() {
