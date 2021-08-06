@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 8000",
     "start": "next start -p $PORT",
     "build": "next build",
     "heroku-postbuild": "npm run build"
@@ -17,9 +17,9 @@
     "axios": "^0.20.0",
     "js-cookie": "^2.2.1",
     "moment": "^2.27.0",
-    "next": "^11.0.1",
+    "next": "^9.0.1",
     "next-redux-wrapper": "^3.0.0-alpha.3",
-    "react": "^17.0.2",
+    "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-redux": "^7.2.1",
     "redux": "^4.0.5",

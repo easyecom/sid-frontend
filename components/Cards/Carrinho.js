@@ -8,20 +8,18 @@ class CardCarrinho extends Component {
 
   state = { cartQtd: 0 };
 
-
-
   componentDidMount() {
     this.setState({ cartQtd: getCountItemsCart() });
-    this.context.updateQtd(this.state.cartQtd);
+    console.log("Didmount", this.state.cartQtd);
   }
 
   componentDidUpdate() {
-    console.log("Update", this.context);
+    if (this.state.cartQtd !== this.context.state.qtd) {
+    this.setState({ cartQtd: this.context.state.qtd });
+    }
   }
 
-
   render() {
-    console.log(this.context.state.qtd);
     return (
       <div className="itens-cabecalho flex-2 flex flex-center">
         <Link href="/customer-area">

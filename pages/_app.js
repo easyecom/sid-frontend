@@ -3,6 +3,7 @@ import App, { Container } from "next/app";
 import withRedux from "next-redux-wrapper";
 import { initStore } from "../redux";
 import DataContext from "../containers/Context/DataContext";
+import { getCountItemsCart } from "../utils/cart";
 
 class Main extends App {
   state = {
@@ -14,6 +15,10 @@ class Main extends App {
         ? await Component.getInitialProps(ctx)
         : {},
     };
+  }
+
+  componentDidMount() {
+    this.setState({ qtd: getCountItemsCart() });
   }
 
   render() {

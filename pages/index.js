@@ -16,11 +16,6 @@ import { connect } from "react-redux";
 import actions from "../redux/actions";
 
 class Index extends Component {
-  state = {
-    qtd: 0,
-  }
-
-
   static async getInitialProps(ctx) {
     // initialize(ctx);
     return callBaseData([actions.fetchProdutosPaginaInicial], ctx);
