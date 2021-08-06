@@ -1,12 +1,21 @@
 import React, { Component } from "react";
 import Link from "next/link";
+import DataContext from "../../containers/Context/DataContext";
 import { getCountItemsCart } from "../../utils/cart";
 
 class CardCarrinho extends Component {
+  static contextType = DataContext;
+
   state = { cartQtd: 0 };
 
   componentDidMount() {
     this.setState({ cartQtd: getCountItemsCart() });
+  }
+
+  componentDidUpdate() {
+    if (this.state.cartQtd !== this.context.state.qtd) {
+    this.setState({ cartQtd: this.context.state.qtd });
+    }
   }
 
   render() {

@@ -3,8 +3,12 @@ import Link from 'next/link';
 import { connect } from "react-redux";
 import { formatMoney } from "../../utils";
 import { addCart } from "../../utils/cart";
+import { getCountItemsCart } from "../../utils/cart";
+import DataContext from "../Context/DataContext";
 
 class Hero extends Component {
+  static contextType = DataContext; 
+
   constructor(props) {
     super();
     const { produto } = props;
@@ -97,6 +101,7 @@ class Hero extends Component {
       },
       true
     );
+    this.context.updateQtd(getCountItemsCart())
   }
 
   renderDetalhes() {
