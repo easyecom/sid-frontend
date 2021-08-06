@@ -9,7 +9,7 @@ export default class Datas extends Component {
   render() {
     return(
      <Layout title="Meus Dados | LOJA SID SURF STORE">
-       <Cabecalho />
+       <Cabecalho simples/>
        <DadosContainer />
        <Rodape />
      </Layout>

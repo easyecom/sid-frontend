@@ -30,7 +30,7 @@ export const fetchProdutoCarrinho = (id, idxCarrinho) => dispatch => {
     .catch(e => console.log(e));
 };
 
-export const fetchVariacoesCarrinho = (id, idxCarrinho) => dispatch => {
+export const fetchVariacoesCarrinho = (id, produto, idxCarrinho) => dispatch => {
     axios.get(`${API}/stores/${loja}/variations/${parseInt(id)}`)
     .then(response => dispatch({ 
             type: FETCH_VARIACAO_CARRINHO, 
