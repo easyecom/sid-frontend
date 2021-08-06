@@ -10,7 +10,6 @@ class CardCarrinho extends Component {
 
   componentDidMount() {
     this.setState({ cartQtd: getCountItemsCart() });
-    console.log("Didmount", this.state.cartQtd);
   }
 
   componentDidUpdate() {
