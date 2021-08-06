@@ -1,21 +1,27 @@
 import React, { Component } from "react";
 import Link from "next/link";
+import DataContext from "../../containers/Context/DataContext";
 import { getCountItemsCart } from "../../utils/cart";
 
-
 class CardCarrinho extends Component {
+  static contextType = DataContext;
+
   state = { cartQtd: 0 };
+
+
 
   componentDidMount() {
     this.setState({ cartQtd: getCountItemsCart() });
+    this.context.updateQtd(this.state.cartQtd);
   }
 
-  componentWillReceiveProps = (nextProps) => {
-    console.log("a")
-    console.log(nextProps)
+  componentDidUpdate() {
+    console.log("Update", this.context);
   }
+
 
   render() {
+    console.log(this.context.state.qtd);
     return (
       <div className="itens-cabecalho flex-2 flex flex-center">
         <Link href="/customer-area">

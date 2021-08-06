@@ -3,8 +3,6 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 
 const LogoCabecalho = () => {
-  const router = useRouter();
-
   return (
     <div className="flex-2 flex flex-center">
       <Link href="/">
