@@ -29,7 +29,7 @@ export const cleanCart = () => localStorage.removeItem("@cart");
 
 export const addCart = (item, goToCart = true) => {
   _saveCart(item);
-  if (goToCart) Router.push("/cart");
+  // if (goToCart) Router.push("/cart");
 };
 
 export const getCountItemsCart = () =>
