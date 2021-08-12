@@ -10,7 +10,7 @@ class CarrinhoContainer extends Component {
     this.props.setCarrinho()
   }
 
-  componentDidUpdate(prevProps){
+  componentDidUpdate(){
     const { carrinho } = this.props;
     if( carrinho && carrinho[0] && 
         carrinho[0].produto && !carrinho[0].produto ){
