@@ -61,7 +61,7 @@ export default (state = initialState, action) => {
                     return ( action.idxCarrinho == index ) ?
                         { 
                             ...item, 
-                            quantidade: Number(item.quantity) + Number(action.change)
+                            quantidade: Number(item.quantidade) + Number(action.change)
                         } :
                         item
                 }) : []
