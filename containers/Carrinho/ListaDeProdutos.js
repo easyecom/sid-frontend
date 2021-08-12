@@ -30,8 +30,6 @@ class ListaDeProdutos extends Component {
 
     if (Number(e.target.value) < 1) return;
     let novaQuantidade = Number(e.target.value);
-    console.log(novaQuantidade, "nova")
-    console.log(quantidade, "qtd")
     let change = novaQuantidade - quantidade;
     if (novaQuantidade >= 10) {
       return alert("Não temos essa quantidade em estoque.");
