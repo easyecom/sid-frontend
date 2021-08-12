@@ -33,8 +33,8 @@ class CarrinhoContainer extends Component {
   }
 }
 
-const mapStateToProps = states => ({
-  carrinho: states.carrinho.carrinho
+const mapStateToProps = state => ({
+  carrinho: state.carrinho.carrinho
 })
 
 export default connect(mapStateToProps, actions)(CarrinhoContainer);
