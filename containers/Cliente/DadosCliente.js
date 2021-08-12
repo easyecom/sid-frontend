@@ -1,37 +1,63 @@
-import React, { Component } from 'react';
-import FormSimples from '../../components/Inputs/FormSimples';
+import React, { Component } from "react";
+import FormSimples from "../../components/Inputs/FormSimples";
+import TextField from "@material-ui/core/TextField";
 
 export default class DadosClienteContainer extends Component {
-
   state = {
     email: "",
     senha: "",
+    confirmeSenha: "",
     nome: "",
     CPF: "",
     telefone: "",
-    dataDeNascimento: ""
-  }
+    dataDeNascimento: "",
+  };
+
+  onChangeInput = (field, value) => this.setState({ [field]: value });
 
   renderDadosRegistro() {
-    const { email, senha } = this.state;
+    const { email, senha, confirmeSenha } = this.state;
 
     return (
-      <div className="flex-1 flex horizontal">
-        <div className="flex-1">
-          <FormSimples
-            value={email}
-            name="email"
-            placeholder="E-mail"
-            label="E-mail"
-            onChange={(e) => this.onChange("email", e)} />
+      <div className="flex-1 flex vertical">
+        <div className="textField">
+          <TextField
+            id="outlined-required"
+            required
+            label="email"
+            fullWidth={true}
+            variant="outlined"
+            value={email || " "}
+            onChange={(event) =>
+              this.onChangeInput("email", event.target.value)
+            }
+          />
         </div>
-        <div className="flex-1">
-          <FormSimples
-            value={senha}
-            name="senha"
-            placeholder="Senha"
-            label="Senha"
-            onChange={(e) => this.onChange("senha", e)} />
+        <div className="textField">
+          <TextField
+            id="outlined-required"
+            required
+            label="senha"
+            fullWidth={true}
+            variant="outlined"
+            value={senha || " "}
+            onChange={(event) =>
+              this.onChangeInput("senha", event.target.value)
+            }
+          />
+        </div>
+        <div className="textField">
+          <TextField
+            id="outlined-required"
+            required
+            label="confirme sua senha"
+            fullWidth={true}
+            variant="outlined"
+            value={confirmeSenha || " "}
+            onChange={(event) =>
+              this.onChangeInput("confirmeSenha", event.target.value)
+            }
+          />
         </div>
       </div>
     );
@@ -39,47 +65,59 @@ export default class DadosClienteContainer extends Component {
 
   renderDadosUsuario() {
     const { nome, CPF, dataDeNascimento, telefone } = this.state;
-
     return (
       <div className="flex-1 flex vertical">
         <div className="flex-1">
-          <FormSimples
-            value={nome}
-            name="nome"
-            placeholder="Nome"
-            label="Nome"
-            onChange={(e) => this.onChange("nome", e)} />
+          <TextField
+            id="outlined-required"
+            required
+            label="nome"
+            fullWidth={true}
+            variant="outlined"
+            value={nome || " "}
+            onChange={(event) => this.onChangeInput("nome", event.target.value)}
+          />
         </div>
         <div className="flex-1">
-          <FormSimples
-            value={CPF}
-            name="CPF"
-            placeholder="CPF"
+          <TextField
+            id="outlined-required"
+            required
             label="CPF"
-            onChange={(e) => this.onChange("CPF", e)} />
+            fullWidth={true}
+            variant="outlined"
+            value={CPF || " "}
+            onChange={(event) => this.onChangeInput("CPF", event.target.value)}
+          />
         </div>
-        <div className="flex-1 flex horizontal">
-          <div className="flex-1">
-            <FormSimples
-              value={dataDeNascimento}
-              name="dataDeNascimento"
-              placeholder="DD/MM/AAAA"
-              label="Data de Nascimento"
-              onChange={(e) => this.onChange("dataDeNascimento", e)} />
-          </div>
-          <div className="flex-1">
-            <FormSimples
-              value={telefone}
-              name="telefone"
-              placeholder="(11) 1234-5678"
-              label="Telefone/Celular"
-              onChange={(e) => this.onChange("telefone", e)} />
-          </div>
+        <div className="flex-1">
+          <TextField
+            id="outlined-required"
+            required
+            label="dataDeNascimento"
+            fullWidth={true}
+            variant="outlined"
+            value={dataDeNascimento || " "}
+            onChange={(event) =>
+              this.onChangeInput("dataDeNascimento", event.target.value)
+            }
+          />
+        </div>
+        <div className="flex-1">
+          <TextField
+            id="outlined-required"
+            required
+            label="telefone"
+            fullWidth={true}
+            variant="outlined"
+            value={telefone || " "}
+            onChange={(event) =>
+              this.onChangeInput("telefone", event.target.value)
+            }
+          />
         </div>
       </div>
     );
   }
-  
 
   render() {
     return (
@@ -87,8 +125,8 @@ export default class DadosClienteContainer extends Component {
         <div>
           <h2>DADOS DO CLIENTE</h2>
         </div>
-        { this.renderDadosRegistro() }
-        { this.renderDadosUsuario() }
+        {this.renderDadosRegistro()}
+        {this.renderDadosUsuario()}
       </div>
     );
   }
