@@ -199,6 +199,7 @@
   text-decoration: line-through;
   color: #777;
   margin: 0;
+  padding: 0;
 }
 
 .produto-preco-parcelado h4 {
@@ -234,17 +235,17 @@
 }
 
 .Produto-Hero .titulo {
-  font-size: 1rem;
+  font-size: 1.1rem;
   color: #222;
 }
 
 .Produto-Hero .titulo h2 {
-  margin-bottom: 0;
+  margin: 5px 0 0 0;
 }
 
 .Produto-Hero .categoria p {
   margin-top: 0;
-  font-size: 0.9rem;
+  font-size: 0.87rem;
   color: #555;
 }
 
@@ -256,21 +257,22 @@
 
 .Produto-Hero .preco-original,
 .Produto-Hero .preco-promocao {
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   color: #434343;
-  margin: 0;
+  /* margin: 0; */
+  margin: 5px 0;
 }
 
 .Produto-Hero .preco-original.preco-por {
-  color: #777;
-  font-size: 0.95rem;
+  color:#999999;
+  font-size: 0.87rem;
   font-weight: normal;
   text-decoration: line-through;
 }
 
 .Produto-Hero .preco-parcelado {
   margin: 0;
-  color: #555;
+  color: #999999;
   font-size: 1rem;
   font-weight: normal;
 }
@@ -282,25 +284,50 @@
   /* line-height: 24px; */
   letter-spacing: 0.05em;
   color: #999999;
-
-  margin-top: 14px;
 }
 
 .Produto-Hero .variacao-item-color {
-  /* max-width: 40px;
-  border: 1px solid #999;
-  padding: 10px 5px;
-  font-size: 1rem;
-  margin: 5px 10px 5px 0;
-  cursor: pointer; */
-
   max-width: 45px;
   height: 45px;
-  margin: 7px 5px 0 0;
+  margin: 3px 5px 0 0;
   border: none;
-  border: 0.3px solid #000000;
+  border: 0.3px solid #999999;
   box-sizing: border-box;
   cursor: pointer;
+
+  margin-bottom: 12px;
+}
+
+.Produto-Hero .variacao-item-color-empty {
+  max-width: 45px;
+  height: 45px;
+  margin: 3px 5px 0 0;
+  border: none;
+  opacity: 0.5;
+  border: 0.3px solid #C4C4C4;
+  box-sizing: border-box;
+  cursor: not-allowed;
+}
+
+.Produto-Hero .variacao-item-size {
+  max-width: 45px;
+  height: 29px;
+  margin: 3px 5px 0 0;
+  border: 0.3px solid #6d6d6d;
+  box-sizing: border-box;
+  cursor: pointer;
+  margin-bottom: 12px;
+
+}
+
+.Produto-Hero .variacao-item-size-empty {
+  max-width: 45px;
+  height: 29px;
+  margin: 3px 5px 0 0;
+  opacity: 0.7;
+  border: 0.3px solid #C4C4C4;
+  box-sizing: border-box;
+  cursor: not-allowed;
 }
 
 .Produto-Hero .variacao-item-size span {
@@ -311,20 +338,12 @@
   color: #111111;
 }
 
-.Produto-Hero .variacao-item-size {
-  /* max-width: 40px;
-  border: 1px solid #999;
-  padding: 10px 5px;
-  font-size: 1rem;
-  margin: 5px 10px 5px 0;
-  cursor: pointer; */
-
-  max-width: 45px;
-  height: 29px;
-  margin: 7px 5px 0 0;
-  border: 0.3px solid #000000;
-  box-sizing: border-box;
-  cursor: pointer;
+.Produto-Hero .variacao-item-size-empty span {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 24px;
+  color: #999999;
 }
 
 .Produto-Hero .variacao:hover,
@@ -334,21 +353,24 @@
   color: #fff;
 }
 
-.Produto-Hero .opcoes {
-  margin-top: 20px;
+.Produto-Hero .opcao {
+
 }
 
 .Produto-Hero .opcao-tab {
-  font-size: 0.9rem;
+  /* font-size: 0.9rem; */
   color: #444;
 }
 
 .Produto-Hero .opcao-input {
-  font-size: 1.2rem;
-  padding: 5px 10px;
-  margin: 5px 0;
-  max-width: 40px;
-  border: 1px solid #999;
+  max-width: 29px;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 24px;
+  padding: 3px 5px;
+  margin: 3px 5px 30px 0;
+  color: #111111;
 }
 
 .foto-principal {
@@ -436,8 +458,8 @@
 /* BOTAO */
 
 .comprar {
-  display: flex;
-  gap: 5px;
+  /* display: flex;
+  gap: 5px; */
 }
 
 .btn {
@@ -452,6 +474,7 @@
 }
 
 .btn-add {
+  font-size: 1rem;
   background-color: #fff;
   color: #00a063;
   border: 1px solid #00a063;
@@ -470,9 +493,10 @@
 }
 
 .btn-cta {
+  width: 90%;
   padding: 15px 25px;
-  font-size: 0.9rem;
-  margin: 15px 0;
+  /* font-size: 0.9rem; */
+  margin: 3px 0;
 }
 
 .btn-sm {
@@ -682,8 +706,6 @@
 
 .textField {
   display: flex;
-  /* grid-gap: 3%;
-  margin: 3% auto; */
 }
 
 table.simples {

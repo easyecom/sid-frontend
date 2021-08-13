@@ -66,20 +66,33 @@ class Hero extends Component {
     );
   }
 
-  renderVariacoesColor(title) {
+  renderVariacoesColor() {
     const { produto } = this.props;
 
     return (
       <div>
         <div className="titleProductDetails">
-          <label>{title}</label>
+          <label>COR</label>
         </div>
         <div className={"variacoes flex wrap"}>
           {produto.variations.map((item) => {
             return (
-              <div className="variacao-item-color flex-1 flex flex-center wrap-4">
+              <div
+                className={`${
+                  item.quantity
+                    ? "variacao-item-color"
+                    : "variacao-item-color-empty"
+                } flex-1 flex flex-center wrap-4`}
+              >
                 <span className="item-color">
-                  <img src={item.images && item.images.length ? item.images[0].path : ""} width="35" />
+                  <img  
+                    src={
+                      item.images && item.images.length
+                        ? item.images[0].path
+                        : ""
+                    }
+                    width="35"
+                  />
                 </span>
               </div>
             );
@@ -89,22 +102,28 @@ class Hero extends Component {
     );
   }
 
-  renderVariacoesSize(title, variation) {
+  renderVariacoesSize(title) {
+    const { produto } = this.props;
+
     return (
       <div>
         <div className="titleProductDetails">
-          <label>{title}</label>
+          <label>TAMANHO</label>
         </div>
         <div className={"variacoes flex wrap"}>
-          <div className="variacao-item-size flex-1 flex flex-center wrap-4">
-            <span className="item-size">{variation[0]}</span>
-          </div>
-          <div className="variacao-item-size flex-1 flex flex-center wrap-4">
-            <span className="item-size">{variation[1]}</span>
-          </div>
-          <div className="variacao-item-size flex-1 flex flex-center wrap-4">
-            <span className="item-size">{variation[2]}</span>
-          </div>
+          {produto.variations.map((item) => {
+            return (
+              <div
+                className={`${
+                  item.quantity
+                    ? "variacao-item-size"
+                    : "variacao-item-size-empty"
+                } flex-1 flex flex-center wrap-4`}
+              >
+                <span className="item-size">{item.size}</span>
+              </div>
+            );
+          })}
         </div>
       </div>
     );
@@ -161,12 +180,12 @@ class Hero extends Component {
           </h4>
         </div>
         <br />
-        {this.renderVariacoesColor("COR", produto.variations)}
-        {this.renderVariacoesSize("TAMANHO", size)}
+        {this.renderVariacoesColor()}
+        {this.renderVariacoesSize()}
 
         <div className="opcoes">
           <div className="opcao flex vertical">
-            <label className="opcao-tab">Quantidade:</label>
+            <label className="titleProductDetails">QUANTIDADE:</label>
             <input
               className="opcao-input"
               type="number"
@@ -188,7 +207,7 @@ class Hero extends Component {
             className="btn btn-cta btn-add"
             onClick={() => this.addCart()}
           >
-            ADICIONAR AO CARRINHO
+            <p>ADICIONAR AO CARRINHO</p>
           </button>
         </div>
       </div>
@@ -196,7 +215,6 @@ class Hero extends Component {
   }
 
   render() {
-    // const { produto } = this.props;
     return (
       <div className="Produto-Hero flex horizontal">
         {this.renderPhotos()}
