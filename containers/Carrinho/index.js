@@ -10,7 +10,7 @@ class CarrinhoContainer extends Component {
     this.props.setCarrinho()
   }
 
-  componentDidUpdate(prevProps){
+  componentDidUpdate(){
     const { carrinho } = this.props;
     if( carrinho && carrinho[0] && 
         carrinho[0].produto && !carrinho[0].produto ){
@@ -33,8 +33,8 @@ class CarrinhoContainer extends Component {
   }
 }
 
-const mapStateToProps = states => ({
-  carrinho: states.carrinho.carrinho
+const mapStateToProps = state => ({
+  carrinho: state.carrinho.carrinho
 })
 
 export default connect(mapStateToProps, actions)(CarrinhoContainer);
