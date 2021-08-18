@@ -12,15 +12,15 @@ class CheckoutContainer extends Component {
   render() {
     return (
       <div className="checkout container">
-        <h2>CONCLUINDO SEU PEDIDO</h2>
-        <br/>
-        <DadosCliente />
-        <DadosEntrega />
+        <div className="componentes-container">
+          <DadosCliente />
+          <DadosEntrega />
+        </div>
         <SubmitDadosCliente />
-        <DadosFrete />
+        {/* <DadosFrete />
         <DadosPagamento />
         <DadosPedido />
-        <CheckoutButton />
+        <CheckoutButton /> */}
       </div>
     );
   };

@@ -20,7 +20,7 @@ export default class DadosClienteContainer extends Component {
 
     return (
       <div className="flex-1 flex vertical">
-        <div className="textField">
+        <div className="textField text-field_input">
           <TextField
             id="outlined-required"
             required
@@ -33,7 +33,7 @@ export default class DadosClienteContainer extends Component {
             }
           />
         </div>
-        <div className="textField">
+        <div className="textField text-field_input">
           <TextField
             id="outlined-required"
             required
@@ -46,7 +46,7 @@ export default class DadosClienteContainer extends Component {
             }
           />
         </div>
-        <div className="textField">
+        <div className="textField text-field_input">
           <TextField
             id="outlined-required"
             required
@@ -66,8 +66,8 @@ export default class DadosClienteContainer extends Component {
   renderDadosUsuario() {
     const { nome, CPF, dataDeNascimento, telefone } = this.state;
     return (
-      <div className="flex-1 flex vertical">
-        <div className="flex-1">
+      <div className="flex-1 flex vertical input">
+        <div className="flex-1 text-field_input">
           <TextField
             id="outlined-required"
             required
@@ -78,7 +78,7 @@ export default class DadosClienteContainer extends Component {
             onChange={(event) => this.onChangeInput("nome", event.target.value)}
           />
         </div>
-        <div className="flex-1">
+        <div className="flex-1 text-field_input">
           <TextField
             id="outlined-required"
             required
@@ -89,7 +89,7 @@ export default class DadosClienteContainer extends Component {
             onChange={(event) => this.onChangeInput("CPF", event.target.value)}
           />
         </div>
-        <div className="flex-1">
+        <div className="flex-1 text-field_input">
           <TextField
             id="outlined-required"
             required
@@ -102,7 +102,7 @@ export default class DadosClienteContainer extends Component {
             }
           />
         </div>
-        <div className="flex-1">
+        <div className="flex-1 text-field_input">
           <TextField
             id="outlined-required"
             required
@@ -123,7 +123,7 @@ export default class DadosClienteContainer extends Component {
     return (
       <div className="flex-1">
         <div>
-          <h2>DADOS DO CLIENTE</h2>
+          <h2>Dados Do Cliente</h2>
         </div>
         {this.renderDadosRegistro()}
         {this.renderDadosUsuario()}

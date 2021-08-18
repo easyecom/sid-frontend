@@ -5,7 +5,19 @@
 }
 
 .header-wrapper {
-  padding-top: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-wrapper h2 {
+  color: #777777
+}
+
+.Header-Simples {
+  border-bottom: 1px solid #ededed;
+  padding: 5px 0;
+  height: 70px;
 }
 
 .header-wrapper,
@@ -33,7 +45,6 @@
 .logo {
   max-width: 230px;
   cursor: pointer;
-  margin-bottom: 10px;
 }
 
 .input-pesquisa {
@@ -567,10 +578,48 @@
   cursor: pointer;
 }
 
+
 /* CHECKOUT */
-.form-input {
+
+.MuiSelect-outlined.MuiSelect-outlined {
+  padding-right: 32px;
+  font: inherit;
+  color: currentColor;
+  width: 100%;
+  border: 0;
+  height: 2.7em;
+  margin: 0;
+  display: block;
+  padding: 6px 0 7px 10px;
+  padding-top: 6px;
+  padding-right: 32px;
+  padding-bottom: 7px;
+  padding-left: 10px;
+  min-width: 0;
+  background: none;
+  box-sizing: content-box;
+  animation-name: mui-auto-fill-cancel;
+  letter-spacing: inherit;
+  animation-duration: 10ms;
+}
+
+.componentes-container {
   display: flex;
-  flex-direction: column;
+  gap: 40px;
+}
+
+.text-field_input {
+  margin-bottom: 15px;
+}
+
+.numero-input {
+  max-width: 20%;
+  margin-left: 10px;
+}
+
+.estado-input {
+  max-width: 35%;
+  margin-left: 10px;
 }
 
 .form-check {
@@ -582,10 +631,6 @@
   margin: 10px 0 5px;
   font-size: 0.9rem;
   font-weight: bold;
-}
-
-.form-input .form-check label {
-  margin: 0;
 }
 
 .form-input input {
@@ -612,15 +657,20 @@
 }
 
 .checkout h2 {
-  border-top: 1px solid #aaaa;
-  margin-top: 80px;
-  padding-top: 30px;
+  padding: 46px 0;
+  color: #999999;
+  font-size: 24px;
+  line-height: 24px;
 }
 
 .checkout > h2 {
   border-top: 0;
   margin-bottom: 0;
   padding-top: 0;
+}
+
+.dados-cobranca {
+  margin-top: 40px;
 }
 
 /* MINHA CONTA */
