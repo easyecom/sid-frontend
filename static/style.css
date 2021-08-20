@@ -364,9 +364,6 @@
   color: #fff;
 }
 
-.Produto-Hero .opcao {
-
-}
 
 .Produto-Hero .opcao-tab {
   /* font-size: 0.9rem; */
@@ -468,10 +465,6 @@
 
 /* BOTAO */
 
-.comprar {
-  /* display: flex;
-  gap: 5px; */
-}
 
 .btn {
   font-size: 1.2rem;
@@ -578,7 +571,6 @@
   cursor: pointer;
 }
 
-
 /* CHECKOUT */
 
 .MuiSelect-outlined.MuiSelect-outlined {
@@ -622,6 +614,11 @@
   margin-left: 10px;
 }
 
+.form-input {
+  display: flex;
+  flex-direction: column;
+}
+
 .form-check {
   flex-direction: row;
   align-items: center;
@@ -631,6 +628,10 @@
   margin: 10px 0 5px;
   font-size: 0.9rem;
   font-weight: bold;
+}
+
+.form-input .form-check label {
+  margin: 0;
 }
 
 .form-input input {
