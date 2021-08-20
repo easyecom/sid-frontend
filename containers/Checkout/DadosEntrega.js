@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import FormSimples from '../../components/Inputs/FormSimples';
+import TextField from '@material-ui/core/TextField';
+
 
 import { ESTADOS } from '../../utils';
 
@@ -47,68 +49,89 @@ export default class DadosClienteContainer extends Component {
     return (
       <div className="flex-1 flex vertical">
         <div>
-          <h2>DADOS DE ENTREGA</h2>
+          <h2>Dados De Entrega</h2>
         </div>
-        <div className="flex-1">
-          <FormSimples
-            value={CEP}
-            name="CEP"
-            placeholder="CEP"
+        <div className="flex-1 text-field_input">
+          <TextField
+            id="outlined-required"
+            required
             label="CEP"
+            fullWidth={true}
+            variant="outlined"
+            value={CEP || " "}
             onChange={(e) => this.onChange("CEP", e)} />
         </div>
         <div className="flex-1 flex horizontal">
-          <div className="flex-1">
-            <FormSimples
-              value={local}
-              name="local"
-              placeholder="Rua, Avenida,..."
-              label="Endereço (Rua, Avenida,...)"
+          <div className="flex-1 text-field_input">
+            <TextField
+              id="outlined-required"
+              required
+              label="Logradouro"
+              fullWidth={true}
+              variant="outlined"
+              value={local || " "}
               onChange={(e) => this.onChange("local", e)} />
           </div>
-          <div className="flex-1">
-            <FormSimples
-              value={numero}
-              name="numero"
-              placeholder="999"
+          <div className="numero-input">
+            <TextField
+              id="outlined-required"
+              required
               label="Número"
+              fullWidth={true}
+              variant="outlined"
+              value={numero || " "}
               onChange={(e) => this.onChange("numero", e)} />
           </div>
         </div>
-        <div className="flex-1 flex horizontal">
-          <div className="flex-1">
-            <FormSimples
-              value={bairro}
-              name="bairro"
-              placeholder="Bairro"
+      
+        <div className="flex-1 flex vertical">
+          <div className="flex-1 text-field_input">
+            <TextField
+              id="outlined-required"
+              required
               label="Bairro"
+              fullWidth={true}
+              variant="outlined"
+              value={bairro || " "}
               onChange={(e) => this.onChange("bairro", e)} />
           </div>
-          <div className="flex-1">
-            <FormSimples
-              value={complemento}
-              name="complemento"
-              placeholder="Complemento"
+          <div className="flex-1 text-field_input">
+            <TextField
+              id="outlined-required"
+              required
               label="Complemento"
+              fullWidth={true}
+              variant="outlined"
+              value={complemento || " "}
               onChange={(e) => this.onChange("complemento", e)} />
           </div>
         </div>
         <div className="flex-1 flex horizontal">
-          <div className="flex-1">
-            <FormSimples
-              value={cidade}
-              name="cidade"
-              placeholder="Cidade"
+          <div className="flex-1 text-field_input">
+          <TextField
+              id="outlined-required"
+              required
               label="Cidade"
+              fullWidth={true}
+              variant="outlined"
+              value={cidade || " "}
               onChange={(e) => this.onChange("cidade", e)} />
           </div>
-          <div className="flex-1 flex vertical form-input">
-            <label>Estado</label>
-            <select value={estado} onChange={(e) => this.onChange("estado", e)}>
-              <option>Selecione...</option>
+          <div className="estado-input">
+          <TextField 
+              id="outlined-select-currency-native"
+              select
+              label="UF"
+              value={estado}
+              onChange={(e) => this.onChange("estado", e)}
+              SelectProps={{
+                native: true,
+              }}
+              variant="outlined"
+            >
               { Object.keys(ESTADOS).map((abbr) => 
               (<option key={abbr} value={abbr}>{ESTADOS[abbr]}</option>)) }
-            </select>
+            </TextField>
           </div>
         </div>
         <br/>
@@ -137,69 +160,90 @@ export default class DadosClienteContainer extends Component {
 
     return (
       <div className="flex-1 flex vertical">
-        <div>
-          <h2>DADOS DE COBRANÇA</h2>
+        <div className="dados-cobranca">
+          <h2>Dados De Cobrança</h2>
         </div>
-        <div className="flex-1">
-          <FormSimples
-            value={CEP}
-            name="CEP"
-            placeholder="CEP"
+        <div className="flex-1 text-field_input">
+          <TextField
+            id="outlined-required"
+            required
             label="CEP"
+            fullWidth={true}
+            variant="outlined"
+            value={CEP || " "}
             onChange={(e) => this.onChangeCobranca("CEP", e)} />
         </div>
         <div className="flex-1 flex horizontal">
-          <div className="flex-1">
-            <FormSimples
-              value={local}
-              name="local"
-              placeholder="Rua, Avenida,..."
-              label="Endereço (Rua, Avenida,...)"
+          <div className="flex-1 text-field_input">
+            <TextField
+              id="outlined-required"
+              required
+              label="Logradouro"
+              fullWidth={true}
+              variant="outlined"
+              value={local || " "}    
               onChange={(e) => this.onChangeCobranca("local", e)} />
           </div>
-          <div className="flex-1">
-            <FormSimples
-              value={numero}
-              name="numero"
-              placeholder="999"
+          <div className="numero-input">
+            <TextField
+              id="outlined-required"
+              required
               label="Número"
+              fullWidth={true}
+              variant="outlined"
+              value={numero || " "}
               onChange={(e) => this.onChangeCobranca("numero", e)} />
           </div>
         </div>
-        <div className="flex-1 flex horizontal">
-          <div className="flex-1">
-            <FormSimples
-              value={bairro}
-              name="bairro"
-              placeholder="Bairro"
+
+        <div className="flex-1 flex vertical">
+          <div className="flex-1 text-field_input">
+            <TextField
+              id="outlined-required"
+              required
               label="Bairro"
+              fullWidth={true}
+              variant="outlined"
+              value={bairro || " "}
               onChange={(e) => this.onChangeCobranca("bairro", e)} />
           </div>
-          <div className="flex-1">
-            <FormSimples
-              value={complemento}
-              name="complemento"
-              placeholder="Complemento"
+          <div className="flex-1 text-field_input">
+            <TextField
+              id="outlined-required"
+              required
               label="Complemento"
+              fullWidth={true}
+              variant="outlined"  
+              value={complemento || " "}
               onChange={(e) => this.onChangeCobranca("complemento", e)} />
           </div>
         </div>
         <div className="flex-1 flex horizontal">
-          <div className="flex-1">
-            <FormSimples
-              value={cidade}
-              name="cidade"
-              placeholder="Cidade"
+          <div className="flex-1 text-field_input">
+            <TextField
+              id="outlined-required"
+              required
               label="Cidade"
+              fullWidth={true}
+              variant="outlined"
+              value={cidade || " "}
               onChange={(e) => this.onChangeCobranca("cidade", e)} />
           </div>
-          <div className="flex-1 flex vertical form-input">
-            <label>Estado</label>
-            <select value={estado} onChange={(e) => this.onChangeCobranca("estado", e)}>
-              <option>Selecione...</option>
+          <div className="estado-input">
+            <TextField 
+              id="outlined-select-currency-native"
+              select
+              label="UF"
+              value={estado || " "}
+              onChange={(e) => this.onChangeCobranca("estado", e)}
+              SelectProps={{
+                native: true,
+              }}
+              variant="outlined"
+            >
               { Object.keys(ESTADOS).map((abbr) => 
               (<option key={abbr} value={abbr}>{ESTADOS[abbr]}</option>)) }
-            </select>
+            </TextField>
           </div>
         </div>
       </div>

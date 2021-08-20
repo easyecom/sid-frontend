@@ -4,13 +4,13 @@ import { useRouter } from "next/router";
 
 const LogoCabecalho = () => {
   return (
-    <div className="flex-2 flex flex-center">
+    <div className="">
       <Link href="/">
         <img
           onClick={() => window.location.href = "/"}
           src="/static/logo.png"
           className="logo"
-          width="90%"
+          width="70%"
         />
       </Link>
     </div>
