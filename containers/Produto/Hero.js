@@ -197,14 +197,14 @@ class Hero extends Component {
         <div className="comprar">
           <Link href="/cart">
             <button
-              className="btn btn-success btn-cta "
+              className="btn btn-success btn-cta btn-product-details"
               onClick={() => this.addCart()}
             >
               COMPRAR AGORA
             </button>
           </Link>
           <button
-            className="btn btn-cta btn-add"
+            className="btn btn-cta btn-add btn-product-details"
             onClick={() => this.addCart()}
           >
             <p>ADICIONAR AO CARRINHO</p>

@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap");
 
 .Header {
-  max-height: 165gti pull oripx;
+  max-height: 165px;
 }
 
 .header-wrapper {
@@ -12,6 +12,12 @@
 
 .header-wrapper h2 {
   color: #777777
+}
+
+.header-main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .Header-Simples {
@@ -496,10 +502,13 @@
   border: 0;
 }
 
-.btn-cta {
+.btn-product-details {
   width: 90%;
+}
+
+.btn-cta {
   padding: 15px 25px;
-  /* font-size: 0.9rem; */
+  font-size: 0.9rem;
   margin: 3px 0;
 }
 
