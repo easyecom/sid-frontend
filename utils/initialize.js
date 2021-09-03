@@ -4,13 +4,14 @@ import { getCookie } from './cookie';
 
 export default function(ctx) {
   if(ctx.isServer) {
-    ctx.store.dispatch(actions.reauthenticate(getCookie("token", ctx, req)));
+    ctx.store.dispatch(actions.reauthenticate(getCookie("token", ctx.req)));
   } else if(ctx.store) {
-    const token = ctx.store.getState().auth.token;
+    const token = ctx.store.getState().auth.token; // verify if token arrived here
+    console.log(token, "token")
     if(!token && (
         ctx.pathname.includes("/customer-area/request") ||
         ctx.pathname.includes("/customer-area/data") ||
         ctx.pathname.includes("/customer-area/change-password") 
-    )) Router.push("/customer-area");
+    )) Router.push("/customer-area/data");
   }
 }

@@ -6,8 +6,6 @@ import { addCart } from "../../utils/cart";
 import { getCountItemsCart } from "../../utils/cart";
 import DataContext from "../Context/DataContext";
 
-const size = ["38", "39", "40"];
-
 class Hero extends Component {
   static contextType = DataContext;
 
