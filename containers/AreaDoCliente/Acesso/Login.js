@@ -8,25 +8,36 @@ class LoginContainer extends Component {
   state = {
     email: "",
     senha: "",
+    aviso: null,
+    erros: {},
   };
 
-  onChangeInput(field, e) {
-    this.setState({ [field]: e.target.value });
+  validate() {
+    const { email, senha } = this.state;
+    const erros = {};
+
+    if (!email) erros.email = "Preencha aqui com o seu email";
+    if (!senha) erros.senha = "Preencha aqui com a sua senha";
+
+    this.setState({ erros, aviso: null });
+    return Object.keys(erros).length === 0;
   }
 
   handleLogin() {
-    console.log(actions, "actions")
     const { email, senha } = this.state;
 
     if (!email || !senha) alert("Favor inserir email e senha");
-    this.props.autenticar({ email, password: senha }, false, (error) => {
-      if (error)
-        this.setState({ aviso: { status: false, message: error.message } });
-      else this.setState({ aviso: null });
-    });
 
-    console.log(this.props, "=====>");
-    // console.log(senha, "=====>");
+    this.props.autenticar({ email, password: senha }, false, (error) => {
+      if (error) {
+        this.setState({ aviso: { status: false, message: error.message } });
+      }
+      this.setState({ aviso: null });
+    });
+  }
+
+  onChangeInput(field, e) {
+    this.setState({ [field]: e.target.value });
   }
 
   render() {

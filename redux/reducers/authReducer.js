@@ -9,10 +9,11 @@ export default (state = initialState, action) => {
         usuario: action.payload,
         token: action.payload ? action.payload.token : null,
       };
+      
     case AUTENTICAR_TOKEN:
       return { ...state, token: action.payload };
+
     case AUTENTICAR:
-      console.log(action.payload.user)
       return {
         ...state,
         token: action.payload.user ? action.payload.user.token : null,

@@ -12,7 +12,7 @@ class AreaDoClienteContainer extends Component {
 }
 
 const mapStateToProps = state => ({
-  usuario: state.auth.user
+  usuario: state.auth.usuario
 });
 
 export default connect(mapStateToProps, actions)(AreaDoClienteContainer);

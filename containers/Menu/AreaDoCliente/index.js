@@ -7,9 +7,7 @@ class MenuAreaDoCliente extends Component {
   renderCabecalho() {
     return (
       <div>
-        <h3>Olá, Dariane, <br/> Seja bem vindo!</h3>
-        <p>Por aqui você pode acompanhar seus pedidos e também 
-          alterar seus dados de acesso e senha </p>
+        <h3>Olá, Dariane!</h3>
       </div>
     );
   };

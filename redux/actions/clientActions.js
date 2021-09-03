@@ -1,7 +1,6 @@
 import {
   FETCH_CLIENTE,
   LOGOUT_CLIENTE,
-  NEW_USER,
   NEW_CLIENT,
   NEW_ADDRESS,
 } from "../types";
@@ -9,7 +8,6 @@ import axios from "axios";
 import { API, versao, loja } from "../../config";
 import { setCookie, getCookie } from "../../utils/cookie";
 import { getHeaders } from "./helpers";
-import Router from "next/router";
 import { autenticar, desautenticar } from "./authActions";
 import errorHandling from "./errorHandling";
 
@@ -55,7 +53,13 @@ export const newClient = (payload, store_id, cb) => (dispatch) => {
     })
     .then((response) => {
       dispatch({ type: NEW_CLIENT, payload: response.data });
-      // dispatch(autenticar({ email: form.email, password: form.senha }, null, cb));
+      dispatch(
+        autenticar(
+          { email: payload.email, password: payload.password },
+          null,
+          cb
+        )
+      );
       cb(null);
     })
     .catch((e) => cb(errorHandling(e)));
@@ -76,20 +80,18 @@ export const newAddress = (store_id, payload, token, cb) => (dispatch) => {
         state_code: payload.state_code,
         country: payload.country,
         storeIdToAddress: payload.storeIdToAddress,
+        // TODO - criar ENUM com tipos de endereço no backend
       },
       getHeaders(token)
     )
     .then((response) => {
-      console.log(response, "address");
       dispatch({ type: NEW_ADDRESS, payload: response.data });
-      // dispatch(autenticar({ email: form.email, password: form.senha }, null, cb));
-      // cb(null);
     })
     .catch((e) => cb(errorHandling(e)));
 };
 
 export const logoutClient = () => (dispatch) => {
-  // dispatch(desautenticar());
+  dispatch(desautenticar());
   dispatch({ type: LOGOUT_CLIENTE });
 };
 

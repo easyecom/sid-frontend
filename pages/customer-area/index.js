@@ -13,7 +13,7 @@ import callBaseData from "../../utils/callBaseData";
 class CustomerArea extends Component {
   static async getInitialProps(ctx) {
     initialize(ctx);
-    return callBaseData([], ctx);
+    return callBaseData([ ], ctx);
   }
 
   async componentDidMount() {

@@ -6,7 +6,15 @@ import actions from "../../../redux/actions";
 
 import { ESTADOS } from "../../../utils";
 import { getCookie } from "../../../utils/cookie";
-import { now } from "moment";
+
+import { 
+  formatCPF, 
+  formatCEP,
+  formatDataDeNascimento, 
+  formatNumber, 
+  formatTelefone 
+} from '../../../utils/format';
+import { validateCPF, validateEmail } from '../../../utils/validate';
 
 class CadastroContainer extends Component {
   state = {
@@ -28,8 +36,8 @@ class CadastroContainer extends Component {
     storeIdToAddress: 1,
   };
 
-  onChangeInput(field, e) {
-    this.setState({ [field]: e.target.value });
+  onChangeInput(field, value) {
+    this.setState({ [field]:  value});
   }
 
   handleRegistryCustomer() {
@@ -38,20 +46,6 @@ class CadastroContainer extends Component {
         this.setState({ aviso: { status: false, message: error.message } });
       else this.setState({ aviso: null });
     });
-
-    // this.props.newUser(1, this.state, (error) => {
-    //   if (error)
-    //     this.setState({ aviso: { status: false, message: error.message } });
-    //   else this.setState({ aviso: null });
-    // });
-
-    // this.props.autenticar({ email, password }, false, (error) => {
-    //   if (error)
-    //     this.setState({ aviso: { status: false, message: error.message } });
-    //   else this.setState({ aviso: null });
-    // });
-
-    // const token = getCookie("token");
   }
 
   render() {
@@ -84,14 +78,14 @@ class CadastroContainer extends Component {
             name="email"
             type="email"
             placeholder="Email"
-            onChange={(e) => this.onChangeInput("email", e)}
+            onChange={(e) => this.onChangeInput("email", e.target.value)}
           />
           <FormSimples
             value={password}
             name="password"
             type="password"
             placeholder="password"
-            onChange={(e) => this.onChangeInput("password", e)}
+            onChange={(e) => this.onChangeInput("password", e.target.value)}
           />
           <br />
           <FormSimples
@@ -99,14 +93,14 @@ class CadastroContainer extends Component {
             name="userName"
             type="text"
             placeholder="userName"
-            onChange={(e) => this.onChangeInput("userName", e)}
+            onChange={(e) => this.onChangeInput("userName", e.target.value)}
           />
           <FormSimples
             value={cpf}
             name="cpf"
             type="text"
             placeholder="CPF"
-            onChange={(e) => this.onChangeInput("cpf", e)}
+            onChange={(e) => this.onChangeInput("cpf", formatCPF(e.target.value))}
           />
           <div className="flex horizontal">
             <div className="flex-1">
@@ -116,7 +110,7 @@ class CadastroContainer extends Component {
                 name="cellphone"
                 type="text"
                 placeholder="cellphone"
-                onChange={(e) => this.onChangeInput("cellphone", e)}
+                onChange={(e) => this.onChangeInput("cellphone", e.target.value)}
               />
             </div>
             <div className="flex-1">
@@ -126,7 +120,7 @@ class CadastroContainer extends Component {
                 type="text"
                 placeholder="DD/MM/YYYY"
                 label="dateOfBirth"
-                onChange={(e) => this.onChangeInput("dateOfBirth", e)}
+                onChange={(e) => this.onChangeInput("dateOfBirth", formatDataDeNascimento(e.target.value))}
               />
             </div>
           </div>
@@ -138,7 +132,7 @@ class CadastroContainer extends Component {
                 name="street"
                 placeholder="Endereço"
                 label="street"
-                onChange={(e) => this.onChangeInput("street", e)}
+                onChange={(e) => this.onChangeInput("street", e.target.value)}
               />
             </div>
             <div className="flex-1">
@@ -147,7 +141,7 @@ class CadastroContainer extends Component {
                 name="numero"
                 placeholder="Número"
                 label="Numero"
-                onChange={(e) => this.onChangeInput("number", e)}
+                onChange={(e) => this.onChangeInput("number", formatNumber(e.target.value))}
               />
             </div>
           </div>
@@ -158,7 +152,7 @@ class CadastroContainer extends Component {
                 name="bairro"
                 placeholder="Bairro"
                 label="Bairro"
-                onChange={(e) => this.onChangeInput("neighborhood", e)}
+                onChange={(e) => this.onChangeInput("neighborhood", e.target.value)}
               />
             </div>
             <div className="flex-1">
@@ -167,7 +161,7 @@ class CadastroContainer extends Component {
                 name="complemento"
                 placeholder="Complemento"
                 label="Complemento"
-                onChange={(e) => this.onChangeInput("complement", e)}
+                onChange={(e) => this.onChangeInput("complement", e.target.value)}
               />
             </div>
           </div>
@@ -179,7 +173,7 @@ class CadastroContainer extends Component {
                 name="cidade"
                 placeholder="Cidade"
                 label="Cidade"
-                onChange={(e) => this.onChangeInput("city", e)}
+                onChange={(e) => this.onChangeInput("city", e.target.value)}
               />
             </div>
             <div className="form-input">
@@ -187,7 +181,7 @@ class CadastroContainer extends Component {
               <select
                 name="state_code"
                 value={state_code}
-                onChange={(e) => this.onChangeInput("state_code", e)}
+                onChange={(e) => this.onChangeInput("state_code", e.target.value)}
               >
                 <option>Selecione seu estado</option>
                 {Object.keys(ESTADOS).map((abbr) => (
@@ -202,7 +196,7 @@ class CadastroContainer extends Component {
             name="CEP"
             placeholder="12345-678"
             label="CEP"
-            onChange={(e) => this.onChangeInput("zipcode", e)}
+            onChange={(e) => this.onChangeInput("zipcode", formatCEP(e.target.value))}
           />
           <div className="flex flex-center">
             <button
