@@ -10,9 +10,9 @@ export default class ProdutoContainer extends Component {
     return (
       <div className="container-big Produto">
         <Hero />
-        <Descricao />
-        <Avaliacoes />
-        <ProdutosRelacionados />
+        {/* <Descricao /> */}
+        {/* <Avaliacoes /> */}
+        {/* <ProdutosRelacionados /> */}
       </div>
     );
   };

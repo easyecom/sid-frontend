@@ -6,8 +6,6 @@ import { addCart } from "../../utils/cart";
 import { getCountItemsCart } from "../../utils/cart";
 import DataContext from "../Context/DataContext";
 
-const size = ["38", "39", "40"];
-
 class Hero extends Component {
   static contextType = DataContext;
 
@@ -85,7 +83,7 @@ class Hero extends Component {
                 } flex-1 flex flex-center wrap-4`}
               >
                 <span className="item-color">
-                  <img  
+                  <img
                     src={
                       item.images && item.images.length
                         ? item.images[0].path
@@ -154,16 +152,25 @@ class Hero extends Component {
 
     return (
       <div className="flex-1 produto-detalhes">
-        <div className="categoria">
+        {/* <div className="categoria">
           <p>
             Categoria:&nbsp;
             <span className="categoria-link">{produto.categoryName}</span>
           </p>
-        </div>
+        </div> */}
         <div className="titulo">
           <h2>{produto.variations[0].variationName}</h2>
         </div>
-        <br />
+        {/* <br /> */}
+        <div className="avaliacao-pontuacao flex-1 flex">
+          <span>
+            <i className="fa fa-star"></i>
+            <i className="fa fa-star"></i>
+            <i className="fa fa-star"></i>
+            <i className="fa fa-star"></i>
+            <i className="fa fa-star"></i>
+          </span>
+        </div>
         <div className="precos">
           <h2 className="preco-original preco-por">
             {formatMoney(produto.variations[0].prices)}
@@ -197,14 +204,14 @@ class Hero extends Component {
         <div className="comprar">
           <Link href="/cart">
             <button
-              className="btn btn-success btn-cta "
+              className="btn btn-success btn-cta btn-product-details"
               onClick={() => this.addCart()}
             >
               COMPRAR AGORA
             </button>
           </Link>
           <button
-            className="btn btn-cta btn-add"
+            className="btn btn-cta btn-add btn-product-details"
             onClick={() => this.addCart()}
           >
             <p>ADICIONAR AO CARRINHO</p>

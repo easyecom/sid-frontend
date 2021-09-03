@@ -1,21 +1,57 @@
-import { 
-  AUTENTICAR_TOKEN, 
-  USER
-} from '../types';
-import axios from 'axios';
-import { API } from '../../config';
+import { AUTENTICAR_TOKEN, AUTENTICAR, USER } from "../types";
+import axios from "axios";
+import { API } from "../../config";
+import errorHandling from "./errorHandling";
+import { setCookie, removeCookie, getCookie } from "../../utils/cookie";
+import { fetchClient } from "./clientActions";
 
-const getHeaders = (token) => ({ headers: { "Authorization": `Ecommerce ${token}` } });
+const getHeaders = (token) => ({
+  headers: { Authorization: `Bearer ${token}` },
+});
 
-export const reauthenticate = token => ({ type: AUTENTICAR_TOKEN, payload: token });
+export const getUser =
+  // TODO - decidir se decodifica o token e pega userId e storeId, ou se faz a query no back pelo proprio token
 
-export const getUser = ({ token }) => (dispatch) => {
-  axios.get(`${API}/users/dev`, getHeaders(token))
-  .then((response) => dispatch({ type: USER, payload: response.data.user }))
-  .catch(e => console.log(e))
+    ({ token }) =>
+    (dispatch) => {
+      axios
+        .get(`${API}/stores/2/clients/5`, getHeaders(token))
+        .then((response) => {
+          dispatch({ type: USER, payload: response.data.user });
+        })
+        .catch((e) => console.log(e));
+    };
+
+export const autenticar =
+  ({ email, password }, goTo = false, cb) =>
+  (dispatch) => {
+    axios
+      .post(`${API}/session`, { email, password })
+      .then((response) => {
+        setCookie("token", response.data.user.token);
+        if (goTo) Router.push(goTo);
+        dispatch({ type: AUTENTICAR, payload: response.data });
+        dispatch(
+          fetchClient(response.data.user.userId, response.data.user.token)
+        );
+      })
+      .catch((e) => cb(errorHandling(e)));
+  };
+
+export const reauthenticate = (token) => ({
+  type: AUTENTICAR_TOKEN,
+  payload: token,
+});
+
+export const desautenticar = () => (dispatch) => {
+  removeCookie("token");
+  Router.push("/");
+  dispatch({ type: DESAUTENTICAR });
 };
 
 export default {
+  getUser,
+  autenticar,
   reauthenticate,
-  getUser
+  desautenticar,
 };

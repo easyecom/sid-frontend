@@ -10,7 +10,8 @@ export default class Checkout extends Component {
   render() {
     return(
       <Layout title="Ckeckout | LOJA SID SURF STORE">
-        <Cabecalho simples />
+        <Cabecalho simples
+          title={"Dados Cadastrais"} />
         <CheckoutContainer />
         <Rodape />
       </Layout>

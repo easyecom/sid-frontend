@@ -22,20 +22,21 @@ class Cabecalho extends React.Component {
     );
   }
 
-  renderCabecalhoSimples() {
+  renderCabecalhoSimples(title) {
     return (
       <div className="Header No-Links Header-Simples">
-        <div className="header-wrapper">
+        <div className="header-wrapper container">
           <Logo />
+          <h2>{title}</h2>
         </div>
       </div>
     );
   }
 
   render() {
-    const { simples } = this.props;
+    const { simples, title } = this.props;
     return simples
-      ? this.renderCabecalhoSimples()
+      ? this.renderCabecalhoSimples(title)
       : this.renderCabecalhoNormal();
   }
 }

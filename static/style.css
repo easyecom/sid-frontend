@@ -1,11 +1,29 @@
 @import url("https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap");
 
 .Header {
-  max-height: 165gti pull oripx;
+  max-height: 165px;
 }
 
 .header-wrapper {
-  padding-top: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-wrapper h2 {
+  color: #777777
+}
+
+.header-main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Header-Simples {
+  border-bottom: 1px solid #ededed;
+  padding: 5px 0;
+  height: 70px;
 }
 
 .header-wrapper,
@@ -33,7 +51,6 @@
 .logo {
   max-width: 230px;
   cursor: pointer;
-  margin-bottom: 10px;
 }
 
 .input-pesquisa {
@@ -353,9 +370,6 @@
   color: #fff;
 }
 
-.Produto-Hero .opcao {
-
-}
 
 .Produto-Hero .opcao-tab {
   /* font-size: 0.9rem; */
@@ -395,6 +409,7 @@
 }
 
 .Descricao {
+  padding-left: 15px;
   max-width: 800px;
 }
 
@@ -402,7 +417,7 @@
 .Avaliacoes h2,
 .Produtos-Relacionados h2 {
   color: #222;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   text-transform: uppercase;
 }
 
@@ -412,6 +427,7 @@
 }
 
 .Produtos-Relacionados {
+  padding-left: 15px;
   margin-bottom: 50px;
 }
 
@@ -423,8 +439,9 @@
   border-radius: 15px;
 }
 
-.avaliacao i.fa-star {
+ i.fa-star {
   color: #f2c832;
+  padding-top: 15px;
   margin-right: 2px;
 }
 
@@ -457,10 +474,6 @@
 
 /* BOTAO */
 
-.comprar {
-  /* display: flex;
-  gap: 5px; */
-}
 
 .btn {
   font-size: 1.2rem;
@@ -492,10 +505,13 @@
   border: 0;
 }
 
-.btn-cta {
+.btn-product-details {
   width: 90%;
+}
+
+.btn-cta {
   padding: 15px 25px;
-  /* font-size: 0.9rem; */
+  font-size: 0.9rem;
   margin: 3px 0;
 }
 
@@ -568,6 +584,48 @@
 }
 
 /* CHECKOUT */
+
+.MuiSelect-outlined.MuiSelect-outlined {
+  padding-right: 32px;
+  font: inherit;
+  color: currentColor;
+  width: 100%;
+  border: 0;
+  height: 2.7em;
+  margin: 0;
+  display: block;
+  padding: 6px 0 7px 10px;
+  padding-top: 6px;
+  padding-right: 32px;
+  padding-bottom: 7px;
+  padding-left: 10px;
+  min-width: 0;
+  background: none;
+  box-sizing: content-box;
+  animation-name: mui-auto-fill-cancel;
+  letter-spacing: inherit;
+  animation-duration: 10ms;
+}
+
+.componentes-container {
+  display: flex;
+  gap: 40px;
+}
+
+.text-field_input {
+  margin-bottom: 15px;
+}
+
+.numero-input {
+  max-width: 20%;
+  margin-left: 10px;
+}
+
+.estado-input {
+  max-width: 35%;
+  margin-left: 10px;
+}
+
 .form-input {
   display: flex;
   flex-direction: column;
@@ -612,15 +670,20 @@
 }
 
 .checkout h2 {
-  border-top: 1px solid #aaaa;
-  margin-top: 80px;
-  padding-top: 30px;
+  padding: 46px 0;
+  color: #999999;
+  font-size: 24px;
+  line-height: 24px;
 }
 
 .checkout > h2 {
   border-top: 0;
   margin-bottom: 0;
   padding-top: 0;
+}
+
+.dados-cobranca {
+  margin-top: 40px;
 }
 
 /* MINHA CONTA */
