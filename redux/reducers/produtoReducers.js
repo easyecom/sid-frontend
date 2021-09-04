@@ -30,7 +30,7 @@ export default (state = initialState, action) => {
     case FETCH_PRODUTOS_PESQUISA:
       return {
         ...state,
-        produtosPesquisa: action.payload.produtos,
+        produtosPesquisa: action.payload,
         termo: action.termo
       }
     case FETCH_PRODUTO:

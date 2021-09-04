@@ -17,7 +17,7 @@ import actions from "../redux/actions";
 
 class Index extends Component {
   static async getInitialProps(ctx) {
-    // initialize(ctx);
+    initialize(ctx);
     return callBaseData([actions.fetchProdutosPaginaInicial], ctx);
   }
 

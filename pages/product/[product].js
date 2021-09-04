@@ -12,11 +12,11 @@ import callBaseData from '../../utils/callBaseData';
 
 class ProductPage extends Component {
   static async getInitialProps(ctx) {
-    // initialize(ctx);
+    initialize(ctx);
     return callBaseData([
       actions.fetchProduto.bind(null, ctx.query.id),
       // actions.fetchAvaliacoes.bind(null, ctx.query.id),
-      // actions.fetchVariacoes.bind(null, ctx.query.id)
+      actions.fetchVariacoes.bind(null, ctx.query.id)
     ], ctx);
   }
 

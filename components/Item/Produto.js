@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import Link from "next/link";
 
 import { formatMoney } from "../../utils";
-import { baseImg } from "../../config";
 
 class Produto extends Component {
   render() {
@@ -32,12 +31,10 @@ class Produto extends Component {
             } flex flex-center`}
           >
             <h2>{formatMoney(salesPrice)}</h2>
-            {/* <h2>{salesPrice}</h2> */}
           </div>
           {temPromo && (
             <div className={`produto-preco-promocao flex flex-center`}>
               <h2>{formatMoney(offerPrice)}</h2>
-              {/* <h2>{offerPrice}</h2> */}
             </div>
           )}
           <div className={`produto-preco-parcelado flex flex-center`}>
