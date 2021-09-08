@@ -225,24 +225,37 @@
 }
 
 /* PAGINACAO */
-.Paginacao {
-  margin: 40px 0 80px;
+
+.pagination {
+  padding-top: 30px;
+  display: flex;
+  justify-content: center;
+  list-style: none;
 }
 
-.paginacao-item {
-  border: 1px solid #ccc;
-  padding: 3px 8px;
-  border-radius: 5px;
-  color: #474747;
-  margin: 0 5px;
+.pagination button {
+  font-size: 15px;
+  border: none;
+  background: none;
+  height: 30px;
+  width: 30px;
   cursor: pointer;
 }
 
-.paginacao-item.paginacao-item-active,
-.paginacao-item:hover {
-  color: #fefefe;
+.pagination li + li {
+  margin-left: 1rem;
+}
+
+.pagination__item--active {
+  color: #ff8c00;
   background-color: #333;
   border: 1px solid #333;
+  font-weight: bold;
+  border: none;
+}
+
+.pagination__item--active:focus {
+  outline: none;
 }
 
 /* PAGINA DE PRODUTOS */
@@ -821,7 +834,7 @@ table.simples td {
   background: #111111;
   padding: 60px 0;
   color: #fff;
-  margin-top: 100px;
+  margin-top: 50px;
 }
 
 .Rodape a {

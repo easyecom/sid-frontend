@@ -9,26 +9,26 @@ import actions from '../../../redux/actions';
 
 class ProdutosCategoria extends Component {
   state = {
-    atual: 0,
-    limit: 20,
+    skip: 0,
+    limit: 16,
   };
 
   getProdutos() {
-    const { atual, limit } = this.state;
-    const categoria = this.props;
-    this.props.fetchProdutosCategoria(categoria.categoryId, atual, limit);
+    const { skip, limit } = this.state;
+    const {categoria} = this.props;
+
+    this.props.fetchProdutosCategoria(categoria.categoryId, skip, limit);
   }
 
-  changeNumeroAtual = (atual) => {
-    this.setState({ atual }, () => this.getProdutos());
+  changeNumeroAtual = (skip) => {
+    this.setState({ skip }, () => this.getProdutos());
   }
-
 
   render() {
     const { produtosCategoria, categoria } = this.props;
+
     return (
       <div className="container Categoria-Produtos">
-        {/* ajuste -[0] */}
         <br /> <br />
         <div className="flex flex-center">
           <h1>{categoria ? categoria.categoryName : "-"}</h1>
@@ -39,10 +39,11 @@ class ProdutosCategoria extends Component {
           itensPorLinha={4}
         />
         <Paginacao
-          atual={this.state.atual || 1}
-          total={produtosCategoria.params.total}
+          skip={this.state.skip}
           limit={this.state.limit}
-          onClick={(numeroAtual) => this.changeNumeroAtual(numeroAtual) } />
+          total={produtosCategoria.params.total_items}
+          onClick={(numeroAtual) => this.changeNumeroAtual(numeroAtual) } 
+          />
       </div>
     );
   }

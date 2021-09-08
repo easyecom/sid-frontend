@@ -30,7 +30,7 @@ class LoginContainer extends Component {
 
     this.props.autenticar({ email, password: senha }, false, (error) => {
       if (error) {
-        this.setState({ aviso: { status: false, message: error.message; } });
+        this.setState({ aviso: { status: false, message: error.message } });
         alert("Usuario não existe, faça um cadastro ou entre com outra conta");
       }
       this.setState({ aviso: null });

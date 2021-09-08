@@ -7,34 +7,36 @@ import Paginacao from "../../../components/Paginacao";
 
 class ProdutosPesquisa extends Component {
   state = {
-    atual: 0,
-    limit: 20,
+    skip: 0,
+    limit: 16,
   };
 
   getProdutos() {
-    const { atual, limit } = this.state;
+    const { skip, limit } = this.state;
     const { termo } = this.props;
-    this.props.fetchProdutosPesquisa(termo, atual, limit);
+
+    this.props.fetchProdutosPesquisa(termo, skip, limit);
   }
 
-  changeNumeroAtual = (atual) => {
-    this.setState({ atual }, () => this.getProdutos());
+  changeNumeroAtual = (skip) => {
+    this.setState({ skip }, () => this.getProdutos());
   };
 
   render() {
     const { termo, produtosPesquisa } = this.props;
+
     return (
       <div className="container Categoria-Produtos">
         <Produtos
           produtos={produtosPesquisa ? produtosPesquisa : []}
           itensPorLinha={4}
         />
-        {/* <Paginacao
-          atual={this.state.atual || 0}
-          total={produtosPesquisa.total}
-          limite={this.state.limit}
+        <Paginacao
+          skip={this.state.skip}
+          limit={this.state.limit}
+          total={produtosPesquisa.params.total_items} //produtosPesquisa.params.total_items} // adicionar regra no back para trazer apenas total filtrado
           onClick={(numeroAtual) => this.changeNumeroAtual(numeroAtual)}
-        /> */}
+        />
       </div>
     );
   }

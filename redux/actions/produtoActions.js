@@ -9,9 +9,9 @@ import {
 } from "../types";
 import { API, loja } from "../../config";
 
-export const fetchProdutosPaginaInicial = (page, limit) => (dispatch) => {
+export const fetchProdutosPaginaInicial = () => (dispatch) => {
   axios
-    .get(`${API}/stores/${loja}/products?page=${page}&limit=${limit}`)
+    .get(`${API}/stores/${loja}/products?page=0&limit=8`) // TODO - adicionar uma query no back e definir quais tipos de produtos vamos listar na pagina inicial
     .then((response) =>
       dispatch({ type: FETCH_PRODUTOS, payload: response.data })
     )
@@ -20,7 +20,7 @@ export const fetchProdutosPaginaInicial = (page, limit) => (dispatch) => {
 
 export const fetchTermo = (termo) => ({ type: FETCH_PESQUISA, termo });
 
-export const fetchProdutosPesquisa = (termo, page = 0, limit = 20) => (dispatch) => {
+export const fetchProdutosPesquisa = (termo, page = 0, limit = 16) => (dispatch) => {
   axios
     .get(
       `${API}/stores/${loja}/products?search=${termo}&page=${page}&limit=${limit}`
