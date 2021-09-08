@@ -12,13 +12,13 @@ import { connect } from 'react-redux';
 import actions from '../redux/actions';
 
 class Search extends Component {
-  static async getInitialProps(ctx) {
+  static async getInitialProps(ctx){
     initialize(ctx);
     if(ctx.store) ctx.store.dispatch(actions.fetchTermo(ctx.query.termo));
     return callBaseData([
-      actions.fetchProdutosCategoria.bind(null, ctx.query.termo)
+        actions.fetchProdutosPesquisa.bind(null, ctx.query.termo)
     ], ctx);
-  }
+}
 
   render() {
     const { termo } = this.props;

@@ -7,7 +7,6 @@ export default function(ctx) {
     ctx.store.dispatch(actions.reauthenticate(getCookie("token", ctx.req)));
   } else if(ctx.store) {
     const token = ctx.store.getState().auth.token; // verify if token arrived here
-    console.log(token, "token")
     if(!token && (
         ctx.pathname.includes("/customer-area/request") ||
         ctx.pathname.includes("/customer-area/data") ||

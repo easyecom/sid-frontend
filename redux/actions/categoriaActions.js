@@ -25,9 +25,9 @@ export const fetchCategoria = (id) => (dispatch) => {
     .catch((e) => console.log(e));
 };
 
-export const fetchProdutosCategoria = (id, atual = 1, limit = 20) => (dispatch) => {
+export const fetchProdutosCategoria = (id, skip = 0, limit = 16) => (dispatch) => {
   axios
-    .get(`${API}/stores/${loja}/category/${id}/products?page=${atual}&limit=${limit}`)
+    .get(`${API}/stores/${loja}/category/${id}/products?page=${skip}&limit=${limit}`)
     .then((response) => {
       dispatch({ type: FETCH_CATEGORIA_PRODUTOS, payload: response.data })
     })
