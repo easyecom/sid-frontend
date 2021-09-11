@@ -56,7 +56,7 @@ class ListaDeProdutos extends Component {
 
   renderProduto(item, semAlteracoes, index) {
     const foto = item.foto || null;
-    const { quantidade, precoUnitario, productName: nome } = item;
+    const { quantidade, precoUnitario, productName: nome, variationId } = item;
     return (
       <div key={item.id} className="carrinho-item flex">
         <div className="flex-4 flex">
@@ -64,7 +64,7 @@ class ListaDeProdutos extends Component {
             <img src={foto} alt={nome} width="100px" />
           </div>
           <div className="produto-titulo flex-4 flex flex-start">
-            <h3 className="text-center">{nome}</h3>
+            <h3 className="text-center">{nome}&nbsp; - {variationId}</h3> 
           </div>
         </div>
         <div className="flex-1 flex flex-center">

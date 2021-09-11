@@ -10,7 +10,7 @@ class Hero extends Component {
   static contextType = DataContext;
 
   constructor(props) {
-    super();
+    super(props);
     const { produto } = props;
     this.state = {
       foto: produto.variations
@@ -19,8 +19,17 @@ class Hero extends Component {
       fotos: produto.variations
         ? produto.variations[0].images.map((item) => item.path) || []
         : [],
+      productName: produto.productName,
+      variationName: produto.variations[0].variationName,
+      prices: produto.variations[0].prices,
+      offerPrice: produto.variations[0].offerPrice,
+      variations: produto.variations,
+      productId: produto.productId,
+      color: produto.variations[0].colorName,
+      size: produto.variations[0].size,
+      // For addCart
       qtd: 1,
-      variacao:
+      variationId:
         produto.variations && produto.variations.length >= 1
           ? produto.variations[0].variationId
           : null,
@@ -65,15 +74,22 @@ class Hero extends Component {
   }
 
   renderVariacoesColor() {
+    let { variations, color } = this.state;
     const { produto } = this.props;
+
+    variations = [
+      ...variations
+        .reduce((map, obj) => map.set(obj.colorName, obj), new Map())
+        .values(),
+    ];
 
     return (
       <div>
         <div className="titleProductDetails">
-          <label>COR</label>
+          <label>{`COR: ${color}`}</label>
         </div>
         <div className={"variacoes flex wrap"}>
-          {produto.variations.map((item) => {
+          {variations.map((item) => {
             return (
               <div
                 className={`${
@@ -90,6 +106,21 @@ class Hero extends Component {
                         : ""
                     }
                     width="35"
+                    onClick={() =>
+                      this.setState({
+                        foto: item.images[0].path,
+                        fotos: item.images.map((item) => item.path),
+                        variationId: item.variationId,
+                        color: item.colorName,
+                        size: item.size,
+                        prices: item.prices
+                          ? item.prices
+                          : produto.variations[0].prices,
+                        offerPrice: item.offerPrice
+                          ? item.offerPrice
+                          : produto.variations[0].offerPrice,
+                      })
+                    }
                   />
                 </span>
               </div>
@@ -100,8 +131,8 @@ class Hero extends Component {
     );
   }
 
-  renderVariacoesSize(title) {
-    const { produto } = this.props;
+  renderVariacoesSize() {
+    const { variations, color } = this.state;
 
     return (
       <div>
@@ -109,38 +140,59 @@ class Hero extends Component {
           <label>TAMANHO</label>
         </div>
         <div className={"variacoes flex wrap"}>
-          {produto.variations.map((item) => {
-            return (
-              <div
-                className={`${
-                  item.quantity
-                    ? "variacao-item-size"
-                    : "variacao-item-size-empty"
-                } flex-1 flex flex-center wrap-4`}
-              >
-                <span className="item-size">{item.size}</span>
-              </div>
-            );
-          })}
+          {variations
+            .map((item) => {
+              if (item.colorName == color) {
+                return (
+                  <div
+                    className={`${
+                      item.quantity
+                        ? "variacao-item-size"
+                        : "variacao-item-size-empty"
+                    } flex-1 flex flex-center wrap-4`}
+                  >
+                    <span
+                      className="item-size"
+                      onClick={() =>
+                        this.setState({
+                          variationId: item.variationId,
+                          size: item.size,
+                        })
+                      }
+                    >
+                      {item.size}
+                    </span>
+                  </div>
+                );
+              }
+            })
+            .filter((item) => item)}
         </div>
       </div>
     );
   }
 
-  addCart() {
-    const { variacao, qtd } = this.state;
-    const { produto } = this.props;
+  addCartHandler() {
+    const {
+      variationId,
+      productId,
+      productName,
+      prices,
+      offerPrice,
+      color,
+      size,
+      qtd,
+      foto,
+    } = this.state;
 
     addCart(
       {
-        productName: produto.productName,
-        produto: produto.productId,
-        variacao,
+        variationId: variationId,
+        produto: productId,
+        productName: `${productName} ${color} ${size}`,
+        precoUnitario: offerPrice ? offerPrice : prices,
+        foto: foto || null,
         quantidade: qtd,
-        precoUnitario: produto.variations[0].offerPrice
-          ? produto.variations[0].offerPrice
-          : produto.variations[0].prices,
-        foto: produto.variations[0].images[0].path || null,
       },
       true
     );
@@ -148,18 +200,12 @@ class Hero extends Component {
   }
 
   renderDetalhes() {
-    const { produto } = this.props;
+    const { variationName, prices, offerPrice, color } = this.state;
 
     return (
       <div className="flex-1 produto-detalhes">
-        {/* <div className="categoria">
-          <p>
-            Categoria:&nbsp;
-            <span className="categoria-link">{produto.categoryName}</span>
-          </p>
-        </div> */}
         <div className="titulo">
-          <h2>{produto.variations[0].variationName}</h2>
+          <h2>{`${variationName} ${color}`}</h2>
         </div>
         {/* <br /> */}
         <div className="avaliacao-pontuacao flex-1 flex">
@@ -172,18 +218,12 @@ class Hero extends Component {
           </span>
         </div>
         <div className="precos">
-          <h2 className="preco-original preco-por">
-            {formatMoney(produto.variations[0].prices)}
-          </h2>
+          <h2 className="preco-original preco-por">{formatMoney(prices)}</h2>
           <h2 className="preco-promocao">
-            {formatMoney(produto.variations[0].offerPrice) ||
-              produto.variations[0].prices}
+            {formatMoney(offerPrice) || prices}
           </h2>
           <h4 className="preco-parcelado">
-            ou em 6x de{" "}
-            {formatMoney(produto.variations[0].offerPrice / 6) ||
-              produto.variations[0].prices / 6}{" "}
-            sem juros
+            ou em 6x de {formatMoney(offerPrice / 6) || prices / 6} sem juros
           </h4>
         </div>
         <br />
@@ -205,14 +245,14 @@ class Hero extends Component {
           <Link href="/cart">
             <button
               className="btn btn-success btn-cta btn-product-details"
-              onClick={() => this.addCart()}
+              onClick={() => this.addCartHandler()}
             >
               COMPRAR AGORA
             </button>
           </Link>
           <button
             className="btn btn-cta btn-add btn-product-details"
-            onClick={() => this.addCart()}
+            onClick={() => this.addCartHandler()}
           >
             <p>ADICIONAR AO CARRINHO</p>
           </button>

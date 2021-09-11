@@ -6,7 +6,7 @@ const _saveCart = (item) => {
   let found;
 
   cart = cart.map((_item) => {
-    if (_item.produto === item.produto && _item.variacao === item.variacao) {
+    if (_item.produto === item.produto && _item.variationId === item.variationId) {
       found = true;
       return {
         ..._item,
