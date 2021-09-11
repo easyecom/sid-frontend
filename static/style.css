@@ -536,7 +536,10 @@
 
 /* CARRINHO */
 
+
+
 .Carrinho > h2 {
+  padding-top: 15px;
   font-size: 2rem;
 }
 
@@ -568,6 +571,7 @@
 }
 
 .Carrinho .carrinho-cabecalho {
+  padding: 10px 0;
   background-color: #999;
   color: #fff;
 }

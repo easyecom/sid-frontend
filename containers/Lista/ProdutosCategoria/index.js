@@ -10,7 +10,7 @@ import actions from '../../../redux/actions';
 class ProdutosCategoria extends Component {
   state = {
     skip: 0,
-    limit: 16,
+    limit: 4,
   };
 
   getProdutos() {
@@ -26,6 +26,8 @@ class ProdutosCategoria extends Component {
 
   render() {
     const { produtosCategoria, categoria } = this.props;
+
+    console.log(produtosCategoria, "category products")
 
     return (
       <div className="container Categoria-Produtos">
