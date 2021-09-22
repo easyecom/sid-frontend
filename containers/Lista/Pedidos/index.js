@@ -1,43 +1,50 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
-import Pedidos from '../../../components/Listas/Pedidos';
-import Paginacao from '../../../components/Paginacao';
-
-const PEDIDOS = [
-  {
-    id: 657837,
-    data: "04/11/2020",
-    valor: 189.55,
-    status: "Pago / Entregue"
-  },
-  {
-    id: 657838,
-    data: "05/11/2020",
-    valor: 255.55,
-    status: "Pago / Em Trãnsito"
-  },
-  {
-    id: 657839,
-    data: "06/11/2020",
-    valor: 155.55,
-    status: "Pago / Em Separação"
-  },
-  {
-    id: 6578310,
-    data: "07/11/2020",
-    valor: 300.20,
-    status: "A Pagar / -"
-  }
-]
+import Pedidos from "../../../components/Listas/Pedidos";
+import Paginacao from "../../../components/Paginacao";
+import actions from "../../../redux/actions";
+import { connect } from "react-redux";
 
 class ListaPedidos extends Component {
-  state = { atual: 0 }
+  state = { atual: 0 };
+
+  componentDidMount() {
+    this.fetchPedidos();
+  }
+
+  componentDidUpdate() {
+    const { pedidos } = this.props;
+    if (!pedidos) this.fetchPedidos();
+  }
+
+  fetchPedidos() {
+    const { token, pedidos } = this.props;
+    console.log(this.props, "pedidos cliente");
+    if (token && pedidos) pedidos(1, token);
+  }
 
   render() {
+    const { pedidos: orders } = this.props;
+    console.log(orders, "pedidos render");
+
+    let PEDIDOS;
+    if (orders) {
+      PEDIDOS = orders.map((order) => {
+        return {
+          id: order.orderId,
+          data: order.created_at,
+          valor: order.total,
+          status: order.status,
+        };
+      });
+    }
+
+    if (!orders || orders == null) PEDIDOS = null;
+
     return (
       <div className="flex-4 conteudo-area-cliente">
         <h2>MEUS PEDIDOS</h2>
-        <br/>
+        <br />
         <Pedidos pedidos={PEDIDOS} />
         {/* <Paginacao
           atual={this.state.atual || 0}
@@ -46,7 +53,14 @@ class ListaPedidos extends Component {
           onClick={(numeroAtual) => this.setState({ atual: numeroAtual })} /> */}
       </div>
     );
-  };
-};
+  }
+}
 
-export default ListaPedidos;
+const mapStateToProps = (state) => ({
+  pedidos: state.pedido.pedidos,
+  token: state.auth.token,
+  // usuario: state.auth.usuario,
+  // cliente: state.cliente.cliente
+});
+
+export default connect(mapStateToProps, actions)(ListaPedidos);

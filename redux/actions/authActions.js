@@ -15,7 +15,7 @@ export const getUser =
     ({ token }) =>
     (dispatch) => {
       axios
-        .get(`${API}/stores/2/clients/5`, getHeaders(token))
+        .get(`${API}/stores/1/clients/2`, getHeaders(token))
         .then((response) => {
           dispatch({ type: USER, payload: response.data.user });
         })

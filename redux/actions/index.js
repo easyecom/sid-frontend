@@ -2,8 +2,9 @@ import authActions from './authActions';
 import categoriaActions from './categoriaActions';
 import lojaActions from './lojaActions';
 import produtoActions from './produtoActions';
-import carrinhoActions from './carrinhoActions'
-import clientActions from './clientActions'
+import carrinhoActions from './carrinhoActions';
+import clientActions from './clientActions';
+import pedidoActions from './pedidoActions';
 
 export default {
   ...authActions,
@@ -11,5 +12,6 @@ export default {
   ...categoriaActions,
   ...lojaActions,
   ...produtoActions,
-  ...carrinhoActions
+  ...carrinhoActions,
+  ...pedidoActions
 };

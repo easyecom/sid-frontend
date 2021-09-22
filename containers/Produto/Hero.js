@@ -133,6 +133,7 @@ class Hero extends Component {
 
   renderVariacoesSize() {
     const { variations, color } = this.state;
+    const { produto } = this.props;
 
     return (
       <div>
@@ -157,6 +158,12 @@ class Hero extends Component {
                         this.setState({
                           variationId: item.variationId,
                           size: item.size,
+                          prices: item.prices
+                            ? item.prices
+                            : produto.variations[0].prices,
+                          offerPrice: item.offerPrice
+                            ? item.offerPrice
+                            : produto.variations[0].offerPrice,
                         })
                       }
                     >

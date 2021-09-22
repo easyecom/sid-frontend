@@ -19,7 +19,8 @@ class MenuAreaDoCliente extends Component {
     const estaEmPedidos = !estaEmDados && !estaEmAlterarSenha;
     return (
       <div className="menu-lateral">
-        <Link href="/customer-area">
+        <Link href="/customer-area"> 
+         {/* TODO -  problema para manter cliente em meus dados */}
           <div className={`menu-lateral-item ${estaEmPedidos ? "menu-lateral-item-active" : ""}`}>
             <span>MEUS PEDIDOS</span>
           </div>

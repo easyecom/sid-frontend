@@ -23,7 +23,10 @@ class Pedidos extends Component {
 
   renderCorpo() {
     const { pedidos } = this.props;
-    return pedidos.map((pedido) => (<Pedido pedido={pedido} key={pedido.id} />));
+    if(pedidos){
+      return pedidos.map((pedido) => (<Pedido pedido={pedido} key={pedido.id} />));
+    }
+    return null
   }
 
   render() {
