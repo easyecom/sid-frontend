@@ -9,14 +9,13 @@ import { API, versao, loja } from "../../config";
 import errorHandling from "./errorHandling";
 import { getHeaders } from "./helpers";
 
-export const fetchPedidos = (stores, token) => (dispatch) => {
+export const fetchPedidos = (token) => (dispatch) => {
   axios
-    .get(`${API}/stores/${stores}/orders/me`, getHeaders(token))
-    .then((response) =>{
-        console.log(response, "orders actions")
-      dispatch({ type: FETCH_PEDIDOS, payload: response.data })
+    .get(`${API}/stores/${loja}/orders/me`, getHeaders(token))
+    .then((response) => {
+      dispatch({ type: FETCH_PEDIDOS, payload: response.data });
     })
-    .catch((e) => console.log(e));
+    .catch((e) => console.log(e, "error"));
 };
 
 export const fetchPedido = (id, token) => (dispatch) => {

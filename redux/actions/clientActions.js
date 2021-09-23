@@ -23,16 +23,16 @@ export const getRawData = (data) => {
 
 export const fetchClient = (id, token) => (dispatch) => {
   axios
-    .get(`${API}/stores/1/clients/${id}`, getHeaders(token))
+    .get(`${API}/stores/${loja}/clients/${id}`, getHeaders(token))
     .then((response) => {
       dispatch({ type: FETCH_CLIENTE, payload: response.data });
     })
     .catch((e) => console.log(e));
 };
 
-export const newClient = (payload, store_id, cb) => (dispatch) => {
+export const newClient = (payload, cb) => (dispatch) => {
   axios
-    .post(`${API}/stores/${store_id}/clients`, {
+    .post(`${API}/stores/${loja}/clients`, {
       userName: payload.userName,
       email: payload.email,
       password: payload.password,

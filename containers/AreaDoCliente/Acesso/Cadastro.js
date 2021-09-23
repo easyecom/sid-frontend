@@ -41,7 +41,7 @@ class CadastroContainer extends Component {
   }
 
   handleRegistryCustomer() {
-    this.props.newClient(this.state, 1, (error) => {
+    this.props.newClient(this.state, (error) => {
       if (error)
         this.setState({ aviso: { status: false, message: error.message } });
       else this.setState({ aviso: null });

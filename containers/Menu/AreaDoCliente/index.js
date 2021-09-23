@@ -1,16 +1,34 @@
-import React, { Component } from 'react';
-import Link from 'next/link';
-import { withRouter } from 'next/router';
+import React, { Component } from "react";
+import Link from "next/link";
+import { withRouter } from "next/router";
+import { connect } from "react-redux";
+import actions from "../../../redux/actions";
 
 class MenuAreaDoCliente extends Component {
+  componentDidMount() {
+    this.fetchCliente();
+  }
+
+  componentDidUpdate() {
+    this.fetchCliente();
+  }
+
+  fetchCliente() {
+    const { usuario, token, cliente } = this.props;
+    console.log(this.props)
+    if (usuario && token && !cliente) {
+      this.props.fetchClient(usuario.userId, token);
+    }
+  }
 
   renderCabecalho() {
+    const { usuario } = this.props;
     return (
       <div>
-        <h3>Olá, Dariane!</h3>
+        <h3>{`Olá ${usuario.userName}`}</h3>
       </div>
     );
-  };
+  }
 
   renderMenu() {
     const url = this.props.router.pathname;
@@ -19,37 +37,55 @@ class MenuAreaDoCliente extends Component {
     const estaEmPedidos = !estaEmDados && !estaEmAlterarSenha;
     return (
       <div className="menu-lateral">
-        <Link href="/customer-area"> 
-         {/* TODO -  problema para manter cliente em meus dados */}
-          <div className={`menu-lateral-item ${estaEmPedidos ? "menu-lateral-item-active" : ""}`}>
+        <Link href="/customer-area">
+          {/* TODO -  problema para manter cliente em meus dados */}
+          <div
+            className={`menu-lateral-item ${
+              estaEmPedidos ? "menu-lateral-item-active" : ""
+            }`}
+          >
             <span>MEUS PEDIDOS</span>
           </div>
         </Link>
         <Link href="/customer-area/data">
-          <div className={`menu-lateral-item ${estaEmDados ? "menu-lateral-item-active" : ""}`}>
+          <div
+            className={`menu-lateral-item ${
+              estaEmDados ? "menu-lateral-item-active" : ""
+            }`}
+          >
             <span>MEUS DADOS</span>
           </div>
         </Link>
         <Link href="/customer-area/change-password">
-          <div className={`menu-lateral-item ${estaEmAlterarSenha ? "menu-lateral-item-active" : ""}`} >
+          <div
+            className={`menu-lateral-item ${
+              estaEmAlterarSenha ? "menu-lateral-item-active" : ""
+            }`}
+          >
             <span>ALTERAR SENHA</span>
           </div>
         </Link>
-        <div className="menu-lateral-item" onClick={() => alert('logout!')}>
+        <div className="menu-lateral-item" onClick={() => alert("logout!")}>
           <span>SAIR</span>
         </div>
       </div>
-    )
+    );
   }
 
   render() {
     return (
       <div className="flex-1 flex vertical">
-        { this.renderCabecalho() }
-        { this.renderMenu() }
+        {this.renderCabecalho()}
+        {this.renderMenu()}
       </div>
     );
-  };
-};
+  }
+}
 
-export default withRouter(MenuAreaDoCliente);
+const mapStateToProps = (state) => ({
+  usuario: state.auth.usuario,
+  token: state.auth.token,
+  cliente: state.cliente,
+});
+
+export default connect(mapStateToProps, actions)(withRouter(MenuAreaDoCliente));

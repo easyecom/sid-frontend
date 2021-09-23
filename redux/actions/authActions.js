@@ -6,7 +6,7 @@ import { setCookie, removeCookie, getCookie } from "../../utils/cookie";
 import { fetchClient } from "./clientActions";
 
 const getHeaders = (token) => ({
-  headers: { Authorization: `Bearer ${token}` },
+  header: { Authorization: `Bearer ${token}` },
 });
 
 export const getUser =

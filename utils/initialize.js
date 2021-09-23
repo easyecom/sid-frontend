@@ -4,12 +4,12 @@ import { getCookie } from "./cookie";
 
 export default function (ctx) {
   if (ctx.isServer) {
+    console.log(ctx, "is server ====>")
     ctx.store.dispatch(actions.reauthenticate(getCookie("token", ctx.req)));
-  }
-  if (ctx.store) {
+  } else if (ctx.store) {
     console.log(ctx)
     const token = ctx.store.getState().auth.token; // verify if token arrived here
-    console.log(token, "====>")
+    console.log(token, "no server ====>")
     if (
       !token &&
       (ctx.pathname.includes("/customer-area/request") ||

@@ -13,7 +13,6 @@ const initialState = {
 export default (state = initialState, action) => {
     switch(action.type){
         case FETCH_PEDIDOS:
-            console.log(action.payload, "payload <<<<<<<++++++++")
             return {
                 ...state,
                 pedidos: action.payload

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import moment from "moment";
 
 import Pedidos from "../../../components/Listas/Pedidos";
 import Paginacao from "../../../components/Paginacao";
@@ -9,32 +10,33 @@ class ListaPedidos extends Component {
   state = { atual: 0 };
 
   componentDidMount() {
-    this.fetchPedidos();
+    const { token, fetchPedidos } = this.props;
+    if (token) fetchPedidos(token);
   }
 
   componentDidUpdate() {
-    const { pedidos } = this.props;
-    if (!pedidos) this.fetchPedidos();
+    const { token, pedidos, fetchPedidos } = this.props;
+    if (!pedidos) fetchPedidos(token);
   }
 
-  fetchPedidos() {
-    const { token, pedidos } = this.props;
-    console.log(this.props, "pedidos cliente");
-    if (token && pedidos) pedidos(1, token);
-  }
+  // fetchPedidos() {
+  //   const { token, pedidos } = this.props;
+  //   console.log(this.props, "pedidos cliente");
+  //   // if (token && pedidos)
+  //   this.props.fetchPedidos(1, token);
+  // }
 
   render() {
     const { pedidos: orders } = this.props;
-    console.log(orders, "pedidos render");
 
     let PEDIDOS;
-    if (orders) {
+    if (orders && orders.length) {
       PEDIDOS = orders.map((order) => {
         return {
           id: order.orderId,
-          data: order.created_at,
+          data: moment(order.created_at).format("DD/MM/YYYY"),
           valor: order.total,
-          status: order.status,
+          status: order.status || "pagamento em analise",
         };
       });
     }
@@ -57,6 +59,7 @@ class ListaPedidos extends Component {
 }
 
 const mapStateToProps = (state) => ({
+  test: state,
   pedidos: state.pedido.pedidos,
   token: state.auth.token,
   // usuario: state.auth.usuario,
