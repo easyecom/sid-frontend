@@ -5,15 +5,18 @@ import ListaStatus from '../../../components/Listas/Status';
 const REGISTROS = [
   { data: "08/07/2020", situacao: "Pagamento em Analise"},
   { data: "08/07/2020", situacao: "Pagamento Aprovado"},
-  { data: "09/07/2020", situacao: "Pagamento Recebido"}
+  { data: "10/07/2020", situacao: "Objeto em separação"},
+  { data: "11/07/2020", situacao: "Objeto entregue na transportadora"},
+  { data: "13/07/2020", situacao: "Objeto em trânsito"},
+  { data: "15/07/2020", situacao: "Objeto em entregue"},
 ];
 
-class DetalhesDoPagamento extends Component {
+class StatusPedido extends Component {
   render() {
     return (
       <div className="flex-1">
         <div className="Detalhes-Da-Entrega">
-          <h4>Sobre o Pagamento</h4>
+          <h4>Status do pedido</h4>
           <br/>
           <ListaStatus registros={REGISTROS} />
         </div>
@@ -22,4 +25,4 @@ class DetalhesDoPagamento extends Component {
   };
 };
 
-export default DetalhesDoPagamento;
+export default StatusPedido;

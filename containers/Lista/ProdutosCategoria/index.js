@@ -27,8 +27,6 @@ class ProdutosCategoria extends Component {
   render() {
     const { produtosCategoria, categoria } = this.props;
 
-    console.log(produtosCategoria, "category products")
-
     return (
       <div className="container Categoria-Produtos">
         <br /> <br />

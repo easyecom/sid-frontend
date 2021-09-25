@@ -30,6 +30,23 @@ export const fetchClient = (id, token) => (dispatch) => {
     .catch((e) => console.log(e));
 };
 
+export const updateUser = (payload, token) => (dispatch) => {
+  axios
+    .put(
+      `${API}/users`, {
+        userName: payload.userName,
+        email: payload.email,
+        password: payload.novaSenha,
+        avatar_id: payload.avatar_id
+      },
+      getHeaders(token)
+    )
+    .then((response) => {
+      dispatch({ type: UPDATE_USER, payload: response.data });
+    })
+    .catch((e) => console.log(e));
+};
+
 export const newClient = (payload, cb) => (dispatch) => {
   axios
     .post(`${API}/stores/${loja}/clients`, {
@@ -97,6 +114,7 @@ export const logoutClient = () => (dispatch) => {
 
 export default {
   fetchClient,
+  updateUser,
   newClient,
   newAddress,
   logoutClient,

@@ -736,6 +736,10 @@
   margin-top: 30px !important;
 }
 
+.conteudo-area-cliente .order-details-box {
+  display: flex;
+}
+
 .menu-lateral {
   border-top: 3px solid #ff9600;
   margin-top: 30px;
@@ -787,8 +791,14 @@
   display: flex;
 }
 
+table.TabelaSimples {
+  width: 100%;
+  background: blue;
+}
+
 table.simples {
   border-collapse: collapse;
+  width: 100%;
 }
 
 table.simples th,

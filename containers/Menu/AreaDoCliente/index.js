@@ -15,7 +15,6 @@ class MenuAreaDoCliente extends Component {
 
   fetchCliente() {
     const { usuario, token, cliente } = this.props;
-    console.log(this.props)
     if (usuario && token && !cliente) {
       this.props.fetchClient(usuario.userId, token);
     }

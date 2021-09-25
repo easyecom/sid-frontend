@@ -20,10 +20,10 @@ export const fetchPedidos = (token) => (dispatch) => {
 
 export const fetchPedido = (id, token) => (dispatch) => {
   axios
-    .get(`${API}/${versao}/api/pedidos/${id}?loja=${loja}`, getHeaders(token))
-    .then((response) =>
-      dispatch({ type: FETCH_PEDIDO, payload: response.data })
-    )
+    .get(`${API}/stores/${loja}/orders/me/${id}`, getHeaders(token))
+    .then((response) => {
+      dispatch({ type: FETCH_PEDIDO, payload: response.data });
+    })
     .catch((e) => console.log(e));
 };
 

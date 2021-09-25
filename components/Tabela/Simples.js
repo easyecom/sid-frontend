@@ -9,7 +9,7 @@ const TabelaSimples = ({ cabecalho, dados }) => (
         </tr>
       </thead>
       <tbody>
-        { dados.map((linha, idx) => (
+        { dados && dados.map((linha, idx) => (
           <tr key={idx}>
             { cabecalho.map((item, index) => (
               <td key={index}>{ linha[item] || "" }</td>

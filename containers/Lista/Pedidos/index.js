@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import moment from "moment";
 
 import Pedidos from "../../../components/Listas/Pedidos";
-import Paginacao from "../../../components/Paginacao";
+// import Paginacao from "../../../components/Paginacao";
 import actions from "../../../redux/actions";
 import { connect } from "react-redux";
 
@@ -18,13 +18,6 @@ class ListaPedidos extends Component {
     const { token, pedidos, fetchPedidos } = this.props;
     if (!pedidos) fetchPedidos(token);
   }
-
-  // fetchPedidos() {
-  //   const { token, pedidos } = this.props;
-  //   console.log(this.props, "pedidos cliente");
-  //   // if (token && pedidos)
-  //   this.props.fetchPedidos(1, token);
-  // }
 
   render() {
     const { pedidos: orders } = this.props;

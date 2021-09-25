@@ -20,8 +20,7 @@ export default (state = initialState, action) => {
         case FETCH_PEDIDO:
             return {
                 ...state,
-                pedido: action.payload.pedido,
-                pedidoRegistros: action.payload.registros
+                pedido: action.payload,
             }
         case CLEAN_PEDIDO:
             return {

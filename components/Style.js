@@ -30,6 +30,12 @@ export default () => (
       display: flex;
     }
 
+    .flex-space { 
+      display: flex;
+      justify-content: space-between;
+      align-items: center
+    }
+
     .flex-1 {
       flex: 1;
     }
