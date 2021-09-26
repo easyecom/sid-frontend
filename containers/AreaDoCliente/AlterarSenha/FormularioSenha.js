@@ -7,7 +7,7 @@ import actions from "../../../redux/actions";
 class FormularioSenha extends Component {
   state = {
     senhaAntiga: "",
-    novaSenha: "",
+    password: "",
     confirmarNovaSenha: "",
   };
 
@@ -16,19 +16,21 @@ class FormularioSenha extends Component {
   }
 
   handleUpdateUser() {
-    const { novaSenha, confirmarNovaSenha } = this.state;
+    const { password, confirmarNovaSenha } = this.state;
     
-    if (novaSenha !== confirmarNovaSenha) alert("Senhas não conferem");
+    if (password !== confirmarNovaSenha) return alert("Senhas não conferem");
 
     this.props.updateUser(this.state, this.props.token, (error) => {
       if (error)
         this.setState({ aviso: { status: false, message: error.message } });
       else this.setState({ aviso: null });
     });
+
+    alert("atualizado com sucesso")
   }
 
   render() {
-    const { senhaAntiga, novaSenha, confirmarNovaSenha } = this.state;
+    const { senhaAntiga, password, confirmarNovaSenha } = this.state;
     return (
       <div className="flex-4 conteudo-area-cliente">
         <h2>ALTERAR SENHA</h2>
@@ -44,11 +46,11 @@ class FormularioSenha extends Component {
             onChange={(e) => this.onChangeInput("senhaAntiga", e.target.value)}
           />
           <FormSimples
-            value={novaSenha}
-            name="novaSenha"
+            value={password}
+            name="password"
             type="password"
             placeholder="Nova Senha"
-            onChange={(e) => this.onChangeInput("novaSenha", e.target.value)}
+            onChange={(e) => this.onChangeInput("password", e.target.value)}
           />
           <FormSimples
             value={confirmarNovaSenha}

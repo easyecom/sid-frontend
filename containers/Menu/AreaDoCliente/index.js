@@ -24,7 +24,7 @@ class MenuAreaDoCliente extends Component {
     const { usuario } = this.props;
     return (
       <div>
-        <h3>{`Olá ${usuario.userName}`}</h3>
+        <h3>{`Olá ${usuario && usuario.userName}`}</h3>
       </div>
     );
   }

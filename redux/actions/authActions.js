@@ -11,7 +11,6 @@ const getHeaders = (token) => ({
 
 export const getUser =
   // TODO - decidir se decodifica o token e pega userId e storeId, ou se faz a query no back pelo proprio token
-
     ({ token }) =>
     (dispatch) => {
       axios

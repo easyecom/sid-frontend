@@ -3,7 +3,7 @@ import {
   NEW_CLIENT,
   NEW_ADDRESS,
   FETCH_CLIENTE,
-  UPDATE_USER,
+  UPDATE_USER
 } from "../types";
 
 const initialState = { token: null, usuario: null };

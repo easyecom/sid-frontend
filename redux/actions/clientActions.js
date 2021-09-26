@@ -3,6 +3,7 @@ import {
   LOGOUT_CLIENTE,
   NEW_CLIENT,
   NEW_ADDRESS,
+  UPDATE_CLIENT,
 } from "../types";
 import axios from "axios";
 import { API, versao, loja } from "../../config";
@@ -21,9 +22,9 @@ export const getRawData = (data) => {
   return `${ano}-${mes}-${dia}`;
 };
 
-export const fetchClient = (id, token) => (dispatch) => {
+export const fetchClient = (token) => (dispatch) => {
   axios
-    .get(`${API}/stores/${loja}/clients/${id}`, getHeaders(token))
+    .get(`${API}/stores/${loja}/clients/me`, getHeaders(token))
     .then((response) => {
       dispatch({ type: FETCH_CLIENTE, payload: response.data });
     })
@@ -31,18 +32,58 @@ export const fetchClient = (id, token) => (dispatch) => {
 };
 
 export const updateUser = (payload, token) => (dispatch) => {
+
+  console.log(payload, "action payload input")
+
   axios
     .put(
-      `${API}/users`, {
+      `${API}/users`,
+      {
         userName: payload.userName,
         email: payload.email,
-        password: payload.novaSenha,
-        avatar_id: payload.avatar_id
+        password: payload.password ? payload.password : null,
+        avatar_id: payload.avatar_id,
       },
       getHeaders(token)
     )
     .then((response) => {
       dispatch({ type: UPDATE_USER, payload: response.data });
+    })
+    .catch((e) => console.log(e));
+
+  axios
+    .put(
+      `${API}/stores/${loja}/clients/me`,
+      {
+        dateOfBirth: payload.dateOfBirth,
+        cpf: payload.cpf,
+      },
+      getHeaders(token)
+    )
+    .then((response) => {
+      console.log(response, "actions update client");
+      dispatch({ type: UPDATE_CLIENT, payload: response.data });
+    })
+    .catch((e) => console.log(e));
+
+  axios
+    .put(
+      `${API}/stores/${loja}/addresses/${payload.addressId}`,
+      {
+        zipcode: payload.cep,
+        street: payload.local,
+        number: payload.numero,
+        complement: payload.complemento,
+        neighborhood: payload.bairro,
+        city: payload.cidade,
+        state: payload.estado,
+        // state_code: payload.state_code,
+        country: payload.country,
+      },
+      getHeaders(token)
+    )
+    .then((response) => {
+      dispatch({ type: UPDATE_CLIENT, payload: response.data });
     })
     .catch((e) => console.log(e));
 };

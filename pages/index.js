@@ -22,7 +22,7 @@ class Index extends Component {
   }
 
   async componentDidMount() {
-    await this.props.getUser({ token: this.props.token });
+    // await this.props.getUser({ token: this.props.token });
   }
 
   render() {
