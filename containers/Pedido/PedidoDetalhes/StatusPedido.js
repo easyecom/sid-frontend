@@ -3,11 +3,10 @@ import React, { Component } from 'react';
 import ListaStatus from '../../../components/Listas/Status';
 
 const REGISTROS = [
-  { data: "08/07/2020", situacao: "Pagamento em Analise"},
+  { data: "08/07/2020", situacao: "Pedido recebido"},
   { data: "08/07/2020", situacao: "Pagamento Aprovado"},
   { data: "10/07/2020", situacao: "Objeto em separação"},
   { data: "11/07/2020", situacao: "Objeto entregue na transportadora"},
-  { data: "13/07/2020", situacao: "Objeto em trânsito"},
   { data: "15/07/2020", situacao: "Objeto em entregue"},
 ];
 

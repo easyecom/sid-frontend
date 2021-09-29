@@ -43,7 +43,8 @@ class DadosDoCarrinho extends Component {
                     </div>
                 </div>
                 <div className="dados-do-carrinho-item flex flex-right">
-                    <Link href="/checkout">
+                    {/* <Link href="/checkout"> */}
+                    <Link href="/validateCustomerExist">
                         <button className="btn btn-success btn-cta">
                             <span>Finalizar Pedido</span>
                         </button>

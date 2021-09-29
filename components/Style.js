@@ -36,6 +36,13 @@ export default () => (
       align-items: center
     }
 
+    .validate {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
     .flex-1 {
       flex: 1;
     }
