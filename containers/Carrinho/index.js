@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import ListaDeProdutos from "./ListaDeProdutos";
 import DadosDoCarrinho from "./DadosDoCarrinho";
-import DeliveryCalculator from "./DeliveryCalculator"
+import DeliveryCalculator from "../../containers/Checkout/DadosFrete"
 import { connect } from "react-redux";
 import actions from "../../redux/actions";
 
@@ -25,10 +25,9 @@ class CarrinhoContainer extends Component {
   render() {
     return (
       <div className="container Carrinho">
-        <h2>Quantidade</h2>
         <br />
         <ListaDeProdutos />
-        <DeliveryCalculator />
+        {/* <DeliveryCalculator /> */}
         <DadosDoCarrinho />
       </div>
     );
