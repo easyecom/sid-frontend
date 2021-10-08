@@ -8,7 +8,7 @@ import actions from "../../../redux/actions";
 
 class FormularioDados extends Component {
   constructor(props) {
-    super();
+    super(props);
     const { cliente } = props;
     this.state = {
       addressId: cliente && cliente.addressId,

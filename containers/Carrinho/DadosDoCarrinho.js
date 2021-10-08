@@ -1,47 +1,84 @@
 import React, { Component } from "react";
-import Link from "next/link";
+import axios from "axios";
 import Router from "next/router";
-import { formatMoney } from "../../utils";
 
+import { formatMoney } from "../../utils";
+import { API, loja } from "../../config";
 import { connect } from "react-redux";
 import actions from "../../redux/actions";
-
-import Frete from "../../components/Item/Frete";
-
 import FormSimples from "../../components/Inputs/FormSimples";
 
-const cpfDB = "98320642019";
-
 class DadosDoCarrinho extends Component {
-  state = {
-    foundCPF: "",
-    cpf: "",
-    password: "",
-  };
+  constructor() {
+    super();
+    this.state = {
+      foundCPF: "",
+      cpf: "",
+      password: "",
+    };
+  }
+
+  async checkClientExist(field, value) {
+    this.setState({ [field]: value });
+
+    const { data } = await axios.post(
+      `${API}/stores/${loja}/clients/check-customer`,
+      {
+        cpf: String(value),
+      }
+    );
+
+    if (this.state.cpf >= 11 && data.clientExist == true) {
+      console.log(data, "client already exist");
+      return this.setState({ foundCPF: data.clientExist });
+    }
+
+    if (this.state.cpf >= 11 && data.clientExist == false) {
+      alert("Direcionando para pagina de cadastro");
+      console.log(data, "client does not exist");
+      return Router.push("/checkout");
+    }
+
+    console.log(data);
+    return alert("algo deu errado");
+  }
 
   onChangeInput(field, value) {
     this.setState({ [field]: value });
   }
 
-  onChangeInputCPF(field, value) {
-    this.setState({ [field]: value });
-
-    const foundCPF = true; // api
-
-    this.setState({ foundCPF: foundCPF });
-  }
-
   handleDirectCheckMyData() {
-    if (this.state.cpf > 11 && this.state.foundCPF == true) {
-      Router.push("/checkout");
+    if (this.state.cpf >= 11 && this.state.foundCPF == true) {
+      alert("Direcionando para pagina de atualizacao");
+      Router.push("/atualizacaoDadosEntrega");
     }
   }
 
-  handleDirectRegister() {
-    if (this.state.cpf > 11 && this.state.foundCPF == false) {
-      Router.push("/checkout");
-      alert("Direcionando para pagina de cadastro");
-    }
+  async componentDidMount() {
+    const { token, fetchClient } = await this.props;
+    if (token) fetchClient(token);
+  }
+
+  handleLogin() {
+    const { password } = this.state;
+
+    this.props.autenticar(
+      { email: "tirulipa@gmail.com", password },
+      false,
+      (error) => {
+        if (error) {
+          this.setState({ aviso: { status: false, message: error.message } });
+          alert(
+            "Usuario não existe, faça um cadastro ou entre com outra conta"
+          );
+        }
+        this.setState({ aviso: null });
+      }
+    );
+
+    console.log(this.props);
+
+    this.handleDirectCheckMyData();
   }
 
   handleModal() {
@@ -63,7 +100,7 @@ class DadosDoCarrinho extends Component {
                   type="text"
                   placeholder=""
                   onChange={(e) =>
-                    this.onChangeInputCPF(
+                    this.checkClientExist(
                       "cpf",
                       e.target.value.replace(/\D/g, "")
                     )
@@ -87,13 +124,13 @@ class DadosDoCarrinho extends Component {
                   </div>
                   <button
                     className="btn btn-success"
-                    onClick={() => this.handleDirectCheckMyData()}
+                    onClick={() => this.handleLogin()}
                   >
                     Enviar
                   </button>
                 </div>
               ) : (
-                this.handleDirectRegister()
+                ""
               )}
             </div>
           </div>
@@ -160,6 +197,9 @@ class DadosDoCarrinho extends Component {
 const mapStateToProps = (state) => ({
   carrinho: state.carrinho.carrinho,
   freteSelecionado: state.carrinho.freteSelecionado,
+  check_client: state.client.check_client_exist,
+  cliente: state.client.cliente,
+  token: state.auth.token,
 });
 
 export default connect(mapStateToProps, actions)(DadosDoCarrinho);

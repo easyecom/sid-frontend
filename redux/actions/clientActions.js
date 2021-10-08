@@ -4,6 +4,8 @@ import {
   NEW_CLIENT,
   NEW_ADDRESS,
   UPDATE_CLIENT,
+  CHECK_CLIENTE_EXIST,
+  UPDATE_ADDRESS
 } from "../types";
 import axios from "axios";
 import { API, versao, loja } from "../../config";
@@ -31,10 +33,19 @@ export const fetchClient = (token) => (dispatch) => {
     .catch((e) => console.log(e));
 };
 
+export const checkClientExist = (cpf) => (dispatch) => {
+  console.log(cpf, "actions 1");
+  axios
+    .post(`${API}/stores/${loja}/clients/check-customer`, { cpf: String(cpf) })
+    .then((response) => {
+      console.log(response, "actions 2");
+      dispatch({ type: CHECK_CLIENTE_EXIST, payload: response.data });
+    })
+    .catch((e) => console.log(e));
+};
+
 export const updateUser = (payload, token) => (dispatch) => {
-
-  console.log(payload, "action payload input")
-
+  console.log(payload, "action payload input");
   axios
     .put(
       `${API}/users`,
@@ -110,6 +121,7 @@ export const newClient = (payload, cb) => (dispatch) => {
       },
     })
     .then((response) => {
+      console.log(response);
       dispatch({ type: NEW_CLIENT, payload: response.data });
       dispatch(
         autenticar(
@@ -123,27 +135,53 @@ export const newClient = (payload, cb) => (dispatch) => {
     .catch((e) => cb(errorHandling(e)));
 };
 
-export const newAddress = (store_id, payload, token, cb) => (dispatch) => {
+export const newAddress = (payload, token, cb) => (dispatch) => {
   axios
     .post(
-      `${API}/${store_id}/addresses`,
+      `${API}/stores/${loja}/addresses`,
       {
-        zipcode: payload.zipcode,
-        street: payload.street,
-        number: payload.number,
-        complement: payload.complement,
-        neighborhood: payload.neighborhood,
-        city: payload.city,
-        state: payload.state,
-        state_code: payload.state_code,
-        country: payload.country,
-        storeIdToAddress: payload.storeIdToAddress,
+        zipcode: payload.CEP,
+        street: payload.local,
+        number: payload.numero,
+        complement: payload.complemento,
+        neighborhood: payload.cidade,
+        city: payload.cidade,
+        state: payload.estado,
+        state_code: "sp",
+        country: "Brasil",
+        storeIdToAddress: 1,
         // TODO - criar ENUM com tipos de endereço no backend
       },
       getHeaders(token)
     )
     .then((response) => {
       dispatch({ type: NEW_ADDRESS, payload: response.data });
+    })
+    .catch((e) => cb(errorHandling(e)));
+};
+
+export const updateAddress = (addressId, payload, token, cb) => (dispatch) => {
+  axios
+    .put(
+      `${API}/stores/${loja}/addresses/${parseInt(addressId)}`,
+      {
+        zipcode: payload.CEP,
+        street: payload.local,
+        number: payload.numero,
+        complement: payload.complemento,
+        neighborhood: payload.bairro,
+        city: payload.cidade,
+        state: payload.estado,
+        state_code: "sp",
+        country: "Brasil",
+        storeIdToAddress: 1,
+        // TODO - criar ENUM com tipos de endereço no backend
+      },
+      getHeaders(token)
+    )
+    .then((response) => {
+      console.log(response)
+      dispatch({ type: UPDATE_ADDRESS, payload: response.data });
     })
     .catch((e) => cb(errorHandling(e)));
 };
@@ -155,8 +193,10 @@ export const logoutClient = () => (dispatch) => {
 
 export default {
   fetchClient,
+  checkClientExist,
   updateUser,
   newClient,
+  updateAddress,
   newAddress,
   logoutClient,
 };

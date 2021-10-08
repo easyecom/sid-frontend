@@ -4,6 +4,15 @@
   max-height: 165px;
 }
 
+/* Para ajustar */
+.update-delivery {
+  padding: 0 50px;
+}
+
+.update-delivery h2 {
+  padding: 20px 0 40px 0;
+}
+
 .header-wrapper {
   display: flex;
   justify-content: space-between;
