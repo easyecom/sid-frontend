@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import FormSimples from '../../components/Inputs/FormSimples';
 import TextField from '@material-ui/core/TextField';
-
-
 import { ESTADOS } from '../../utils';
 
 export default class DadosClienteContainer extends Component {
@@ -28,6 +26,7 @@ export default class DadosClienteContainer extends Component {
   };
 
   onChange = (field, e) => this.setState({ [field]: e.target.value });
+
   onChangeCobranca = (field, e) => {
     const { state } = this;
     state.dadosCobranca[field] = e.target.value;

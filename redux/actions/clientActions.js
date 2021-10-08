@@ -11,7 +11,7 @@ import axios from "axios";
 import { API, versao, loja } from "../../config";
 import { setCookie, getCookie } from "../../utils/cookie";
 import { getHeaders } from "./helpers";
-import { autenticar, desautenticar } from "./authActions";
+import { autenticar, desautenticar } from "./authActions;
 import errorHandling from "./errorHandling";
 
 export const getRawData = (data) => {
@@ -72,7 +72,6 @@ export const updateUser = (payload, token) => (dispatch) => {
       getHeaders(token)
     )
     .then((response) => {
-      console.log(response, "actions update client");
       dispatch({ type: UPDATE_CLIENT, payload: response.data });
     })
     .catch((e) => console.log(e));
