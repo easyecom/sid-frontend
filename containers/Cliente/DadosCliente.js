@@ -1,17 +1,24 @@
 import React, { Component } from "react";
 import FormSimples from "../../components/Inputs/FormSimples";
 import TextField from "@material-ui/core/TextField";
+import { connect } from "react-redux";
+import actions from "../../redux/actions";
 
-export default class DadosClienteContainer extends Component {
-  state = {
-    email: "",
-    senha: "",
-    confirmeSenha: "",
-    nome: "",
-    CPF: "",
-    telefone: "",
-    dataDeNascimento: "",
-  };
+class DadosClienteContainer extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      email: "",
+      senha: "",
+      confirmeSenha: "",
+      nome: "",
+      CPF: "",
+      telefone: "",
+      dataDeNascimento: "",
+    };
+  }
+
+  // chamar função de atualizaçao se necessario
 
   onChangeInput = (field, value) => this.setState({ [field]: value });
 
@@ -131,3 +138,13 @@ export default class DadosClienteContainer extends Component {
     );
   }
 }
+
+const mapStateToProps = (state) => ({
+  carrinho: state.carrinho.carrinho,
+  freteSelecionado: state.carrinho.freteSelecionado,
+  cliente: state.client.cliente,
+  autenticar: state.auth.usuario,
+  token: state.auth.token,
+});
+
+export default connect(mapStateToProps, actions)(DadosClienteContainer);
