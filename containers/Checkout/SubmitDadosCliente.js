@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
+import Link from 'next/link';
 
 class SubmitDadosCliente extends Component {
   render() {
     return (
       <div>
         <div className="flex flex-right">
-          <button 
-            className="btn btn-success btn-cta"
-            onClick={() => console.log('Continuar pedido')}>
+          <Link href="/checkoutFinal">
+            <button
+              className="btn btn-success btn-cta"
+              onClick={() => console.log('Continuar pedido')}>
               IR PARA PAGAMENTO
-          </button>
+            </button>
+          </Link>
         </div>
       </div>
     );

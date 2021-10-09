@@ -11,14 +11,17 @@
 }
 
 .header-wrapper h2 {
-  color: #777777
+  color: #777777;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 24px;
 }
 
-.header-main {
+/* .header-main {
   display: flex;
   justify-content: center;
   align-items: center;
-}
+} */
 
 .Header-Simples {
   border-bottom: 1px solid #ededed;
@@ -579,6 +582,7 @@
   margin-top: 20px;
 }
 
+
 .dados-do-carrinho-item {
   padding: 10px 0;
   border-top: 1px solid #aaaa;
@@ -623,8 +627,13 @@
   animation-duration: 10ms;
 }
 
+.MuiFormControl-fullWidth {
+  min-width: 20%;
+}
+
 .componentes-container {
   display: flex;
+  justify-content: space-between;
   gap: 40px;
 }
 
@@ -642,6 +651,14 @@
   margin-left: 10px;
 }
 
+.pagamento-input {
+  max-width: 85%;
+}
+
+.pagamento-input-boleto {
+  min-width: 100%;
+}
+
 .form-input {
   display: flex;
   flex-direction: column;
@@ -653,7 +670,7 @@
 }
 
 .form-input label {
-  margin: 10px 0 5px;
+  margin: 7px 0 5px;
   font-size: 0.9rem;
   font-weight: bold;
 }
@@ -666,7 +683,7 @@
   max-width: 400px;
   font-size: 1rem;
   padding: 5px 8px;
-  margin: 0 5px 5px 0;
+  /* margin: 0 5px 5px 0; */
   border: 1px solid #aaaa;
   border-radius: 5px;
 }
@@ -690,6 +707,7 @@
   color: #999999;
   font-size: 24px;
   line-height: 24px;
+  font-weight: 400;
 }
 
 .checkout > h2 {
@@ -700,6 +718,62 @@
 
 .dados-cobranca {
   margin-top: 40px;
+}
+
+.Dados-Pagamento-Container {
+  padding-top: 10px;
+}
+
+.Dados_Pagamento label {
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 400;
+  color: #999999;
+  padding-right: 50px;
+}
+
+.Dados-Pedido-Container {
+  padding-top: 10px;
+  width: 37%;
+}
+
+.Dados-Pedido-Container span {
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 400;
+  color: #999999;
+}
+
+
+.resumo_pedido {
+  border-bottom: 2px solid #ededed;
+  margin-bottom: 20px;
+  font-size: 18px;
+  line-height: 24px;
+  color: #999999;
+
+}
+
+.resumo_pedido h3 {
+  font-weight: 400;
+  font-size: 18px;
+  padding-bottom: 3px;
+  text-transform: uppercase;
+}
+
+.resumo_pedido-title {
+  padding-bottom: 10px;
+  font-size: 18px;
+  line-height: 24px;
+  color: #999999;
+}
+
+.resumo_pedido-title-total {
+  padding-top: 15px;
+}
+
+.cpf-input {
+  min-width: 30%;
 }
 
 /* MINHA CONTA */
