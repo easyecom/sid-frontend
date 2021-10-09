@@ -3,7 +3,7 @@ import React from 'react';
 export default () => (
   <style jsx global> {`
     
-  @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
   
     * {
       margin: 0;
@@ -11,7 +11,7 @@ export default () => (
     }
   
     body {
-      font-family: 'Montserrat', Helvetica, sans-serif;
+      font-family: 'Roboto', sans-serif;
     }
 
     .container, 
@@ -28,6 +28,11 @@ export default () => (
     
     .flex { 
       display: flex;
+    }
+
+    .flex-align-center { 
+      display: flex;
+      align-items: center
     }
 
     .flex-space { 

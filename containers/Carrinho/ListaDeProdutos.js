@@ -12,7 +12,7 @@ class ListaDeProdutos extends Component {
       <div className="carrinho-cabecalho no-mb-flex flex">
         <div className="flex-4"></div>
         <div className="headline flex-1 flex flex-center">
-          <h3 className="text-center">Quantidade</h3>
+          <h3 className="text-center">QTD</h3>
         </div>
         <div className="headline flex-1 flex flex-center">
           <h3 className="text-center">Preço Unitátio</h3>

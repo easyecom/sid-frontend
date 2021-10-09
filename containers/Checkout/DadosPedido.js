@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 
-import ListaDeProdutos from '../Carrinho/ListaDeProdutos';
+import ResumoDoPedido from '../Carrinho/ResumoDoPedido';
 
 class DadosPedido extends Component {
   render() {
     return (
       <div className="Dados-Pedido-Container">
-        <h2>DADOS DO PEDIDO</h2>
+        <span>Resumo do pedido</span>
         <br/>
-        <ListaDeProdutos semAlteracoes />
+        <ResumoDoPedido />
         <br/>
       </div>
     );

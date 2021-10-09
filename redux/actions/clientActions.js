@@ -11,7 +11,7 @@ import axios from "axios";
 import { API, versao, loja } from "../../config";
 import { setCookie, getCookie } from "../../utils/cookie";
 import { getHeaders } from "./helpers";
-import { autenticar, desautenticar } from "./authActions;
+import { autenticar, desautenticar } from "./authActions";
 import errorHandling from "./errorHandling";
 
 export const getRawData = (data) => {
