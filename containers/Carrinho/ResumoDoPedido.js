@@ -11,9 +11,9 @@ class ListaDeProdutos extends Component {
     discount: "1000"
   }
 
-
   renderCabecalhoCarrinho() {
     const calculateTotal = Number(this.state.subtotal) + Number(this.state.frete) - Number(this.state.discount)
+
     return (
       <div className="carrinho-item">
         <div className="flex-space resumo_pedido-title">

@@ -741,6 +741,16 @@
   padding-right: 50px;
 }
 
+.Dados_Pagamento_boleto label {
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 400;
+  color: #999999;
+  /* width: 50%; */
+
+  padding-right: 50px;
+}
+
 .Dados-Pedido-Container {
   padding-top: 10px;
   width: 37%;

@@ -1,36 +1,48 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
-import FormRadio from '../../components/Inputs/FormRadio';
-import TextField from '@material-ui/core/TextField';
+import FormRadio from "../../components/Inputs/FormRadio";
+import TextField from "@material-ui/core/TextField";
 
 class DadosPagamento extends Component {
   state = {
     opcaoPagamentoSelecionado: "cartao",
-    CPF: ""
-  }
+    CPF: "",
+  };
 
   renderOpcoesPagamento() {
     const { opcaoPagamentoSelecionado } = this.state;
 
     return (
-      <div className="flex horizontal Dados_Pagamento">
+      <div
+        className={
+          opcaoPagamentoSelecionado === "cartao"
+            ? "flex horizontal Dados_Pagamento"
+            : "flex horizontal Dados_Pagamento_boleto"
+        }
+      >
         <div>
           <FormRadio
             name="tipo_pagamento_selecionado"
             checked={opcaoPagamentoSelecionado === "cartao"}
-            onChange={() => this.setState({ "opcaoPagamentoSelecionado": "cartao" })}
-            label="Cartão de Crédito" />
+            onChange={() =>
+              this.setState({ opcaoPagamentoSelecionado: "cartao" })
+            }
+            label="Cartão de Crédito"
+          />
         </div>
         <div>
           <FormRadio
             name="tipo_pagamento_selecionado"
             checked={opcaoPagamentoSelecionado === "boleto"}
-            onChange={() => this.setState({ "opcaoPagamentoSelecionado": "boleto" })}
-            label="Boleto Bancário" />
+            onChange={() =>
+              this.setState({ opcaoPagamentoSelecionado: "boleto" })
+            }
+            label="Boleto Bancário"
+          />
         </div>
       </div>
     );
-  };
+  }
 
   onChange = (field, e) => this.setState({ [field]: e.target.value });
 
@@ -50,14 +62,16 @@ class DadosPagamento extends Component {
             }}
             variant="outlined"
             value={CPF}
-            onChange={(e) => this.onChange("CPF", e)} />
+            onChange={(e) => this.onChange("CPF", e)}
+          />
         </div>
       </div>
     );
-  };
+  }
 
   renderPagamentoComCartao() {
-    const { nomeCartao, numeroCartao, CVCartao, mesCartao, anoCartao } = this.state;
+    const { nomeCartao, numeroCartao, CVCartao, mesCartao, anoCartao } =
+      this.state;
     return (
       <div className="Dados-Pagamento">
         <div className="text-field_input pagamento-input">
@@ -72,7 +86,8 @@ class DadosPagamento extends Component {
             }}
             variant="outlined"
             value={numeroCartao}
-            onChange={(e) => this.onChange("numeroCartao", e)} />
+            onChange={(e) => this.onChange("numeroCartao", e)}
+          />
         </div>
         <div className="flex horizontal">
           <div className="flex-1 text-field_input pagamento-input">
@@ -87,7 +102,8 @@ class DadosPagamento extends Component {
               }}
               variant="outlined"
               value={nomeCartao}
-              onChange={(e) => this.onChange("nomeCartao", e)} />
+              onChange={(e) => this.onChange("nomeCartao", e)}
+            />
           </div>
         </div>
         <div className="flex text-field_input pagamento-input">
@@ -118,7 +134,8 @@ class DadosPagamento extends Component {
             }}
             variant="outlined"
             value={anoCartao}
-            onChange={(e) => this.onChange("anoCartao", e)} />
+            onChange={(e) => this.onChange("anoCartao", e)}
+          />
           <TextField
             id="outlined-required"
             required
@@ -132,7 +149,8 @@ class DadosPagamento extends Component {
             }}
             variant="outlined"
             value={CVCartao}
-            onChange={(e) => this.onChange("CVCartao", e)} />
+            onChange={(e) => this.onChange("CVCartao", e)}
+          />
         </div>
         <div className="flex">
           <TextField
@@ -163,11 +181,13 @@ class DadosPagamento extends Component {
     return (
       <div className="Dados-Pagamento-Container">
         {this.renderOpcoesPagamento()}
-        {opcaoPagamentoSelecionado === "boleto" && this.renderPagamentoComBoleto()}
-        {opcaoPagamentoSelecionado === "cartao" && this.renderPagamentoComCartao()}
+        {opcaoPagamentoSelecionado === "boleto" &&
+          this.renderPagamentoComBoleto()}
+        {opcaoPagamentoSelecionado === "cartao" &&
+          this.renderPagamentoComCartao()}
       </div>
     );
-  };
-};
+  }
+}
 
 export default DadosPagamento;

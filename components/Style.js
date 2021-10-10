@@ -14,6 +14,20 @@ export default () => (
       font-family: 'Roboto', sans-serif;
     }
 
+
+.update-data-delivery {
+  // background: red;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  /* align-items: center; */
+}
+
+.update-data-delivery-box div {
+  // background: red;
+  width: 100%;
+}
+
     .container, 
     .container-big {
       width: calc(100% - 20px);
