@@ -1,25 +1,22 @@
 import React, { Component } from 'react';
 
-import DadosFrete from './DadosFrete';
-import DadosPagamento from './DadosPagamento';
 import DadosPedido from './DadosPedido';
-import CheckoutButton from './CheckoutButton';
+import AtualizacaoDadosEntrega from '../Carrinho/AtualizacaoDadosEntrega';
 
-class CheckoutContainerFinal extends Component {
+class UpdateOrCreateNewDelivery extends Component {
     render() {
         return (
             <div className="checkout container">
                 <div className="checkout-title flex flex-center">
-                    <h2>Dados de pagamento</h2>
+                    <h2>Confirme dados de entrega</h2>
                 </div>
                 <div className="componentes-container">
-                    <DadosPagamento />
+                    <AtualizacaoDadosEntrega />
                     <DadosPedido />
                 </div>
-                <CheckoutButton />
             </div>
         );
     };
 };
 
-export default CheckoutContainerFinal;
+export default UpdateOrCreateNewDelivery;

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import TextField from "@material-ui/core/TextField";
 import { connect } from "react-redux";
 import axios from "axios";
+import Link from "next/link";
 import { getHeaders } from "../../redux/actions/helpers";
 
 import { ESTADOS } from "../../utils";
@@ -83,9 +84,6 @@ class AtualizacaoDadosEntrega extends Component {
 
     return (
       <div className="flex-1 flex vertical update-delivery">
-        <div>
-          <h2>Dados De Entrega</h2>
-        </div>
         <div className="flex-1 text-field_input">
           <TextField
             id="outlined-required"
@@ -178,12 +176,14 @@ class AtualizacaoDadosEntrega extends Component {
             </TextField>
           </div>
         </div>
-        <button
-          className="btn btn-success"
-          onClick={() => this.handleCreateOrUpdateShipping()}
-        >
-          Ir para pagamento
-        </button>
+        <Link href="/checkoutFinal">
+          <button
+            className="btn btn-success"
+            onClick={() => this.handleCreateOrUpdateShipping()}
+          >
+            Ir para pagamento
+          </button>
+        </Link>
       </div>
     );
   }
