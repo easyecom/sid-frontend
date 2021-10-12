@@ -96,7 +96,7 @@ class DadosClienteContainer extends Component {
             onChange={(event) => this.onChangeInput("CPF", event.target.value)}
           />
         </div>
-        <div className="flex-1 text-field_input">
+        {/* <div className="flex-1 text-field_input">
           <TextField
             id="outlined-required"
             required
@@ -121,7 +121,7 @@ class DadosClienteContainer extends Component {
               this.onChangeInput("telefone", event.target.value)
             }
           />
-        </div>
+        </div> */}
       </div>
     );
   }
