@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import Layout from '../components/Layout';
 
 import Cabecalho from '../containers/Cabecalho';
-import CheckoutContainerFinal from '../containers/Checkout/CheckoutFinal';
+import OrderFinishedPage from '../containers/FinishedOrder';
 import Rodape from '../containers/Rodape';
 
 export default class Checkout extends Component {
@@ -19,8 +19,8 @@ export default class Checkout extends Component {
         return (
             <Layout title="Ckeckout | LOJA SID SURF STORE">
                 <Cabecalho simples
-                    title={"Dados de Pagamento"} />
-                <CheckoutContainerFinal />
+                    title={"Meu pedido"} />
+                <OrderFinishedPage />
                 <Rodape />
             </Layout>
         );
