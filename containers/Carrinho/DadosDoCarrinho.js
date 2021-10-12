@@ -28,19 +28,16 @@ class DadosDoCarrinho extends Component {
       }
     );
 
-    if (this.state.cpf >= 11 && data.clientExist == true) {
+    if (this.state.cpf.length >= 11 && data.clientExist == true) {
       console.log(data, "client already exist");
       return this.setState({ foundCPF: data.clientExist });
     }
 
-    if (this.state.cpf >= 11 && data.clientExist == false) {
+    if (this.state.cpf.length >= 11 && data.clientExist == false) {
       alert("Direcionando para pagina de cadastro");
-      console.log(data, "client does not exist");
+      console.log(this.state.cpf, "client does not exist");
       return Router.push("/checkout");
     }
-
-    console.log(data);
-    return alert("algo deu errado");
   }
 
   onChangeInput(field, value) {
