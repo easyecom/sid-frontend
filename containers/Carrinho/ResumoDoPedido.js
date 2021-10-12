@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { connect } from "react-redux"
+import { connect } from "react-redux";
 
 import actions from "../../redux/actions";
 import { formatMoney } from "../../utils";
@@ -8,11 +8,14 @@ class ListaDeProdutos extends Component {
   state = {
     subtotal: "",
     frete: "12",
-    discount: "1000"
-  }
+    discount: "1000",
+  };
 
   renderCabecalhoCarrinho() {
-    const calculateTotal = Number(this.state.subtotal) + Number(this.state.frete) - Number(this.state.discount)
+    const calculateTotal =
+      Number(this.state.subtotal) +
+      Number(this.state.frete) -
+      Number(this.state.discount);
 
     return (
       <div className="carrinho-item">
@@ -22,34 +25,34 @@ class ListaDeProdutos extends Component {
         </div>
         <div className="flex-space resumo_pedido-title">
           <p>Preço do frete</p>
-        <span>{formatMoney(this.state.frete)}</span>
+          <span>{formatMoney(this.state.frete)}</span>
         </div>
         <div className="flex-space resumo_pedido-title">
           <p>Desconto</p>
-        <span>{formatMoney(this.state.discount)}</span>
+          <span>{formatMoney(this.state.discount)}</span>
         </div>
         <div className="flex-space resumo_pedido-title resumo_pedido-title-total">
           <p>TOTAL</p>
-        <span>{formatMoney(calculateTotal)}</span>
+          <span>{formatMoney(calculateTotal)}</span>
         </div>
-
       </div>
     );
   }
 
   componentDidMount() {
-    const { carrinho } = this.props
-    let count = []
-    for (let item of carrinho) {
-      count.push(parseInt(item.precoUnitario * item.quantidade))
-    }
+    const { carrinho } = this.props;
+    if (carrinho) {
+      let count = [];
+      for (let item of carrinho) {
+        count.push(parseInt(item.precoUnitario * item.quantidade));
+      }
 
-    let value = 0;
-    for (let i = 0; i < count.length; i++) {
-      value = value += count[i]
+      let value = 0;
+      for (let i = 0; i < count.length; i++) {
+        value = value += count[i];
+      }
+      this.setState({ subtotal: value });
     }
-    this.setState({ subtotal: value })
-
   }
 
   renderProduto(item) {
@@ -78,9 +81,7 @@ class ListaDeProdutos extends Component {
   }
 
   renderProdutos() {
-    return this.props.carrinho.map((item) =>
-      this.renderProduto(item)
-    );
+    return this.props.carrinho.map((item) => this.renderProduto(item));
   }
 
   render() {
@@ -95,7 +96,7 @@ class ListaDeProdutos extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  carrinho: state.carrinho.carrinho
+  carrinho: state.carrinho.carrinho,
 });
 
 export default connect(mapStateToProps, actions)(ListaDeProdutos);

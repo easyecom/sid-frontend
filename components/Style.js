@@ -14,19 +14,17 @@ export default () => (
       font-family: 'Roboto', sans-serif;
     }
 
+    .finished-order {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
 
-.update-data-delivery {
-  // background: red;
-  width: 100%;
-  display: flex;
-  justify-content: space-around;
-  /* align-items: center; */
-}
-
-.update-data-delivery-box div {
-  // background: red;
-  width: 100%;
-}
+    .finished-order .finished-each-box{
+      background: blue;
+      margin: 10px 0;
+      height: 200px
+  }
 
     .container, 
     .container-big {

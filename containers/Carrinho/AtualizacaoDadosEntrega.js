@@ -50,9 +50,7 @@ class AtualizacaoDadosEntrega extends Component {
           else this.setState({ aviso: null });
         }
       );
-      alert("atualizado com sucesso");
-
-      // enviar usuario para tela de pagamento
+      // alert("atualizado com sucesso");
     }
   }
 
