@@ -29,13 +29,11 @@ class DadosDoCarrinho extends Component {
     );
 
     if (this.state.cpf.length >= 11 && data.clientExist == true) {
-      console.log(data, "client already exist");
       return this.setState({ foundCPF: data.clientExist });
     }
 
     if (this.state.cpf.length >= 11 && data.clientExist == false) {
       alert("Direcionando para pagina de cadastro");
-      console.log(this.state.cpf, "client does not exist");
       return Router.push("/checkout");
     }
   }
@@ -73,13 +71,10 @@ class DadosDoCarrinho extends Component {
       }
     );
 
-    console.log(this.props);
-
     this.handleDirectCheckMyData();
   }
 
   handleModal() {
-    console.log(this.state.cpf);
     return (
       <div>
         <div id="abrirModal" class="modal">
