@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import Link from "next/link";
-import { connect } from 'react-redux';
-import actions from '../../redux/actions';
+import { connect } from "react-redux";
+import actions from "../../redux/actions";
 
 import FormRadio from "../../components/Inputs/FormRadio";
 import TextField from "@material-ui/core/TextField";
-import { getToken } from '../../utils/token';
+import { getToken } from "../../utils/token";
 
 class DadosPagamento extends Component {
   state = {
@@ -30,35 +30,34 @@ class DadosPagamento extends Component {
     //CANCELAMENTO
     cancel: false,
     //CREDENTIALS
-    token: ""
+    token: "",
   };
 
-  orderFinish() {
-
-  }
+  orderFinish() {}
 
   componentDidMount() {
     const { carrinho } = this.props;
 
-    const newCart = carrinho.map(item => {
+    const newCart = carrinho.map((item) => {
       return {
         variation_id: item.variationId,
         staticalProduct: item.variationId,
-        amount: item.quantidade
-      }
-    })
+        amount: item.quantidade,
+      };
+    });
 
-    this.setState({ cart: [...newCart] })
-    this.setState({ token: getToken() })
-
+    this.setState({ cart: [...newCart] });
+    this.setState({ token: getToken() });
   }
 
   renderOpcoesPagamento() {
     const { opcaoPagamentoSelecionado } = this.state;
-    console.log(getToken(), "haha")
+    // console.log(getToken(), "getToken dado pagamentos")
+    const localToken = getToken();
+    console.log(localToken, "haha");
 
-    console.log("cart", this.state)
-    console.log("props", this.props)
+    console.log("cart", this.state);
+    console.log("props", this.props);
     return (
       <div
         className={
@@ -248,9 +247,9 @@ class DadosPagamento extends Component {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   carrinho: state.carrinho.carrinho,
-  cliente: state.client.cliente
-})
+  cliente: state.client.cliente,
+});
 
 export default connect(mapStateToProps, actions)(DadosPagamento);
