@@ -1,20 +1,24 @@
 import React, { Component } from "react";
 import axios from "axios";
 import Router from "next/router";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 import { formatMoney } from "../../utils";
 import { API, loja } from "../../config";
 import { connect } from "react-redux";
 import actions from "../../redux/actions";
 import FormSimples from "../../components/Inputs/FormSimples";
+import { getToken } from "../../utils/token";
 
 class DadosDoCarrinho extends Component {
   constructor() {
     super();
     this.state = {
+      loading: false,
       foundCPF: "",
       cpf: "",
       password: "",
+      localToken: "",
     };
   }
 
@@ -27,6 +31,8 @@ class DadosDoCarrinho extends Component {
         cpf: String(value),
       }
     );
+
+    this.setState({ [field]: value });
 
     if (this.state.cpf.length >= 11 && data.clientExist == true) {
       console.log(data, "client already exist");
@@ -45,21 +51,27 @@ class DadosDoCarrinho extends Component {
   }
 
   handleDirectCheckMyData() {
-    if (this.state.cpf >= 11 && this.state.foundCPF == true) {
-      alert("Direcionando para pagina de atualizacao");
+    if (
+      (this.state.cpf >= 11 && this.state.foundCPF == true) ||
+      this.state.localToken
+    ) {
       Router.push("/atualizacaoDadosEntrega");
     }
   }
 
   async componentDidMount() {
     const { token, fetchClient } = await this.props;
-    if (token) fetchClient(token);
+    if (token) await fetchClient(token);
+    this.setState({ localToken: getToken() });
   }
 
-  handleLogin() {
-    const { password } = this.state;
+  async handleLogin() {
+    this.setState({ loading: true });
 
-    this.props.autenticar(
+    const { password } = this.state;
+    const { autenticar, cliente } = this.props;
+
+    await autenticar(
       { email: "tirulipa@gmail.com", password },
       false,
       (error) => {
@@ -73,13 +85,14 @@ class DadosDoCarrinho extends Component {
       }
     );
 
-    console.log(this.props);
+    if (cliente) {
+      this.setState({ loading: false });
 
-    this.handleDirectCheckMyData();
+      this.handleDirectCheckMyData();
+    }
   }
 
   handleModal() {
-    console.log(this.state.cpf);
     return (
       <div>
         <div id="abrirModal" class="modal">
@@ -137,6 +150,7 @@ class DadosDoCarrinho extends Component {
   }
 
   renderDadosDoCarrinho() {
+    console.log(this.state.localToken, "localToken");
     const { carrinho, freteSelecionado } = this.props;
     const valorTotal = (carrinho || []).reduce(
       (all, item) => all + Number(item.precoUnitario) * Number(item.quantidade),
@@ -171,7 +185,11 @@ class DadosDoCarrinho extends Component {
         <div className="dados-do-carrinho-item flex flex-right">
           <button
             className="btn btn-success btn-cta"
-            onClick={() => this.handleModal()}
+            onClick={() =>
+              this.state.localToken
+                ? this.handleDirectCheckMyData()
+                : this.handleModal()
+            }
           >
             <a href="#abrirModal">Finalizar pedido</a>
           </button>
@@ -184,7 +202,7 @@ class DadosDoCarrinho extends Component {
     return (
       <div className="Dados-Do-Carrinho flex horizontal">
         <div className="flex-4"></div>
-        {this.handleModal()}
+        {!this.state.localToken ? this.handleModal() : ""}
         {this.renderDadosDoCarrinho()}
       </div>
     );

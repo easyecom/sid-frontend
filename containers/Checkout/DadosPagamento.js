@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 import FormRadio from "../../components/Inputs/FormRadio";
 import TextField from "@material-ui/core/TextField";
+import {getToken} from "../../utils/token"
 
 class DadosPagamento extends Component {
   state = {
@@ -11,6 +12,7 @@ class DadosPagamento extends Component {
 
   renderOpcoesPagamento() {
     const { opcaoPagamentoSelecionado } = this.state;
+    // console.log(getToken(), "getToken dado pagamentos")
 
     return (
       <div

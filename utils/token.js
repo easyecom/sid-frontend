@@ -3,5 +3,5 @@ export const addToken = (token) => {
 };
 
 export const getToken = () => {
-  JSON.parse(localStorage.getItem("@token") || "");
+   return JSON.parse(localStorage.getItem("@token"));
 };
