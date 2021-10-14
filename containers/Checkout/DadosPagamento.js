@@ -35,29 +35,28 @@ class DadosPagamento extends Component {
 
   orderFinish() {}
 
-  componentDidMount() {
-    const { carrinho } = this.props;
+  async componentDidMount() {
+    const { carrinho, fetchClient } = this.props;
 
-    const newCart = carrinho.map((item) => {
-      return {
-        variation_id: item.variationId,
-        staticalProduct: item.variationId,
-        amount: item.quantidade,
-      };
-    });
+    const newCart =
+      carrinho &&
+      carrinho.map((item) => {
+        return {
+          variation_id: item.variationId,
+          staticalProduct: item.variationId,
+          amount: item.quantidade,
+        };
+      });
 
     this.setState({ cart: [...newCart] });
-    this.setState({ token: getToken() });
+    await this.setState({ token: getToken() });
+    await fetchClient(this.state.token);
+    await this.setState({ CPF: this.props.cliente && this.props.cliente.cpf });
   }
 
   renderOpcoesPagamento() {
-    const { opcaoPagamentoSelecionado } = this.state;
-    // console.log(getToken(), "getToken dado pagamentos")
-    const localToken = getToken();
-    console.log(localToken, "haha");
+    const { opcaoPagamentoSelecionado, token } = this.state;
 
-    console.log("cart", this.state);
-    console.log("props", this.props);
     return (
       <div
         className={

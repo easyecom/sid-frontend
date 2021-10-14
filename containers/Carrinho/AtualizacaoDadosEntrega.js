@@ -8,6 +8,7 @@ import { getHeaders } from "../../redux/actions/helpers";
 import { ESTADOS } from "../../utils";
 import actions from "../../redux/actions";
 import { API, loja } from "../../config";
+import { getToken } from "../../utils/token";
 
 class AtualizacaoDadosEntrega extends Component {
   constructor(props) {
@@ -55,11 +56,12 @@ class AtualizacaoDadosEntrega extends Component {
   }
 
   async componentDidMount() {
+    const localToken = getToken();
     const { token } = await this.props;
 
     const { data } = await axios.get(
       `${API}/stores/${loja}/clients/me`,
-      getHeaders(token)
+      getHeaders(token || localToken)
     );
 
     this.setState({ CEP: data.zipcode });

@@ -9,7 +9,6 @@ import { getToken } from "../../utils/token";
 class AreaDoClienteContainer extends Component {
   render() {
     const token = getToken();
-    console.log(token, "token");
     return token ? <PedidosContainer /> : <AcessoContainer />;
   }
 }
