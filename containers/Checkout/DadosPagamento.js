@@ -1,19 +1,63 @@
 import React, { Component } from "react";
+import Link from "next/link";
+import { connect } from "react-redux";
+import actions from "../../redux/actions";
 
 import FormRadio from "../../components/Inputs/FormRadio";
 import TextField from "@material-ui/core/TextField";
-import {getToken} from "../../utils/token"
+import { getToken } from "../../utils/token";
 
 class DadosPagamento extends Component {
   state = {
-    opcaoPagamentoSelecionado: "cartao",
     CPF: "",
+    // PAYMENT
+    opcaoPagamentoSelecionado: "cartao",
+    nomeCartao: "",
+    numeroCartao: "",
+    CVCartao: "",
+    mesCartao: "",
+    anoCartao: "",
+    value: 0,
+    installment: 1,
+    cart: [],
+    // DELIVERY
+    cost: 25,
+    deadline: 5,
+    type: "PAC",
+    addressDelivery: {},
+    //CART
+
+    //CANCELAMENTO
+    cancel: false,
+    //CREDENTIALS
+    token: "",
   };
+
+  orderFinish() {}
+
+  componentDidMount() {
+    const { carrinho } = this.props;
+
+    const newCart = carrinho.map((item) => {
+      return {
+        variation_id: item.variationId,
+        staticalProduct: item.variationId,
+        amount: item.quantidade,
+      };
+    });
+
+    this.setState({ cart: [...newCart] });
+    this.setState({ token: getToken() });
+  }
 
   renderOpcoesPagamento() {
     const { opcaoPagamentoSelecionado } = this.state;
     // console.log(getToken(), "getToken dado pagamentos")
+    const localToken = getToken();
+    console.log(localToken, "haha");
 
+    console.log("cart", this.state);
+    console.log("props", this.props);
     return (
       <div
         className={
@@ -74,6 +118,7 @@ class DadosPagamento extends Component {
   renderPagamentoComCartao() {
     const { nomeCartao, numeroCartao, CVCartao, mesCartao, anoCartao } =
       this.state;
+
     return (
       <div className="Dados-Pagamento">
         <div className="text-field_input pagamento-input">
@@ -187,9 +232,24 @@ class DadosPagamento extends Component {
           this.renderPagamentoComBoleto()}
         {opcaoPagamentoSelecionado === "cartao" &&
           this.renderPagamentoComCartao()}
+        <div className="flex flex-right">
+          <Link href="/OrderFinishedPage">
+            <button
+              className="btn btn-cta btn-success"
+              onClick={() => this.orderFinish()}
+            >
+              <span>CONCLUIR PEDIDO</span>
+            </button>
+          </Link>
+        </div>
       </div>
     );
   }
 }
 
-export default DadosPagamento;
+const mapStateToProps = (state) => ({
+  carrinho: state.carrinho.carrinho,
+  cliente: state.client.cliente,
+});
+
+export default connect(mapStateToProps, actions)(DadosPagamento);

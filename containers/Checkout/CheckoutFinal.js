@@ -3,13 +3,10 @@ import React, { Component } from "react";
 import DadosFrete from "./DadosFrete";
 import DadosPagamento from "./DadosPagamento";
 import DadosPedido from "./DadosPedido";
-import Link from "next/link";
+
 import CheckoutButton from "./CheckoutButton";
 
 class CheckoutContainerFinal extends Component {
-  orderFinish() {
-    return alert("pedido realizado com sucesso");
-  }
 
   render() {
     return (
@@ -21,16 +18,7 @@ class CheckoutContainerFinal extends Component {
           <DadosPagamento />
           <DadosPedido />
         </div>
-        <div className="flex flex-right">
-          <Link href="/OrderFinishedPage">
-            <button
-              className="btn btn-cta btn-success"
-              onClick={() => this.orderFinish()}
-            >
-              <span>CONCLUIR PEDIDO</span>
-            </button>
-          </Link>
-        </div>
+      
       </div>
     );
   }
