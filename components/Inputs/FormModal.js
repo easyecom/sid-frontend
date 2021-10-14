@@ -11,7 +11,6 @@ class FormModal extends Component {
       cpf: "",
       password: "",
     };
-    console.log("2");
   }
 
   async onChangeInputCPF(field, value) {

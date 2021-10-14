@@ -30,7 +30,6 @@ export const autenticar =
     axios
       .post(`${API}/session`, { email, password })
       .then((response) => {
-        // console.log(response, "actio auth")
         addToken(response.data.user.token);
         setCookie("token", response.data.user.token);
         if (goTo) Router.push(goTo);

@@ -33,12 +33,16 @@ class DadosPagamento extends Component {
     token: "",
   };
 
-  orderFinish() {}
+  orderFinish() {
+    const { cleanCarrinho } = this.props;
+
+    cleanCarrinho();
+  }
 
   async componentDidMount() {
     const { carrinho, fetchClient } = this.props;
 
-    const newCart =
+    let newCart =
       carrinho &&
       carrinho.map((item) => {
         return {
@@ -48,14 +52,16 @@ class DadosPagamento extends Component {
         };
       });
 
-    this.setState({ cart: [...newCart] });
+    newCart = newCart ? [...newCart] : "";
+
+    this.setState({ cart: newCart });
     await this.setState({ token: getToken() });
     await fetchClient(this.state.token);
     await this.setState({ CPF: this.props.cliente && this.props.cliente.cpf });
   }
 
   renderOpcoesPagamento() {
-    const { opcaoPagamentoSelecionado, token } = this.state;
+    const { opcaoPagamentoSelecionado } = this.state;
 
     return (
       <div
@@ -93,6 +99,7 @@ class DadosPagamento extends Component {
 
   renderPagamentoComBoleto() {
     const { CPF } = this.state;
+
     return (
       <div className="Dados-Pagamento">
         <div className="text-field_input pagamento-input-boleto">

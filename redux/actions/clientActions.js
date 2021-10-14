@@ -34,18 +34,15 @@ export const fetchClient = (token) => (dispatch) => {
 };
 
 export const checkClientExist = (cpf) => (dispatch) => {
-  console.log(cpf, "actions 1");
   axios
     .post(`${API}/stores/${loja}/clients/check-customer`, { cpf: String(cpf) })
     .then((response) => {
-      console.log(response, "actions 2");
       dispatch({ type: CHECK_CLIENTE_EXIST, payload: response.data });
     })
     .catch((e) => console.log(e));
 };
 
 export const updateUser = (payload, token) => (dispatch) => {
-  console.log(payload, "action payload input");
   axios
     .put(
       `${API}/users`,
@@ -120,7 +117,6 @@ export const newClient = (payload, cb) => (dispatch) => {
       },
     })
     .then((response) => {
-      console.log(response);
       dispatch({ type: NEW_CLIENT, payload: response.data });
       dispatch(
         autenticar(
@@ -179,7 +175,6 @@ export const updateAddress = (addressId, payload, token, cb) => (dispatch) => {
       getHeaders(token)
     )
     .then((response) => {
-      console.log(response)
       dispatch({ type: UPDATE_ADDRESS, payload: response.data });
     })
     .catch((e) => cb(errorHandling(e)));

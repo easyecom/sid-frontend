@@ -148,7 +148,6 @@ class DadosDoCarrinho extends Component {
   }
 
   renderDadosDoCarrinho() {
-    console.log(this.state.localToken, "localToken");
     const { carrinho, freteSelecionado } = this.props;
     const valorTotal = (carrinho || []).reduce(
       (all, item) => all + Number(item.precoUnitario) * Number(item.quantidade),
