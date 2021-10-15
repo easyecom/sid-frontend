@@ -93,9 +93,9 @@ class DadosDoCarrinho extends Component {
   handleModal() {
     return (
       <div>
-        <div id="abrirModal" class="modal">
+        <div id="abrirModal" className="modal">
           <div className="modalTest">
-            <a href="#fechar" title="Fechar" class="fechar">
+            <a href="#fechar" title="Fechar" className="fechar">
               x
             </a>
             <div>
