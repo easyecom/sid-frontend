@@ -3,7 +3,7 @@ import actions from "../redux/actions";
 import { getCookie } from "./cookie";
 import { getToken } from "../utils/token";
 
-export default function (ctx) {
+export default function initialize (ctx) {
   if (ctx.isServer) {
     console.log(ctx, "is server ====>");
     ctx.store.dispatch(actions.reauthenticate(getCookie("token", ctx.req)));

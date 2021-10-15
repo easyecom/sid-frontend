@@ -6,25 +6,34 @@ import actions from "../../../redux/actions";
 
 class MenuAreaDoCliente extends Component {
   componentDidMount() {
-    this.fetchCliente();
-  }
-
-  componentDidUpdate() {
-    this.fetchCliente();
-  }
-
-  fetchCliente() {
     const { usuario, token, cliente } = this.props;
     if (usuario && token && !cliente) {
       this.props.fetchClient(usuario.userId, token);
     }
   }
-
+  
+  componentDidUpdate() {
+    const { usuario, token, cliente } = this.props;
+    
+    if (usuario && token && !cliente) {
+      this.props.fetchClient(usuario.userId, token);
+    }
+  }
+  
+  fetchCliente() {
+    const { usuario, token, cliente } = this.props;
+    
+    if (usuario && token && !cliente) {
+      this.props.fetchClient(usuario.userId, token);
+    }
+  }
+  
   renderCabecalho() {
     const { usuario } = this.props;
+
     return (
       <div>
-        <h3>{`Olá ${usuario && usuario.userName}`}</h3>
+        <h3>{`Olá ${usuario ? usuario.userName : ""}`}</h3>
       </div>
     );
   }
@@ -37,7 +46,6 @@ class MenuAreaDoCliente extends Component {
     return (
       <div className="menu-lateral">
         <Link href="/customer-area">
-          {/* TODO -  problema para manter cliente em meus dados */}
           <div
             className={`menu-lateral-item ${
               estaEmPedidos ? "menu-lateral-item-active" : ""

@@ -12,7 +12,7 @@ class DadosPagamento extends Component {
     CPF: "",
     // PAYMENT
     opcaoPagamentoSelecionado: "cartao",
-    nomeCartao: "",
+    holderName: "",
     numeroCartao: "",
     CVCartao: "",
     mesCartao: "",
@@ -33,13 +33,17 @@ class DadosPagamento extends Component {
   };
 
   orderFinish() {
-    const { cleanCarrinho, criarPedido } = this.props;
-    console.log("props", this.props)
-//CHAMAR API DE CRIAÇÃO DE PEDIDO;
-    
-//REDIRECIONAR PARA A PAGINA DE SUCESSO;
+    const { cleanCarrinho, criarPedido, createOrder } = this.props;
 
-    cleanCarrinho();
+    createOrder(this.state);
+
+    //CHAMAR API DE CRIAÇÃO DE PEDIDO;
+
+    //REDIRECIONAR PARA A PAGINA DE SUCESSO;
+
+    // console.log("props", this.props)
+
+    // cleanCarrinho();
   }
 
   async componentDidMount() {
@@ -125,7 +129,7 @@ class DadosPagamento extends Component {
   }
 
   renderPagamentoComCartao() {
-    const { nomeCartao, numeroCartao, CVCartao, mesCartao, anoCartao } =
+    const { holderName, numeroCartao, CVCartao, mesCartao, anoCartao } =
       this.state;
 
     return (
@@ -157,8 +161,8 @@ class DadosPagamento extends Component {
                 shrink: true,
               }}
               variant="outlined"
-              value={nomeCartao}
-              onChange={(e) => this.onChange("nomeCartao", e)}
+              value={holderName}
+              onChange={(e) => this.onChange("holderName", e)}
             />
           </div>
         </div>
@@ -243,12 +247,12 @@ class DadosPagamento extends Component {
           this.renderPagamentoComCartao()}
         <div className="flex flex-right">
           {/* <Link href="/OrderFinishedPage"> */}
-            <button
-              className="btn btn-cta btn-success"
-              onClick={() => this.orderFinish()}
-            >
-              <span>CONCLUIR PEDIDO</span>
-            </button>
+          <button
+            className="btn btn-cta btn-success"
+            onClick={() => this.orderFinish()}
+          >
+            <span>CONCLUIR PEDIDO</span>
+          </button>
           {/* </Link> */}
         </div>
       </div>
@@ -259,7 +263,7 @@ class DadosPagamento extends Component {
 const mapStateToProps = (state) => ({
   carrinho: state.carrinho.carrinho,
   cliente: state.client.cliente,
-  criarPedido: state.pedido.criarPedido
+  criarPedido: state.pedido.criarPedido,
 });
 
 export default connect(mapStateToProps, actions)(DadosPagamento);

@@ -10,26 +10,79 @@ import { API, versao, loja } from "../../config";
 import errorHandling from "./errorHandling";
 import { getHeaders } from "./helpers";
 
-
 export const createOrder = (payload) => (dispatch) => {
-    if(payload.opcaoPagamentoSelecionado === "boleto") {
-      const orderBoleto = {
+  if (payload.opcaoPagamentoSelecionado === "boleto") {
+    console.log(payload, "if boleto");
+    const orderBoleto = {
+      cart: payload.cart,
+      deliveryData: {
+        cost: payload.cost,
+        deadline: payload.deadline,
+        type: payload.type,
+        addressDelivery: {},
+      },
+      paymentData: {
+        type: "BOLETO",
+        value: 125,
+        address: {
+          country: "Brasil",
+          region: "Sao Paulo",
+          region_code: "sp",
+          city: "Sao Paulo",
+          postal_code: "08773-380",
+          street: "Av Ipiranga",
+          number: "100",
+          locality: "pimnetas",
+        },
+      },
+      cancel: false,
+    };
+  }
 
-      }
-    }
-    if(payload.opcaoPagamentoSelecionado === "cartao") {
-      const orderCreditCard = {
+  if (payload.opcaoPagamentoSelecionado === "cartao") {
+    console.log(payload, "if cartão");
+    const orderCreditCard = {
+      cart: [
+        {
+          product_id: 3,
+          variation_id: 3,
+          staticalProduct: "2",
+          amount: 2,
+        },
+      ],
+      deliveryData: {
+        cost: 25,
+        deadline: 5,
+        type: "PAC",
+        addressDelivery: {},
+      },
+      paymentData: {
+        type: "CREDIT_CARD",
+        installment: 1,
+        value: 125,
+        card: [
+          {
+            number: "4111111111111111",
+            exp_month: "03",
+            exp_year: "2026",
+            security_code: "123",
+            holder: {
+              name: "Jose da Silva",
+            },
+          },
+        ],
+      },
+      cancel: false,
+    };
 
-      }
-    }
-    
-    return
-  axios
+    return;
+    axios
       .post(`${API}/stores/${loja}/orders`, { cpf: String(cpf) }, getHeaders)
       .then((response) => {
-          dispatch({ type: CREATE_ORDER, payload: response.data });
+        dispatch({ type: CREATE_ORDER, payload: response.data });
       })
       .catch((e) => console.log(e));
+  }
 };
 
 export const fetchPedidos = (token) => (dispatch) => {
