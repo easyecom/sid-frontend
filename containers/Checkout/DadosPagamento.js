@@ -19,14 +19,13 @@ class DadosPagamento extends Component {
     anoCartao: "",
     value: 0,
     installment: 1,
-    cart: [],
     // DELIVERY
     cost: 25,
     deadline: 5,
     type: "PAC",
     addressDelivery: {},
     //CART
-
+    cart: [],
     //CANCELAMENTO
     cancel: false,
     //CREDENTIALS
@@ -34,7 +33,11 @@ class DadosPagamento extends Component {
   };
 
   orderFinish() {
-    const { cleanCarrinho } = this.props;
+    const { cleanCarrinho, criarPedido } = this.props;
+    console.log("props", this.props)
+//CHAMAR API DE CRIAÇÃO DE PEDIDO;
+    
+//REDIRECIONAR PARA A PAGINA DE SUCESSO;
 
     cleanCarrinho();
   }
@@ -239,14 +242,14 @@ class DadosPagamento extends Component {
         {opcaoPagamentoSelecionado === "cartao" &&
           this.renderPagamentoComCartao()}
         <div className="flex flex-right">
-          <Link href="/OrderFinishedPage">
+          {/* <Link href="/OrderFinishedPage"> */}
             <button
               className="btn btn-cta btn-success"
               onClick={() => this.orderFinish()}
             >
               <span>CONCLUIR PEDIDO</span>
             </button>
-          </Link>
+          {/* </Link> */}
         </div>
       </div>
     );
@@ -256,6 +259,7 @@ class DadosPagamento extends Component {
 const mapStateToProps = (state) => ({
   carrinho: state.carrinho.carrinho,
   cliente: state.client.cliente,
+  criarPedido: state.pedido.criarPedido
 });
 
 export default connect(mapStateToProps, actions)(DadosPagamento);

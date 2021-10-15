@@ -2,7 +2,8 @@ import {
     FETCH_PEDIDOS,
     FETCH_PEDIDO,
     CLEAN_PEDIDO,
-    CANCELAR_PEDIDO
+    CANCELAR_PEDIDO,
+    CREATE_ORDER,
 } from '../types';
 
 const initialState = {
@@ -12,6 +13,11 @@ const initialState = {
 
 export default (state = initialState, action) => {
     switch(action.type){
+        case CREATE_ORDER:
+            return {
+                ...state,
+                criarPedido: action.payload
+            }
         case FETCH_PEDIDOS:
             return {
                 ...state,
