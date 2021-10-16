@@ -1,35 +1,51 @@
 import React, { Component } from "react";
-
-import FormSimples from "../../../components/Inputs/FormSimples";
-import TextoDados from "../../../components/Texto/Dados";
-import { ESTADOS } from "../../../utils";
 import { connect } from "react-redux";
+import axios from "axios";
+
 import actions from "../../../redux/actions";
+import { getHeaders } from "../../../redux/actions/helpers";
+import { ESTADOS } from "../../../utils";
+import { API, loja } from "../../../config";
+import FormSimples from "../../../components/Inputs/FormSimples";
 
 class FormularioDados extends Component {
-  constructor(props) {
-    super(props);
-    const { cliente } = props;
-    this.state = {
-      addressId: cliente && cliente.addressId,
-      userName: cliente && cliente.userName,
-      cpf: cliente && cliente.cpf,
-      email: cliente && cliente.email,
-      telefone: (cliente && cliente.phone) || "",
-      dataDeNascimento: cliente && cliente.dateOfBirth,
-      local: cliente && cliente.street,
-      numero: cliente && cliente.number,
-      complemento: cliente && cliente.complement,
-      bairro: cliente && cliente.neighborhood,
-      cidade: cliente && cliente.city,
-      estado: cliente && cliente.state,
-      cep: cliente && cliente.zipcode,
-    };
-  }
+  state = {
+    addressId: "",
+    userName: "",
+    cpf: "",
+    email: "",
+    telefone: "",
+    dataDeNascimento: "",
+    local: "",
+    numero: "",
+    complemento: "",
+    bairro: "",
+    cidade: "",
+    estado: "",
+    cep: "",
+  };
 
   async componentDidMount() {
-    const { token, fetchClient } = await this.props;
-    if (token) fetchClient(token);
+    const { token } = await this.props;
+
+    const { data: clientMe } = await axios.get(
+      `${API}/stores/${loja}/clients/me`,
+      getHeaders(token)
+    );
+
+    this.setState({ addressId: clientMe && clientMe.addressId });
+    this.setState({ userName: clientMe && clientMe.userName });
+    this.setState({ cpf: clientMe && clientMe.cpf });
+    this.setState({ email: clientMe && clientMe.email });
+    this.setState({ telefone: (clientMe && clientMe.phone) || "" });
+    this.setState({ dataDeNascimento: clientMe && clientMe.dateOfBirth });
+    this.setState({ local: clientMe && clientMe.street });
+    this.setState({ numero: clientMe && clientMe.number });
+    this.setState({ complemento: clientMe && clientMe.complement });
+    this.setState({ bairro: clientMe && clientMe.neighborhood });
+    this.setState({ cidade: clientMe && clientMe.city });
+    this.setState({ estado: clientMe && clientMe.state });
+    this.setState({ cep: clientMe && clientMe.zipcode });
   }
 
   async componentDidUpdate() {
@@ -48,7 +64,7 @@ class FormularioDados extends Component {
       else this.setState({ aviso: null });
     });
 
-    alert("atualizado com sucesso")
+    alert("atualizado com sucesso");
   }
 
   render() {
@@ -191,7 +207,12 @@ class FormularioDados extends Component {
           />
         </div>
         <div className="flex flex-start">
-          <button className="btn btn-primary" onClick={() => this.handleUpdateUser()}>SALVAR</button>
+          <button
+            className="btn btn-primary"
+            onClick={() => this.handleUpdateUser()}
+          >
+            SALVAR
+          </button>
         </div>
       </div>
     );

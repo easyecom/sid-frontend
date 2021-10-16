@@ -196,10 +196,13 @@ class DadosDoCarrinho extends Component {
   }
 
   render() {
+    const { cliente } = this.props;
     return (
       <div className="Dados-Do-Carrinho flex horizontal">
         <div className="flex-4"></div>
-        {!this.state.localToken ? this.handleModal() : ""}
+        {!this.state.localToken || (this.state.localToken && !cliente)
+          ? this.handleModal()
+          : ""}
         {this.renderDadosDoCarrinho()}
       </div>
     );

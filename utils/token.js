@@ -3,5 +3,9 @@ export const addToken = (token) => {
 };
 
 export const getToken = () => {
-   return JSON.parse(localStorage.getItem("@token"));
+  return JSON.parse(localStorage.getItem("@token"));
+};
+
+export const cleanToken = () => {
+  JSON.parse(localStorage.removeItem("@token"));
 };

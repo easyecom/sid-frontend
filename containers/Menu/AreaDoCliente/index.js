@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import Link from "next/link";
 import { withRouter } from "next/router";
+import Router from "next/router";
 import { connect } from "react-redux";
 import actions from "../../../redux/actions";
+import { cleanToken } from "../../../utils/token";
 
 class MenuAreaDoCliente extends Component {
   componentDidMount() {
@@ -11,23 +13,27 @@ class MenuAreaDoCliente extends Component {
       this.props.fetchClient(usuario.userId, token);
     }
   }
-  
+
   componentDidUpdate() {
     const { usuario, token, cliente } = this.props;
-    
+
     if (usuario && token && !cliente) {
       this.props.fetchClient(usuario.userId, token);
     }
   }
-  
+
   fetchCliente() {
     const { usuario, token, cliente } = this.props;
-    
+
     if (usuario && token && !cliente) {
       this.props.fetchClient(usuario.userId, token);
     }
   }
-  
+
+  async handleLougot() {
+    cleanToken();
+  }
+
   renderCabecalho() {
     const { usuario } = this.props;
 
@@ -72,9 +78,14 @@ class MenuAreaDoCliente extends Component {
             <span>ALTERAR SENHA</span>
           </div>
         </Link>
-        <div className="menu-lateral-item" onClick={() => alert("logout!")}>
-          <span>SAIR</span>
-        </div>
+        <Link href="/">
+          <div
+            className="menu-lateral-item"
+            onClick={() => this.handleLougot()}
+          >
+            <span>SAIR</span>
+          </div>
+        </Link>
       </div>
     );
   }
