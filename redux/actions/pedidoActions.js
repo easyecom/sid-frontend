@@ -10,10 +10,9 @@ import { API, versao, loja } from "../../config";
 import errorHandling from "./errorHandling";
 import { getHeaders } from "./helpers";
 
-export const createOrder = (payload) => (dispatch) => {
+export const createOrder = async (payload) => {
   let order;
   if (payload.opcaoPagamentoSelecionado === "boleto") {
-    console.log(payload, "if boleto");
     order = {
       cart: payload.cart,
       deliveryData: {
@@ -41,7 +40,6 @@ export const createOrder = (payload) => (dispatch) => {
   }
 
   if (payload.opcaoPagamentoSelecionado === "cartao") {
-    console.log(payload, "if cartão");
     order = {
       cart: payload.cart,
       deliveryData: {
@@ -70,13 +68,26 @@ export const createOrder = (payload) => (dispatch) => {
     };
   }
 
-  axios
-    .post(`${API}/stores/${loja}/orders`, order, getHeaders(payload.token))
-    .then((response) => {
-      console.log("RES", response);
-      dispatch({ type: CREATE_ORDER, payload: response.data });
-    })
-    .catch((e) => console.log(errorHandling(e)));
+  try {
+    const createdOrder = await axios.post(
+      `${API}/stores/${loja}/orders`,
+      order,
+      getHeaders(payload.token)
+    );
+    console.log(createOrder, "createdOrder");
+    return createdOrder;
+  } catch (e) {
+    console.log(errorHandling(e));
+  }
+
+  // axios
+  //   .post(`${API}/stores/${loja}/orders`, order, getHeaders(payload.token))
+  //   .then((response) => {
+  //     return response;
+  //     console.log("RES", response);
+  //     // dispatch({ type: CREATE_ORDER, payload: response.data });
+  //   })
+  //   .catch((e) => console.log(errorHandling(e)));
 };
 
 export const fetchPedidos = (token) => (dispatch) => {

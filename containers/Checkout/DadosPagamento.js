@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Link from "next/link";
 import { connect } from "react-redux";
 import actions from "../../redux/actions";
+import { createOrder } from "../../redux/actions/pedidoActions";
 
 import FormRadio from "../../components/Inputs/FormRadio";
 import TextField from "@material-ui/core/TextField";
@@ -11,7 +12,7 @@ class DadosPagamento extends Component {
   state = {
     CPF: "",
     // PAYMENT
-    opcaoPagamentoSelecionado: "cartao",
+    opcaoPagamentoSelecionado: "boleto",
     holderName: "",
     numeroCartao: "",
     CVCartao: "",
@@ -42,62 +43,46 @@ class DadosPagamento extends Component {
   };
 
   async orderFinish() {
-    const { cleanCarrinho, criarPedido, createOrder } = this.props;
+    const { cleanCarrinho, criarPedido } = this.props;
 
-     createOrder(this.state);
+    const createdOrder = await createOrder(this.state);
 
     //CHAMAR API DE CRIAÇÃO DE PEDIDO;
 
     //REDIRECIONAR PARA A PAGINA DE SUCESSO;
 
-    // console.log("res", criarPedido);
+    console.log("res dados pagamento", createdOrder);
 
     // cleanCarrinho();
   }
 
   async componentDidMount() {
-    const { carrinho, fetchClient } = this.props;
+    const { carrinho, fetchClient, cliente } = this.props;
 
     let newCart =
       carrinho &&
-      carrinho.map((item) => {
+      carrinho.map(({ variationId, quantidade }) => {
         return {
-          variation_id: item.variationId,
-          staticalProduct: item.variationId,
-          amount: item.quantidade,
+          variation_id: variationId,
+          staticalProduct: variationId,
+          amount: quantidade,
         };
       });
 
     newCart = newCart ? [...newCart] : "";
 
+    fetchClient(this.state.token);
     this.setState({ cart: newCart });
-    await this.setState({ token: getToken() });
-    await fetchClient(this.state.token);
-    await this.setState({ CPF: this.props.cliente && this.props.cliente.cpf });
-    await this.setState({
-      city: this.props.cliente && this.props.cliente.city,
-    });
-    await this.setState({
-      complement: this.props.cliente && this.props.cliente.complement,
-    });
-    await this.setState({
-      country: this.props.cliente && this.props.cliente.country,
-    });
-    await this.setState({
-      neighborhood: this.props.cliente && this.props.cliente.neighborhood,
-    });
-    await this.setState({
-      number: this.props.cliente && this.props.cliente.number,
-    });
-    await this.setState({
-      state: this.props.cliente && this.props.cliente.state,
-    });
-    await this.setState({
-      state_code: this.props.cliente && this.props.cliente.state_code,
-    });
-    await this.setState({
-      zipcode: this.props.cliente && this.props.cliente.zipcode,
-    });
+    this.setState({ token: getToken() });
+    this.setState({ CPF: cliente && cliente.cpf });
+    this.setState({ city: cliente && cliente.city });
+    this.setState({ complement: cliente && cliente.complement });
+    this.setState({ country: cliente && cliente.country });
+    this.setState({ neighborhood: cliente && cliente.neighborhood });
+    this.setState({ number: cliente && cliente.number });
+    this.setState({ state: cliente && cliente.state });
+    this.setState({ state_code: cliente && cliente.state_code });
+    this.setState({ zipcode: cliente && cliente.zipcode });
   }
 
   renderOpcoesPagamento() {
