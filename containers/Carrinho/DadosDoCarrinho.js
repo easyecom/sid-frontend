@@ -70,7 +70,7 @@ class DadosDoCarrinho extends Component {
     const { autenticar, cliente } = this.props;
 
     await autenticar(
-      { email: "tirulipa@gmail.com", password },
+      { email: "thiago1@gmail.com", password },
       false,
       (error) => {
         if (error) {

@@ -19,11 +19,20 @@ class DadosPagamento extends Component {
     anoCartao: "",
     value: 0,
     installment: 1,
-    // DELIVERY
+    // FRETE
     cost: 25,
     deadline: 5,
     type: "PAC",
-    addressDelivery: {},
+    //ADDRESS
+    city: "",
+    complement: "",
+    country: "",
+    neighborhood: "",
+    number: "",
+    state: "",
+    state_code: "",
+    street: "",
+    zipcode: "",
     //CART
     cart: [],
     //CANCELAMENTO
@@ -43,7 +52,7 @@ class DadosPagamento extends Component {
 
     // console.log("props", this.props)
 
-    // cleanCarrinho();
+    cleanCarrinho();
   }
 
   async componentDidMount() {
@@ -65,6 +74,14 @@ class DadosPagamento extends Component {
     await this.setState({ token: getToken() });
     await fetchClient(this.state.token);
     await this.setState({ CPF: this.props.cliente && this.props.cliente.cpf });
+    await this.setState({ city: this.props.cliente && this.props.cliente.city });
+    await this.setState({ complement: this.props.cliente && this.props.cliente.complement });
+    await this.setState({ country: this.props.cliente && this.props.cliente.country });
+    await this.setState({ neighborhood: this.props.cliente && this.props.cliente.neighborhood });
+    await this.setState({ number: this.props.cliente && this.props.cliente.number });
+    await this.setState({ state: this.props.cliente && this.props.cliente.state });
+    await this.setState({ state_code: this.props.cliente && this.props.cliente.state_code });
+    await this.setState({ zipcode: this.props.cliente && this.props.cliente.zipcode });
   }
 
   renderOpcoesPagamento() {

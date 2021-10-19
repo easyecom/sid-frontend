@@ -7,8 +7,8 @@ import { formatMoney } from "../../utils";
 class ListaDeProdutos extends Component {
   state = {
     subtotal: "",
-    frete: "12",
-    discount: "1000",
+    frete: "",
+    discount: "",
   };
 
   renderCabecalhoCarrinho() {

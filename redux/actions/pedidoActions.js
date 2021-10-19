@@ -11,9 +11,10 @@ import errorHandling from "./errorHandling";
 import { getHeaders } from "./helpers";
 
 export const createOrder = (payload) => (dispatch) => {
+  let order;
   if (payload.opcaoPagamentoSelecionado === "boleto") {
     console.log(payload, "if boleto");
-    const orderBoleto = {
+    order = {
       cart: payload.cart,
       deliveryData: {
         cost: payload.cost,
@@ -23,16 +24,16 @@ export const createOrder = (payload) => (dispatch) => {
       },
       paymentData: {
         type: "BOLETO",
-        value: 125,
+        value: payload.value,
         address: {
-          country: "Brasil",
-          region: "Sao Paulo",
-          region_code: "sp",
-          city: "Sao Paulo",
-          postal_code: "08773-380",
-          street: "Av Ipiranga",
-          number: "100",
-          locality: "pimnetas",
+          country: payload.country,
+          region: payload.state,
+          region_code: payload.state_code,
+          city: payload.city,
+          postal_code: payload.zipcode,
+          street: payload.street,
+          number: payload.number,
+          locality: payload.neighborhood,
         },
       },
       cancel: false,
@@ -41,48 +42,64 @@ export const createOrder = (payload) => (dispatch) => {
 
   if (payload.opcaoPagamentoSelecionado === "cartao") {
     console.log(payload, "if cartão");
-    const orderCreditCard = {
-      cart: [
-        {
-          product_id: 3,
-          variation_id: 3,
-          staticalProduct: "2",
-          amount: 2,
-        },
-      ],
+    order = {
+      cart: payload.cart,
       deliveryData: {
-        cost: 25,
-        deadline: 5,
-        type: "PAC",
+        cost: payload.cost,
+        deadline: payload.deadline,
+        type: payload.type,
         addressDelivery: {},
       },
       paymentData: {
         type: "CREDIT_CARD",
-        installment: 1,
-        value: 125,
+        installment: payload.installment,
+        value: payload.value,
         card: [
           {
-            number: "4111111111111111",
-            exp_month: "03",
-            exp_year: "2026",
-            security_code: "123",
+            number: payload.numeroCartao,
+            exp_month: payload.mesCartao,
+            exp_year: payload.anoCartao,
+            security_code: payload.CVCartao,
             holder: {
-              name: "Jose da Silva",
+              name: payload.holderName,
             },
           },
         ],
       },
       cancel: false,
     };
-
-    return;
-    axios
-      .post(`${API}/stores/${loja}/orders`, { cpf: String(cpf) }, getHeaders)
-      .then((response) => {
-        dispatch({ type: CREATE_ORDER, payload: response.data });
-      })
-      .catch((e) => console.log(e));
   }
+
+  axios
+    .post(`${API}/stores/${loja}/orders`,  {
+      cart: payload.cart,
+      deliveryData: {
+        cost: payload.cost,
+        deadline: payload.deadline,
+        type: payload.type,
+        addressDelivery: {},
+      },
+      paymentData: {
+        type: "BOLETO",
+        value: payload.value,
+        address: {
+          country: payload.country,
+          region: payload.state,
+          region_code: payload.state_code,
+          city: payload.city,
+          postal_code: payload.zipcode,
+          street: payload.street,
+          number: payload.number,
+          locality: payload.neighborhood,
+        },
+      },
+      cancel: false,
+    }, getHeaders(payload.token))
+    .then((response) => {
+      console.log("RES", response)
+      dispatch({ type: CREATE_ORDER, payload: response.data });
+    })
+    .catch((e) => console.log(e));
 };
 
 export const fetchPedidos = (token) => (dispatch) => {
