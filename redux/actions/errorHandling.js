@@ -1,4 +1,5 @@
 const errorHandling = (error) => {
+  // console.log(error, "error")
   console.log(error, error.response ? error.response.data : null);
   if (!error.response || !error.response.data) {
     return {

@@ -17,7 +17,7 @@ class DadosPagamento extends Component {
     CVCartao: "",
     mesCartao: "",
     anoCartao: "",
-    value: 0,
+    value: 100,
     installment: 1,
     // FRETE
     cost: 25,
@@ -41,18 +41,18 @@ class DadosPagamento extends Component {
     token: "",
   };
 
-  orderFinish() {
+  async orderFinish() {
     const { cleanCarrinho, criarPedido, createOrder } = this.props;
 
-    createOrder(this.state);
+     createOrder(this.state);
 
     //CHAMAR API DE CRIAÇÃO DE PEDIDO;
 
     //REDIRECIONAR PARA A PAGINA DE SUCESSO;
 
-    // console.log("props", this.props)
+    // console.log("res", criarPedido);
 
-    cleanCarrinho();
+    // cleanCarrinho();
   }
 
   async componentDidMount() {
@@ -74,14 +74,30 @@ class DadosPagamento extends Component {
     await this.setState({ token: getToken() });
     await fetchClient(this.state.token);
     await this.setState({ CPF: this.props.cliente && this.props.cliente.cpf });
-    await this.setState({ city: this.props.cliente && this.props.cliente.city });
-    await this.setState({ complement: this.props.cliente && this.props.cliente.complement });
-    await this.setState({ country: this.props.cliente && this.props.cliente.country });
-    await this.setState({ neighborhood: this.props.cliente && this.props.cliente.neighborhood });
-    await this.setState({ number: this.props.cliente && this.props.cliente.number });
-    await this.setState({ state: this.props.cliente && this.props.cliente.state });
-    await this.setState({ state_code: this.props.cliente && this.props.cliente.state_code });
-    await this.setState({ zipcode: this.props.cliente && this.props.cliente.zipcode });
+    await this.setState({
+      city: this.props.cliente && this.props.cliente.city,
+    });
+    await this.setState({
+      complement: this.props.cliente && this.props.cliente.complement,
+    });
+    await this.setState({
+      country: this.props.cliente && this.props.cliente.country,
+    });
+    await this.setState({
+      neighborhood: this.props.cliente && this.props.cliente.neighborhood,
+    });
+    await this.setState({
+      number: this.props.cliente && this.props.cliente.number,
+    });
+    await this.setState({
+      state: this.props.cliente && this.props.cliente.state,
+    });
+    await this.setState({
+      state_code: this.props.cliente && this.props.cliente.state_code,
+    });
+    await this.setState({
+      zipcode: this.props.cliente && this.props.cliente.zipcode,
+    });
   }
 
   renderOpcoesPagamento() {

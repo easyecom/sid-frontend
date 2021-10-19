@@ -71,35 +71,12 @@ export const createOrder = (payload) => (dispatch) => {
   }
 
   axios
-    .post(`${API}/stores/${loja}/orders`,  {
-      cart: payload.cart,
-      deliveryData: {
-        cost: payload.cost,
-        deadline: payload.deadline,
-        type: payload.type,
-        addressDelivery: {},
-      },
-      paymentData: {
-        type: "BOLETO",
-        value: payload.value,
-        address: {
-          country: payload.country,
-          region: payload.state,
-          region_code: payload.state_code,
-          city: payload.city,
-          postal_code: payload.zipcode,
-          street: payload.street,
-          number: payload.number,
-          locality: payload.neighborhood,
-        },
-      },
-      cancel: false,
-    }, getHeaders(payload.token))
+    .post(`${API}/stores/${loja}/orders`, order, getHeaders(payload.token))
     .then((response) => {
-      console.log("RES", response)
+      console.log("RES", response);
       dispatch({ type: CREATE_ORDER, payload: response.data });
     })
-    .catch((e) => console.log(e));
+    .catch((e) => console.log(errorHandling(e)));
 };
 
 export const fetchPedidos = (token) => (dispatch) => {
