@@ -45,7 +45,7 @@ class DadosDoPedido extends Component {
   }
 
   renderDadosDeEntrega() {
-    const { pedido } = this.props;
+    // const { pedido } = this.props;
     return (
       <div className="flex-3">
         <h4 className="headline">DADOS DE ENTREGA</h4>
