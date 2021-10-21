@@ -4,6 +4,9 @@ import { connect } from "react-redux";
 import actions from "../../redux/actions";
 import { createOrder } from "../../redux/actions/pedidoActions";
 
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import FormRadio from "../../components/Inputs/FormRadio";
 import TextField from "@material-ui/core/TextField";
 import { getToken } from "../../utils/token";
@@ -13,12 +16,12 @@ class DadosPagamento extends Component {
     CPF: "",
     // PAYMENT
     opcaoPagamentoSelecionado: "boleto",
-    holderName: "",
-    numeroCartao: "",
-    CVCartao: "",
-    mesCartao: "",
-    anoCartao: "",
-    value: 100,
+    holderName: "Jose da Silva",
+    numeroCartao: "4111111111111111",
+    CVCartao: "123",
+    mesCartao: "03",
+    anoCartao: "2026",
+    value: 1000,
     installment: 1,
     // FRETE
     cost: 25,
@@ -40,20 +43,41 @@ class DadosPagamento extends Component {
     cancel: false,
     //CREDENTIALS
     token: "",
+    orderProcess: "AWAITING",
   };
 
   async orderFinish() {
-    const { cleanCarrinho, criarPedido } = this.props;
+    this.setState({ orderProcess: "PROCESSING" });
 
-    const createdOrder = await createOrder(this.state);
+    const { cleanCarrinho } = this.props;
 
-    //CHAMAR API DE CRIAÇÃO DE PEDIDO;
+    const processOrderResponse = await createOrder(this.state);
 
-    //REDIRECIONAR PARA A PAGINA DE SUCESSO;
+    console.log("res dados pagamento", processOrderResponse);
 
-    console.log("res dados pagamento", createdOrder);
+    if (!processOrderResponse) {
+      this.setState({ orderProcess: "DENIED" });
+      return toast.error("Erro ao processar pagamento");
+    }
 
+    const { paymentResponse } = processOrderResponse.data;
+
+    if (
+      paymentResponse.message == "SUCESSO" ||
+      paymentResponse.paymentStatus == "AUTHORIZED"
+    ) {
+      this.setState({ orderProcess: "APPROVED" });
+
+      if (this.state.orderProcess == "APPROVED")
+        toast.success("Pedido realizado com sucesso ;)");
+      return;
+      //REDIRECIONAR PARA A PAGINA DE SUCESSO;
+    }
     // cleanCarrinho();
+
+    this.setState({ orderProcess: "DENIED" });
+
+    if (this.state.orderProcess == "DENIED") toast.error("Pedido negado ;)");
   }
 
   async componentDidMount() {
@@ -255,7 +279,9 @@ class DadosPagamento extends Component {
 
   render() {
     const { opcaoPagamentoSelecionado } = this.state;
-
+    if (this.state.orderProcess == "PROCESSING")
+      toast.loading("Processando pagamento...");
+    if (this.state.orderProcess !== "PROCESSING") toast.dismiss();
     return (
       <div className="Dados-Pagamento-Container">
         {this.renderOpcoesPagamento()}
@@ -273,6 +299,18 @@ class DadosPagamento extends Component {
           </button>
           {/* </Link> */}
         </div>
+        <ToastContainer
+          position="top-center"
+          autoClose={5500}
+          hideProgressBar={true}
+          newestOnTop={true}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          className="toast-container"
+        />
       </div>
     );
   }
