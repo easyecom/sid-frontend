@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 import { formatMoney } from "../../../utils";
-import TextoDados from "../../../components/Texto/Dados";
+// import TextoDados from "../../../components/Texto/Dados";
 import TabelaSimples from "../../../components/Tabela/Simples";
 import actions from "../../../redux/actions";
 import { connect } from "react-redux";
@@ -26,7 +26,7 @@ class DadosDoPedido extends Component {
       <div className="flex-3">
         <h4 className="headline">{`DADOS DO CLIENTE`}</h4>
         <br />
-        <TextoDados
+        {/* <TextoDados
           chave="Nome"
           valor={pedido && pedido.order.customer.userName}
         />
@@ -38,7 +38,7 @@ class DadosDoPedido extends Component {
         <TextoDados
           chave="Data de Nascimento"
           valor={pedido && pedido.order.customer.dateOfBirth}
-        />
+        /> */}
       </div>
     );
   }
@@ -49,7 +49,7 @@ class DadosDoPedido extends Component {
       <div className="flex-3">
         <h4 className="headline">DADOS DE ENTREGA</h4>
         <br />
-        <TextoDados
+        {/* <TextoDados
           chave="Endereço"
           valor={`${pedido && pedido.order.address.street} ${
             pedido && pedido.order.address.number
@@ -70,11 +70,11 @@ class DadosDoPedido extends Component {
         <TextoDados
           chave="Estado"
           valor={pedido && pedido.order.address.state}
-        />
-        <TextoDados
+        /> */}
+        {/* <TextoDados
           chave="CEP"
           valor={pedido && pedido.order.address.zipcode}
-        />
+        /> */}
       </div>
     );
   }
