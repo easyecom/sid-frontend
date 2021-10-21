@@ -11,7 +11,6 @@ export default class CheckClientPage extends Component {
     return (
       <Layout title="Ckeckout | LOJA SID SURF STORE">
         <Cabecalho simples title={"Validação de CPF"} />
-        {/* <CheckClient /> */}
         <Rodape />
       </Layout>
     );
