@@ -48,7 +48,7 @@ class DadosDoPedido extends Component {
     // const { pedido } = this.props;
     return (
       <div className="flex-3">
-        <h4 className="headline">DADOS DE ENTREGA</h4>
+        <h4 className="headline">DADOS ENTREGA</h4>
         <br />
         {/* <TextoDados
           chave="Endereço"
