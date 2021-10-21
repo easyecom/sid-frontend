@@ -11,7 +11,7 @@ import { API, loja } from "../../config";
 import { getToken } from "../../utils/token";
 
 class AtualizacaoDadosEntrega extends Component {
-  constructor(props) {
+  constructor() {
     super();
     this.state = {
       addressId: "",
@@ -37,8 +37,6 @@ class AtualizacaoDadosEntrega extends Component {
         else this.setState({ aviso: null });
       });
       alert("criado com sucesso");
-
-      // enviar usuario para tela de pagamento
     }
     if (this.state.CEP == this.state.newCep) {
       this.props.updateAddress(

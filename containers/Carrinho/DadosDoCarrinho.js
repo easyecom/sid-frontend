@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
 import Router from "next/router";
-import CircularProgress from "@material-ui/core/CircularProgress";
 
 import { formatMoney } from "../../utils";
 import { API, loja } from "../../config";
