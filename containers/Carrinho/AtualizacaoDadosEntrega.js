@@ -11,7 +11,7 @@ import { API, loja } from "../../config";
 import { getToken } from "../../utils/token";
 
 class AtualizacaoDadosEntrega extends Component {
-  constructor(props) {
+  constructor() {
     super();
     this.state = {
       addressId: "",
