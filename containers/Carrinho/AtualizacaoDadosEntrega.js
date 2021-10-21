@@ -37,8 +37,6 @@ class AtualizacaoDadosEntrega extends Component {
         else this.setState({ aviso: null });
       });
       alert("criado com sucesso");
-
-      // enviar usuario para tela de pagamento
     }
     if (this.state.CEP == this.state.newCep) {
       this.props.updateAddress(
