@@ -7,7 +7,7 @@ const Beneficios = () => (
     <div className="beneficios flex horizontal-mb">
       <ItemBeneficio
         icone="fa-truck"
-        texto="frete gratuito"
+        texto="frete grátis"
         paragrafo="Acima de R$100" />
       <ItemBeneficio
         icone="fa-dollar"
@@ -19,7 +19,7 @@ const Beneficios = () => (
         paragrafo="Troque na loja" />
       <ItemBeneficio
         icone="fa-refresh"
-        texto="troca grátis" 
+        texto="troca" 
         paragrafo="Em até 30 dias" />
     </div>
   </div>
