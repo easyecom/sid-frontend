@@ -47,6 +47,12 @@ export default () => (
       align-items: center
     }
 
+    .flex-align-center { 
+      display: flex;
+      align-items: center;
+      justify-content: center
+    }
+
     .flex-space { 
       display: flex;
       justify-content: space-between;

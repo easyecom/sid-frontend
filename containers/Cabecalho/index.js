@@ -3,6 +3,7 @@ import Link from "next/link";
 
 import Logo from "../../components/Logo/Cabecalho";
 import CampoPesquisa from "../../components/Campos/Pesquisa";
+import MenuResponsive from "../../components/menuResponsive";
 import CardCarrinho from "../../components/Cards/Carrinho";
 import Categorias from "../../components/Listas/Categorias";
 
@@ -12,8 +13,11 @@ class Cabecalho extends React.Component {
       <div className="Header">
         <div className="header-wrapper">
           <Logo />
-          <CampoPesquisa />
-          <CardCarrinho />
+          <div className="flex-align-center">
+            <MenuResponsive />
+            <CampoPesquisa />
+            <CardCarrinho />
+          </div>
         </div>
         <div className="categorias-wrapper">
           <Categorias />

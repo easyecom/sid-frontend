@@ -22,9 +22,9 @@ class CardCarrinho extends Component {
     return (
       <div className="itens-cabecalho flex-2 flex flex-center">
         <Link href="/customer-area">
-          <div className="item-cabecalho">
+          <div className="item-cabecalho my-account-icon">
             <i className="fa fa-user-o"></i>
-            <span>Minha Conta</span>
+            {/* <span>Minha Conta</span> */}
           </div>
         </Link>
         <Link href="/cart">

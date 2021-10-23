@@ -4,7 +4,7 @@ import ItemBeneficio from '../../components/Item/Beneficio';
 
 const Beneficios = () => (
   <div className="Beneficios">
-    <div className="container flex horizontal-mb wrap-mb">
+    <div className="beneficios flex horizontal-mb">
       <ItemBeneficio
         icone="fa-truck"
         texto="frete gratuito"

@@ -4,16 +4,16 @@ import { useRouter } from "next/router";
 
 const LogoCabecalho = () => {
   return (
-    <div className="">
-      <Link href="/">
+    <Link href="/">
+      <div className="container-logo">
         <img
-          onClick={() => window.location.href = "/"}
+          onClick={() => (window.location.href = "/")}
           src="/static/logo.png"
           className="logo"
           width="70%"
         />
-      </Link>
-    </div>
+      </div>
+    </Link>
   );
 };
 
