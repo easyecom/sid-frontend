@@ -5,6 +5,7 @@ import Logo from "../../components/Logo/Cabecalho";
 import CampoPesquisa from "../../components/Campos/Pesquisa";
 import MenuResponsive from "../../components/menuResponsive";
 import CardCarrinho from "../../components/Cards/Carrinho";
+import CardCarrinhoResponsive from "../../components/Cards/CarrinhoResponsive";
 import Categorias from "../../components/Listas/Categorias";
 
 class Cabecalho extends React.Component {
@@ -12,9 +13,12 @@ class Cabecalho extends React.Component {
     return (
       <div className="Header">
         <div className="header-wrapper">
-          <Logo />
-          <div className="flex-align-center">
+          <div className="logo-header-responsive">
             <MenuResponsive />
+            <Logo />
+            <CardCarrinhoResponsive />
+          </div>
+          <div className="flex-align-center icons-header">
             <CampoPesquisa />
             <CardCarrinho />
           </div>

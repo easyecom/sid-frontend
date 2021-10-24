@@ -14,7 +14,7 @@ class Pesquisa extends Component {
 
   render() {
     return (
-      <div className="flex-3 flex flex-center">
+      <div className="flex-3 flex flex-center input-container">
         <input
           name="pesquisa"
           value={this.state.termo}

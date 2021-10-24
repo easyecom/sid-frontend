@@ -20,12 +20,7 @@ class CardCarrinho extends Component {
 
   render() {
     return (
-      <div className="itens-cabecalho flex-2 flex flex-center">
-        <Link href="/customer-area">
-          <div className="item-cabecalho my-account-icon">
-            <i className="fa fa-user-o"></i>
-          </div>
-        </Link>
+      <div className="itens-carrinho-responsive">
         <Link href="/cart">
           <div className="item-cabecalho cart">
             <i className="fa fa-shopping-cart"></i>

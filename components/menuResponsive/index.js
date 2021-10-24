@@ -10,9 +10,11 @@ class MenuResposive extends Component {
 
   render() {
     return (
-      <div className="menu">
+      <div className="menu-responsive">
         <div>
-          <i className="fa fa-bars"></i>
+          <Link href="/customer-area">
+            <i className="fa fa-bars"></i>
+          </Link>
         </div>
       </div>
     );

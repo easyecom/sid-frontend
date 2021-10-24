@@ -2,6 +2,7 @@
 
 .Header {
   max-height: 165px;
+  width: 100%;
 }
 
 /* Para ajustar */
@@ -14,6 +15,7 @@
 }
 
 .header-wrapper {
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -26,6 +28,9 @@
   line-height: 24px;
 }
 
+.icons-header{
+  padding-right: 20px;
+}
 /* .header-main {
   display: flex;
   justify-content: center;
@@ -46,7 +51,17 @@
   display: flex;
 }
 
-.menu {
+/* Responsive */
+
+.menu-responsive {
+  display: none !important;
+}
+
+.itens-carrinho-responsive {
+  display: none !important;
+}
+
+.cart-responsive {
   display: none !important;
 }
 
@@ -55,8 +70,44 @@
     max-height: 260px;
   }
 
-  .menu {
+  .menu-responsive {
     display: block !important;
+  }
+
+  .cart-responsive {
+    display: block !important;
+  }
+
+  .itens-carrinho-responsive {
+    display: block !important;
+  }
+
+  .itens-cabecalho {
+    display: none !important;
+  }
+
+  .logo-header-responsive {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .button-pesquisa {
+    margin-left: -8%;
+    font-size: 1rem;
+    color: #999;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+
+  .input-pesquisa {
+    padding-left: 20px;
+    width: 330px;
+    height: 38px;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    border-radius: 8px;
   }
 
   .header-wrapper {
@@ -99,10 +150,18 @@
     padding-top: 5px !important;
   }
 
+  .fa-bars:before {
+    color: #999;
+    font-size: 1.4rem;
+    margin: 1 px 3 px;
+    transition: opacity 0.2s;
+  }
+
   .container-logo {
     display: flex;
     justify-content: center;
     max-width: 230px !important;
+    margin: 10px 40px;
     cursor: pointer;
   }
 }
@@ -112,12 +171,16 @@
   cursor: pointer;
 }
 
+.input-container {
+  width: 100%;
+}
+
 .input-pesquisa {
   padding-left: 20px;
-  width: 230px;
+  width: 330px;
   height: 38px;
   border: 1px solid #ddd;
-  margin: 0 10px;
+  /* margin: 0 10px; */
   border-radius: 8px;
 }
 
@@ -126,7 +189,7 @@
 }
 
 .button-pesquisa {
-  margin-left: -17%;
+  margin-left: -8%;
   font-size: 1.2rem;
   color: #999;
   background-color: transparent;
@@ -135,7 +198,7 @@
 }
 
 .itens-cabecalho {
-  padding: 20px 10px 20px 0;
+  padding: 20px 10px 20px 20px;
 }
 
 .item-cabecalho {
@@ -166,8 +229,8 @@
   opacity: 0.7;
 }
 
-.item-cabecalho.cart {
-  margin-left: 15px;
+.my-account-icon {
+ margin-right: 10px;
 }
 
 .item-cabecalho.cart span {
