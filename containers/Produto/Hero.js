@@ -53,7 +53,7 @@ class Hero extends Component {
   renderPhotos() {
     return (
       <div className="fotos flex-2 flex vertical">
-        <div className="box-images flex flex-1">
+        <div className="box-images flex-1">
           <div className="mini-fotos">
             {this.state.fotos.map((foto, index) => (
               <div
@@ -196,7 +196,7 @@ class Hero extends Component {
       {
         variationId: variationId,
         produto: productId,
-        productName: `${productName} ${color} ${size}`,
+        productName: `${productName}`,
         precoUnitario: offerPrice ? offerPrice : prices,
         foto: foto || null,
         quantidade: qtd,
@@ -212,7 +212,7 @@ class Hero extends Component {
     return (
       <div className="flex-1 produto-detalhes">
         <div className="titulo">
-          <h2>{`${variationName} ${color}`}</h2>
+          <h2>{`${variationName}`}</h2>
         </div>
         {/* <br /> */}
         <div className="avaliacao-pontuacao flex-1 flex">

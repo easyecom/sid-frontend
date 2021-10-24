@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import ListaDeProdutos from "./ListaDeProdutos";
 import DadosDoCarrinho from "./DadosDoCarrinho";
-import DeliveryCalculator from "../../containers/Checkout/DadosFrete"
+import DeliveryCalculator from "./DeliveryCalculator"
 import { connect } from "react-redux";
 import actions from "../../redux/actions";
 
@@ -27,7 +27,7 @@ class CarrinhoContainer extends Component {
       <div className="container Carrinho">
         <br />
         <ListaDeProdutos />
-        {/* <DeliveryCalculator /> */}
+        <DeliveryCalculator /> 
         <DadosDoCarrinho />
       </div>
     );
