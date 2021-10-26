@@ -571,7 +571,7 @@
   }
 
   .Produto-Hero {
-    padding-top: 0 !important;
+    padding: 0 6px 10px 6px!important;
   }
 
   .titulo {
