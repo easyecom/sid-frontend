@@ -6,7 +6,14 @@ import { formatMoney } from "../../utils";
 class Produto extends Component {
   render() {
     const { item, porLinha } = this.props;
-    const { productId, variationName, productName, salesPrice, offerPrice, images } = item; 
+    const {
+      productId,
+      variationName,
+      productName,
+      salesPrice,
+      offerPrice,
+      images,
+    } = item;
 
     const temPromo = offerPrice && salesPrice !== offerPrice;
     return (
@@ -25,6 +32,13 @@ class Produto extends Component {
             <h3>{variationName || productName}</h3>
           </div>
           <br />
+          <span className="evaluation-stars">
+            <i className="fa fa-star"></i>
+            <i className="fa fa-star"></i>
+            <i className="fa fa-star"></i>
+            <i className="fa fa-star"></i>
+            <i className="fa fa-star"></i>
+          </span>
           <div
             className={`produto-preco ${
               temPromo ? "produto-por" : ""

@@ -1,10 +1,68 @@
 @import url("https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap");
 
+/* Responsive initial*/
+
+.menu-responsive {
+  display: none !important;
+}
+
+.itens-carrinho-responsive {
+  display: none !important;
+}
+
+.cart-responsive {
+  display: none !important;
+}
+
+/* Header  */
+
 .Header {
   max-height: 165px;
   margin-top: 10px;
   width: 100%;
 }
+
+.header-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-wrapper h2 {
+  color: #777777;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 24px;
+}
+
+.icons-header {
+  padding-right: 8px;
+}
+
+.Header-Simples {
+  border-bottom: 1px solid #ededed;
+  padding: 5px 0;
+  height: 70px;
+}
+
+.header-wrapper,
+.categorias {
+  max-width: 100%;
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+}
+
+@media screen and (min-width: 320px) and (max-width: 720px) {
+  .Header {
+    max-height: 165px;
+    margin-top: 3px;
+    width: 100%;
+  }
+}
+
+/* Delivery */
 
 .delivery-calculator {
   display: flex;
@@ -38,64 +96,12 @@
   margin: 0;
 }
 
-/* Para ajustar */
 .update-delivery {
   padding: 0 50px;
 }
 
 .update-delivery h2 {
   padding: 20px 0 40px 0;
-}
-
-.header-wrapper {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.header-wrapper h2 {
-  color: #777777;
-  font-weight: 400;
-  font-size: 24px;
-  line-height: 24px;
-}
-
-.icons-header {
-  padding-right: 8px;
-}
-/* .header-main {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-} */
-
-.Header-Simples {
-  border-bottom: 1px solid #ededed;
-  padding: 5px 0;
-  height: 70px;
-}
-
-.header-wrapper,
-.categorias {
-  max-width: 100%;
-  margin: 0 auto;
-  width: 100%;
-  display: flex;
-}
-
-/* Responsive */
-
-.menu-responsive {
-  display: none !important;
-}
-
-.itens-carrinho-responsive {
-  display: none !important;
-}
-
-.cart-responsive {
-  display: none !important;
 }
 
 @media screen and (min-width: 320px) and (max-width: 720px) {
@@ -160,7 +166,7 @@
   }
 
   .Beneficios {
-    padding: 5px 0 !important;
+    padding: 0 0 12px 0 !important;
   }
 
   .beneficios {
@@ -193,16 +199,20 @@
     margin: 1px 3px;
     transition: opacity 0.2s;
   }
-
+  /* 
   .fa-search:before {
-  }
+  } */
 
   .container-logo {
     display: flex;
     justify-content: center;
     max-width: 230px !important;
-    margin: 10px 40px;
+    margin: 3px 40px;
     cursor: pointer;
+  }
+
+  .container-logo img {
+    max-width: 50% !important;
   }
 }
 
@@ -338,8 +348,8 @@
 }
 
 .Produtos-Pagina-Inicial > h2 {
-  margin-top: 20px;
-  border-top: 1px solid #999;
+  /* margin-top: 20px; */
+  border-top: 1px solid #f8f8f8;
   color: #666666;
   font-size: 1.3rem;
   font-weight: bold;
@@ -352,7 +362,7 @@
   box-shadow: 0 0 4px #eee;
   flex-basis: calc(25% - 20px);
   padding: 15px;
-  border-radius: 10px;
+  /* border-radius: 10px; */
 }
 
 .produto:hover {
@@ -370,6 +380,17 @@
   color: #333;
 }
 
+.evaluation-stars {
+  text-align: center;
+  padding-bottom: 5px;
+}
+
+.evaluation-stars i{
+  padding: 0 !important;
+  margin: 0 !important;
+  font-size: 13px;
+}
+
 .produto-preco h2,
 .produto-preco-promocao h2 {
   font-size: 1.5rem;
@@ -381,12 +402,61 @@
   text-decoration: line-through;
   color: #777;
   margin: 0;
-  padding: 0;
 }
 
 .produto-preco-parcelado h4 {
   color: #666;
   font-size: 0.95rem;
+}
+
+@media screen and (min-width: 320px) and (max-width: 720px) {
+  .Produtos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    padding: 0 !important;
+  }
+
+  .produto {
+    background: #fff;
+    margin: 0 !important;
+    padding: 0 6% 5px 6% !important;
+  }
+
+  .produto-image {
+    height: 150px;
+  }
+
+  .Produtos-Pagina-Inicial {
+    /* margin: 30px auto; */
+    background: #f8f8f8;
+  }
+
+  .Produtos-Pagina-Inicial > h2 {
+    padding-top: 10px;
+  }
+
+  .produto-title {
+    font-size: 0.9rem;
+    text-align: center;
+    font-weight: bold;
+    color: #333;
+    height: 30px;
+  }
+
+  .produto-preco.produto-por h2 {
+    font-size: 0.9rem;
+    text-decoration: line-through;
+    color: #777;
+    margin: 0;
+}
+
+  .produto-preco h2,
+  .produto-preco-promocao h2 {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
 }
 
 /* PAGINACAO */
