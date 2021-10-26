@@ -33,7 +33,7 @@ class Banners extends Component {
     const { img } = this.state;
     return (
       <div className="flex-1 banner">
-        <img src={img} className="banner" alt="banner" width="100%" />
+        <img src={img} className="banner" alt="banner" width="100%" media="(min-width: 650px)" srcset=""/>
       </div>
     );
   };
