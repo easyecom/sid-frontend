@@ -52,7 +52,10 @@ class Produto extends Component {
             </div>
           )}
           <div className={`produto-preco-parcelado flex flex-center`}>
-            {/* <h4>ou 6x de {formatMoney((temPromo ? promotion : salesPrice) / 6)} sem juros</h4> */}
+            <p>
+              ou 6x de {formatMoney((offerPrice / 6 || salesPrice) / 6)} s/
+              juros
+            </p>
           </div>
         </div>
       </Link>
