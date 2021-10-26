@@ -19,7 +19,7 @@ class Produto extends Component {
     return (
       <Link href={`/product/${productName}?id=${productId}`}>
         <div
-          className={`produto   flex-1 flex vertical wrap-${porLinha} wrap-2-mb`}
+          className={`produto flex-1 vertical wrap-${porLinha} wrap-2-mb`}
         >
           <div className="produto-image flex flex-center">
             <img
@@ -32,7 +32,7 @@ class Produto extends Component {
             <h3>{variationName || productName}</h3>
           </div>
           <br />
-          <span className="evaluation-stars">
+          <span className="evaluation-stars flex flex-center">
             <i className="fa fa-star"></i>
             <i className="fa fa-star"></i>
             <i className="fa fa-star"></i>

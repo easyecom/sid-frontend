@@ -147,6 +147,14 @@ export default () => (
     }
 
     @media screen and (max-width: 720px) {
+      .container, 
+      .container-big {
+        width: calc(100%) !important;
+        padding: 0 !important;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      
       .wrap-mb {
         flex-wrap: wrap;
       }

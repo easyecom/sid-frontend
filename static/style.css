@@ -415,7 +415,7 @@
     align-items: center;
     justify-content: center;
     gap: 1px;
-    padding: 0 !important;
+    padding-bottom: 10px !important;
   }
 
   .produto {
@@ -426,15 +426,18 @@
 
   .produto-image {
     height: 130px;
+    padding: 5px !important;
   }
 
   .Produtos-Pagina-Inicial {
-    /* margin: 30px auto; */
+    margin: 0 !important;
+    padding: 0 !important;
     background-color: rgb(244, 244, 244);
+    /* padding-bottom: 10px !important; */
   }
 
   .Produtos-Pagina-Inicial > h2 {
-    padding-top: 10px;
+    padding: 10px 0 0 5px;
   }
 
   .produto-title {
@@ -460,7 +463,7 @@
 
   .produto-preco-parcelado p {
     color: #666;
-    font-size: 0.60rem;
+    font-size: 0.6rem;
   }
 }
 
@@ -1290,4 +1293,26 @@ table.simples td {
   font-size: 1.3rem;
   color: #ff9600;
   font-weight: bold;
+}
+
+@media screen and (min-width: 320px) and (max-width: 720px) {
+  .Rodape {
+    background: #111111;
+    padding: 20px 0;
+    color: #fff;
+    margin: 0;
+  }
+
+  .Rodape .container {
+    text-align: center;
+  }
+
+  .Rodape .redes-sociais-container .redes-sociais {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    justify-content: space-evenly !important;
+    padding: 0 20px;
+    /* gap: 20px */
+  }
 }
