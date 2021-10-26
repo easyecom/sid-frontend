@@ -445,7 +445,7 @@
     text-align: center;
     font-weight: bold;
     color: #333;
-    height: 30px;
+    height: 20px !important;
   }
 
   .produto-preco.produto-por h2 {
