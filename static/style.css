@@ -71,18 +71,30 @@
   }
   .banner img {
     display: none;
-
   }
 
   .banner {
     background-image: url("../static/banners/banner-mobile-combinha.png");
     background-repeat: no-repeat;
     height: 220px;
-
   }
 }
 
 /* Delivery */
+
+.image-title {
+  display: flex;
+  align-items: center;
+}
+
+.quantity-value {
+  display: flex;
+  align-items: center;
+}
+
+.quantity-value-mobile {
+  display: none;
+}
 
 .delivery-calculator {
   display: flex;
@@ -125,23 +137,92 @@
 }
 
 @media screen and (min-width: 320px) and (max-width: 720px) {
-  .Carrinho {
-    margin: 0 5px !important;
+  /* .Carrinho {
+    margin: 0 15px !important;
+    padding: 0 17px !important;
+  } */
+
+  .carrinho-item {
+    margin: 0 !important;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .quantity-value {
+    display: flex;
+    /* align-items: center; */
+  }
+
+  .quantity-value-mobile {
+    display: flex !important;
+    display: block;
+
+    padding: 0 5px 15px 20px;
+  }
+
+  .carrinho-item .cart-quantity-desktop {
+    display: none;
+  }
+  .carrinho-item .cart-multiply-quantity-desktop {
+    display: none;
+  }
+  .carrinho-item .cart-remove-product-desktop {
+    display: none;
+  }
+
+  .produto-titulo h3 {
+    font-size: 15px;
+  }
+
+  /* .image-title {
+    display: flex;
+    align-items: center;
+  }
+  
+  .quantity-value {
+    display: flex;
+    align-items: center;
+  } */
+
+  .delivery-calculator {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start;
+    padding-left: 20px;
+  }
+
+  .delivery-container {
+    display: flex !important;
+    align-items: center !important;
+    margin: 0 !important;
   }
 
   .delivery-calculator-box {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-around !important;
 
-    background: #f8f8f8;
-    height: 70px;
+    background: #f8f8f8 !important;
+    height: 40px !important;
     width: 100% !important;
     padding: 0 5px !important;
   }
 
   .delivery-calculator-box p {
     display: none;
+  }
+
+  .delivery-calculator-box .form-input {
+    width: 140px !important;
+    height: 30px;
+  }
+
+  .delivery-calculator-box button {
+    /* height: 20px; */
+  }
+
+  .Dados-Do-Carrinho {
+    padding: 0 10px !important;
   }
 }
 
@@ -810,6 +891,16 @@ i.fa-star {
 
 /* BOTAO */
 
+.btn-mobile {
+  font-size: 0.7rem;
+  padding: 7px 10px;
+  border: 1px solid #999;
+  border-radius: 3px;
+  background: transparent;
+  font-weight: bold;
+  cursor: pointer;
+}
+
 .btn {
   font-size: 1.2rem;
   padding: 10px 20px;
@@ -920,9 +1011,21 @@ i.fa-star {
   cursor: pointer;
 }
 
+.button-modal p {
+  color: #fff !important;
+}
+
+.button-modal a {
+  text-decoration: none !important;
+}
+
 @media screen and (min-width: 320px) and (max-width: 720px) {
   .Carrinho .carrinho-cabecalho {
     display: none;
+  }
+
+  .btn-product-details {
+    width: 100% !important;
   }
 }
 

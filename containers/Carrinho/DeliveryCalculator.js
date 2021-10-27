@@ -36,7 +36,7 @@ class DeliveryCalculator extends Component {
               />
             </div>
 
-            <button className="btn btn-success" onClick={() => this.calculate()}>Calcular</button>
+            <button className="btn-mobile btn-success" onClick={() => this.calculate()}>Calcular</button>
           </div>
           {this.state.isDeliveryCalculated == true ?
             <div className="delivery-calculated">

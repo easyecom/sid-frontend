@@ -15,9 +15,6 @@ class ListaDeProdutos extends Component {
           <h3 className="text-center">QTD</h3>
         </div>
         <div className="headline flex-1 flex flex-center">
-          <h3 className="text-center">Preço Unitátio</h3>
-        </div>
-        <div className="headline flex-1 flex flex-center">
           <h3 className="text-center">Preço Total</h3>
         </div>
         {!semAlteracoes && <div className="flex-1"></div>}
@@ -64,10 +61,12 @@ class ListaDeProdutos extends Component {
             <img src={foto} alt={nome} width="100px" />
           </div>
           <div className="produto-titulo flex-4 flex flex-start">
-            <h3 className="text-center">{nome}&nbsp; - {variationId}</h3> 
+            <h3 className="text-center">
+              {nome}&nbsp; - {variationId}
+            </h3>
           </div>
         </div>
-        <div className="flex-1 flex flex-center">
+        <div className="flex-1 flex flex-center cart-quantity-desktop">
           {semAlteracoes ? (
             <span>{quantidade}</span>
           ) : (
@@ -81,20 +80,46 @@ class ListaDeProdutos extends Component {
             />
           )}
         </div>
-        <div className="flex-1 flex flex-center">
-          <span>{formatMoney(precoUnitario)}</span>
-        </div>
-        <div className="flex-1 flex flex-center">
+        <div className="flex-1 flex flex-center cart-multiply-quantity-desktop">
           <span>{formatMoney(precoUnitario * quantidade)}</span>
         </div>
         {!semAlteracoes && (
           <div
-            className="flex-1 flex flex-center"
+            className="flex-1 flex flex-center cart-remove-product-desktop"
             onClick={() => this.removerProdutoCarrinho(index)}
           >
             <span className="fa fa-trash"></span>
           </div>
         )}
+        {/* Mobile */}
+        <div className="quantity-value-mobile">
+          <div className="flex-1 flex flex-center ">
+            {semAlteracoes ? (
+              <span>{quantidade}</span>
+            ) : (
+              <input
+                type="number"
+                value={quantidade}
+                className="produto-quantidade"
+                onChange={(e) =>
+                  this.changeQuantidade(e, quantidade, item, index)
+                }
+              />
+            )}
+            {!semAlteracoes && (
+              <div
+                className="flex-1 flex flex-center"
+                onClick={() => this.removerProdutoCarrinho(index)}
+              >
+                {/* <span className="fa fa-trash">Excluir</span> */}
+                <span><a>Excluir</a></span>
+              </div>
+            )}
+          </div>
+          <div className="flex-1 flex flex-center">
+            <span>{formatMoney(precoUnitario * quantidade)}</span>
+          </div>
+        </div>
       </div>
     );
   }
@@ -117,7 +142,7 @@ class ListaDeProdutos extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  carrinho: state.carrinho.carrinho
+  carrinho: state.carrinho.carrinho,
 });
 
 export default connect(mapStateToProps, actions)(ListaDeProdutos);

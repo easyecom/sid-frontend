@@ -69,6 +69,7 @@ class DadosDoCarrinho extends Component {
     const { autenticar, cliente } = this.props;
 
     await autenticar(
+      // TODO - remove mock email
       { email: "thiago1@gmail.com", password },
       false,
       (error) => {
@@ -180,14 +181,16 @@ class DadosDoCarrinho extends Component {
         </div>
         <div className="dados-do-carrinho-item flex flex-right">
           <button
-            className="btn btn-success btn-cta"
+            className="btn btn-success btn-cta btn-product-details button-modal"
             onClick={() =>
               this.state.localToken
                 ? this.handleDirectCheckMyData()
                 : this.handleModal()
             }
           >
-            <a href="#abrirModal">Finalizar pedido</a>
+            <a href="#abrirModal">
+              <p>Finalizar pedido</p>
+            </a>
           </button>
         </div>
       </div>
