@@ -77,8 +77,8 @@ class MenuResposive extends Component {
           </p>
         </div>
 
-        <h3>Categorias</h3>
-        <div>
+        <h3 className="categories">Categorias</h3>
+        <div className="categories">
           {categories.map((e) => (
             <div>{e.category}</div>
           ))}

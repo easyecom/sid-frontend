@@ -217,10 +217,6 @@
     height: 30px;
   }
 
-  .delivery-calculator-box button {
-    /* height: 20px; */
-  }
-
   .Dados-Do-Carrinho {
     padding: 0 10px !important;
   }
@@ -232,11 +228,11 @@
   }
 
   .Menu-responsive {
-    overflow-y: scroll !important;
+    /* overflow-y: scroll !important; */
     height: 100vh !important;
     width: 76%;
     background: #fff !important;
-    margin: -20px 0 0 -7px !important;
+    margin: -20px 0 0 -30px !important;
     position: fixed;
   }
 
@@ -252,9 +248,13 @@
   }
 
   .Menu-responsive div p {
-    padding: 0 10px 0 10px;
+    padding: 0 10px 0 30px;
     font-size: 15px;
     color: #fff;
+  }
+
+  .categories {
+    padding-left: 30px;
   }
 
   .login-responsive {
