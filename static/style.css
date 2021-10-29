@@ -231,6 +231,46 @@
     max-height: 260px;
   }
 
+  .Menu-responsive {
+    overflow-y: scroll !important;
+    height: 100vh !important;
+    width: 76%;
+    background: #fff !important;
+    margin: -20px 0 0 -7px !important;
+    position: fixed;
+  }
+
+  .header-menu-responsive {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    border-bottom: 1px solid #434343 !important;
+    background: #000;
+    height: 60px !important;
+    width: 100%;
+  }
+
+  .Menu-responsive div p {
+    padding: 0 10px 0 10px;
+    font-size: 15px;
+    color: #fff;
+  }
+
+  .login-responsive {
+    color: green;
+  }
+
+  .register-responsive {
+    color: green;
+  }
+
+  .fa-angle-left:before {
+    color: #fff;
+    font-size: 1.4rem;
+    font-weight: bold;
+  }
+
   .menu-responsive {
     display: block !important;
   }
