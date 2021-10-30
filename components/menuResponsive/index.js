@@ -2,6 +2,11 @@ import React, { Component } from "react";
 import Link from "next/link";
 import { connect } from "react-redux";
 import actions from "../../redux/actions";
+import { fetchClient } from "../../redux/actions/clientActions";
+import { getToken } from "../../utils/token";
+import axios from "axios";
+import { API, loja } from "../../config";
+import { getHeaders } from "../../redux/actions/helpers";
 
 const categories = [
   {
@@ -44,37 +49,59 @@ const categories = [
 class MenuResposive extends Component {
   state = {
     open: false,
+    userName: "",
   };
 
-  componentDidMount() {}
+  async componentDidMount() {
+    const token = getToken();
+    if (token) {
+      try {
+        const { data } = await axios.get(
+          `${API}/stores/${loja}/clients/me`,
+          getHeaders(token)
+        );
+        if (data) {
+          this.setState({ userName: data.userName });
+        }
+      } catch (e) {
+        throw e;
+      }
+    }
+  }
 
   componentDidUpdate() {}
 
-  toggleOpen = () => this.setState({ open: !this.state.open });
+  toggleOpen = async () => {
+    this.setState({ open: !this.state.open });
+  };
 
   handleMenuResponsive() {
-    console.log(this.props, "props");
     return (
       <div className="Menu-responsive">
-        <div className="header-menu-responsive">
-          <p>
-            <Link href="/customer-area">
-              <span className="login-responsive">Entre</span>
-            </Link>{" "}
-            ou{" "}
-            <Link href="/customer-area">
-              <span
-                onClick={this.props.changeAcesso}
-                className="register-responsive"
-              >
-                cadastre-se
-              </span>
-            </Link>
-          </p>
-
-          <p onClick={() => this.toggleOpen()}>
-            <i className="fa fa-angle-left"></i>
-          </p>
+        <div className="Header-menu-responsive">
+          <div className="header-menu-responsive">
+            {this.state.userName ? (
+              <p>
+                <span className="login-responsive">{`Olá ${this.state.userName.toUpperCase()}`}</span>
+              </p>
+            ) : (
+              <p>
+                <Link href="/customer-area">
+                  <span className="login-responsive">Entrar</span>
+                </Link>
+              </p>
+            )}
+            <p onClick={() => this.toggleOpen()}>
+              <i className="fa fa-angle-left"></i>
+            </p>
+          </div>
+          <div className="my-orders-responsive">
+            <p>
+              <Link href="/customer-area">
+                <span className="login-responsive">Meus pedidos</span>
+              </Link>
+            </p>
+          </div>
         </div>
 
         <h3 className="categories">Categorias</h3>

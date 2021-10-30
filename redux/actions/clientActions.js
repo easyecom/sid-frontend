@@ -5,7 +5,7 @@ import {
   NEW_ADDRESS,
   UPDATE_CLIENT,
   CHECK_CLIENTE_EXIST,
-  UPDATE_ADDRESS
+  UPDATE_ADDRESS,
 } from "../types";
 import axios from "axios";
 import { API, versao, loja } from "../../config";
@@ -24,13 +24,13 @@ export const getRawData = (data) => {
   return `${ano}-${mes}-${dia}`;
 };
 
-export const fetchClient = (token) => (dispatch) => {
-  axios
-    .get(`${API}/stores/${loja}/clients/me`, getHeaders(token))
-    .then((response) => {
-      dispatch({ type: FETCH_CLIENTE, payload: response.data });
-    })
-    .catch((e) => console.log(e));
+export const fetchClient = async (token) => {
+  // const data = await axios.get(
+  //   `${API}/stores/${loja}/clients/me`,
+  //   getHeaders(token)
+  // );
+  // console.log(data, "actions");
+  // return data;
 };
 
 export const checkClientExist = (cpf) => (dispatch) => {

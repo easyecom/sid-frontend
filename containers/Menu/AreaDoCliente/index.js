@@ -4,29 +4,40 @@ import { withRouter } from "next/router";
 import Router from "next/router";
 import { connect } from "react-redux";
 import actions from "../../../redux/actions";
+import { fetchClient } from "../../../redux/actions/clientActions";
 import { cleanToken } from "../../../utils/token";
 
 class MenuAreaDoCliente extends Component {
-  componentDidMount() {
+  state = {
+    userName: "",
+  };
+  async componentDidMount() {
     const { usuario, token, cliente } = this.props;
+    // console.log(usuario, this.state.userName, "componentDidUpdate")
+
     if (usuario && token && !cliente) {
-      this.props.fetchClient(usuario.userId, token);
+      // this.props.fetchClient( token);
+      const client = await fetchClient(token);
+      console.log(client, "test");
+      this.setState({ userName: usuario.userName });
     }
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps) {
+    // console.log(prevProps, "test")
     const { usuario, token, cliente } = this.props;
 
     if (usuario && token && !cliente) {
-      this.props.fetchClient(usuario.userId, token);
+      // this.props.fetchClient(token);
     }
   }
 
-  fetchCliente() {
+  async fetchCliente() {
     const { usuario, token, cliente } = this.props;
 
     if (usuario && token && !cliente) {
-      this.props.fetchClient(usuario.userId, token);
+      const client = await fetchClient(token);
+      console.log(client, "test 2");
     }
   }
 
@@ -39,7 +50,7 @@ class MenuAreaDoCliente extends Component {
 
     return (
       <div>
-        <h3>{`Olá ${usuario ? usuario.userName : ""}`}</h3>
+        <h3>{`Olá ${this.state.userName || (usuario && usuario.userName)}`}</h3>
       </div>
     );
   }
