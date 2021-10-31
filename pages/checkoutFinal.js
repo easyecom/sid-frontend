@@ -19,7 +19,7 @@ export default class Checkout extends Component {
         return (
             <Layout title="Ckeckout | LOJA SID SURF STORE">
                 <Cabecalho simples
-                    title={"Dados de Pagamento"} />
+                    title={""} />
                 <CheckoutContainerFinal />
                 <Rodape />
             </Layout>

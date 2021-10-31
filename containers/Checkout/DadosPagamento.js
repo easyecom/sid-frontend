@@ -264,7 +264,7 @@ class DadosPagamento extends Component {
             }}
             variant="outlined"
           >
-            <option>Selecione a quantidade de parcelas</option>
+            <option>Parcelamento</option>
             <option value="1">1x de R$ 105,00 sem juros</option>
             <option value="2">2x de R$ 62,50 sem juros</option>
             <option value="3">3x de R$ 35,00 sem juros</option>
@@ -289,10 +289,10 @@ class DadosPagamento extends Component {
           this.renderPagamentoComBoleto()}
         {opcaoPagamentoSelecionado === "cartao" &&
           this.renderPagamentoComCartao()}
-        <div className="flex flex-right">
+        <div className="flex flex-right Button-payment-responsive">
           {/* <Link href="/OrderFinishedPage"> */}
           <button
-            className="btn btn-cta btn-success"
+            className="btn btn-cta btn-success button-payment-responsive"
             onClick={() => this.orderFinish()}
           >
             <span>CONCLUIR PEDIDO</span>

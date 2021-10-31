@@ -217,8 +217,39 @@
     height: 30px;
   }
 
+  .update-delivery {
+    padding: 0 10px;
+  }
+
   .Dados-Do-Carrinho {
     padding: 0 10px !important;
+  }
+
+  .Dados-Pedido-Container {
+    display: none;
+  }
+
+  .Dados-Pagamento-Container {
+    padding: 0 10px 0 10px !important;
+  }
+
+  .checkout h2 {
+    padding: 20px 0 !important;
+  }
+
+  .Button-payment-responsive {
+    justify-content: center !important;
+    margin: 10px 0;
+    width: 100% !important;
+  }
+
+  .button-payment-responsive {
+    /* justify-content: center !important; */
+    width: 100% !important;
+  }
+
+  .pagamento-input {
+    max-width: 100% !important;
   }
 }
 
@@ -264,9 +295,23 @@
     border-top: 1px solid #d6d6d6 !important;
   }
 
+  .categoria-item-responsive {
+    border-top: 1px solid #d6d6d6 !important;
+    text-transform: none !important;
+  }
+
+  .Categories {
+    padding: 20px 0 20px 30px;
+    color: #6d6d6d;
+  }
+
   .categories {
-    /* border-top: 1px solid #d6d6d6 !important; */
     padding-left: 30px;
+    letter-spacing: 3px;
+    font-size: 12px;
+    color: rgb(153, 153, 153);
+    /* text-transform: uppercase; */
+    font-family: "Fjalla One", sans-serif;
   }
 
   .login-responsive {
@@ -336,7 +381,12 @@
   }
 
   .categorias {
-    display: none !important;
+    overflow-x: auto;
+  }
+
+  .categorias::-webkit-scrollbar {
+    height: 0px;
+    width: 0px;
   }
 
   .Beneficios {
@@ -1121,18 +1171,16 @@ i.fa-star {
   }
 }
 
+.pagamento-input {
+  margin-bottom: 0 !important;
+}
+
 .text-field_input {
   margin-bottom: 15px;
 }
 
 .numero-input {
-  max-width: 20%;
-  margin-left: 10px;
-}
-
-.estado-input {
-  max-width: 35%;
-  margin-left: 10px;
+  margin-bottom: 15px !important;
 }
 
 .pagamento-input {

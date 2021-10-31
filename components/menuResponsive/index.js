@@ -8,44 +8,6 @@ import axios from "axios";
 import { API, loja } from "../../config";
 import { getHeaders } from "../../redux/actions/helpers";
 
-const categories = [
-  {
-    category: "vestuarios",
-    categories: [
-      { categoryChildren: "camisetas" },
-      { categoryChildren: "blusas" },
-      { categoryChildren: "bermudas" },
-      { categoryChildren: "calças" },
-    ],
-  },
-  {
-    category: "calcados",
-    categories: [
-      { categoryChildren: "tenis" },
-      { categoryChildren: "sapatos" },
-      { categoryChildren: "botinhas" },
-      { categoryChildren: "chinelos" },
-    ],
-  },
-  {
-    category: "acessorios",
-    categories: [
-      { categoryChildren: "relogios" },
-      { categoryChildren: "bones" },
-      { categoryChildren: "correntes" },
-      { categoryChildren: "perfumes" },
-    ],
-  },
-  {
-    category: "eletronicos",
-    categories: [
-      { categoryChildren: "celulares" },
-      { categoryChildren: "smartWatch" },
-      { categoryChildren: "carregadores" },
-    ],
-  },
-];
-
 class MenuResposive extends Component {
   state = {
     open: false,
@@ -76,6 +38,7 @@ class MenuResposive extends Component {
   };
 
   handleMenuResponsive() {
+    const { categorias } = this.props;
     return (
       <div className="Menu-responsive">
         <div className="Header-menu-responsive">
@@ -104,10 +67,20 @@ class MenuResposive extends Component {
           </div>
         </div>
 
-        <h3 className="categories">Categorias</h3>
+        <h3 className="Categories">Categorias e departamentos</h3>
         <div className="categories">
-          {categories.map((e) => (
-            <div>{e.category}</div>
+          {categorias.map((categoria) => (
+            <Link
+              href={`/category/${categoria.categoryName}?id=${categoria.categoryId}`}
+              key={categoria.categoryId}
+            >
+              <div
+                onClick={() => this.toggleOpen()}
+                className="categoria-item categoria-item-responsive flex-1 flex"
+              >
+                <span className="category">{categoria.categoryName}</span>
+              </div>
+            </Link>
           ))}
         </div>
       </div>
@@ -116,6 +89,7 @@ class MenuResposive extends Component {
 
   render() {
     const { open } = this.state;
+    console.log(this.props, "props");
 
     return (
       <div className="menu-responsive">
@@ -130,4 +104,8 @@ class MenuResposive extends Component {
   }
 }
 
-export default connect(null, actions)(MenuResposive);
+const mapStateToProps = (state) => ({
+  categorias: state.categoria.categorias,
+});
+
+export default connect(mapStateToProps)(MenuResposive);

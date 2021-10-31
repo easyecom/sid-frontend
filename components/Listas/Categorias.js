@@ -7,7 +7,6 @@ class Categorias extends Component {
     const { categorias } = this.props;
     
     return (
-      // <div></div>
       <div className="categorias flex horizontal-mb">
         {
           categorias.map(categoria => (

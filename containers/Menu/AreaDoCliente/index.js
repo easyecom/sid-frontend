@@ -7,28 +7,38 @@ import actions from "../../../redux/actions";
 import { fetchClient } from "../../../redux/actions/clientActions";
 import { cleanToken } from "../../../utils/token";
 
+import { getToken } from "../../../utils/token";
+import axios from "axios";
+import { API, loja } from "../../../config";
+import { getHeaders } from "../../../redux/actions/helpers";
+
 class MenuAreaDoCliente extends Component {
   state = {
     userName: "",
   };
   async componentDidMount() {
-    const { usuario, token, cliente } = this.props;
+    const { token } = this.props;
     // console.log(usuario, this.state.userName, "componentDidUpdate")
 
-    if (usuario && token && !cliente) {
-      // this.props.fetchClient( token);
-      const client = await fetchClient(token);
-      console.log(client, "test");
-      this.setState({ userName: usuario.userName });
+    try {
+      if (token) {
+        const { data } = await axios.get(
+          `${API}/stores/${loja}/clients/me`,
+          getHeaders(token)
+        );
+        if (data) {
+          this.setState({ userName: data.userName });
+        }
+      }
+    } catch (e) {
+      throw e;
     }
   }
 
   componentDidUpdate(prevProps) {
-    // console.log(prevProps, "test")
     const { usuario, token, cliente } = this.props;
 
     if (usuario && token && !cliente) {
-      // this.props.fetchClient(token);
     }
   }
 
@@ -37,7 +47,6 @@ class MenuAreaDoCliente extends Component {
 
     if (usuario && token && !cliente) {
       const client = await fetchClient(token);
-      console.log(client, "test 2");
     }
   }
 
@@ -46,11 +55,11 @@ class MenuAreaDoCliente extends Component {
   }
 
   renderCabecalho() {
-    const { usuario } = this.props;
+    const { userName } = this.state;
 
     return (
       <div>
-        <h3>{`Olá ${this.state.userName || (usuario && usuario.userName)}`}</h3>
+        <h3>{`Olá ${(userName && userName.toUpperCase()) || "Visitante"}`}</h3>
       </div>
     );
   }

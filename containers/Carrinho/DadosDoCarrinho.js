@@ -57,7 +57,8 @@ class DadosDoCarrinho extends Component {
   }
 
   async componentDidMount() {
-    const { token, fetchClient } = await this.props;
+    const { token, fetchClient } = this.props;
+    console.log(token, fetchClient(), "test dados carrinho");
     if (token) await fetchClient(token);
     this.setState({ localToken: getToken() });
   }
