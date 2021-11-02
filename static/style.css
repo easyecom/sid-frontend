@@ -243,7 +243,7 @@
     width: 100% !important;
   }
 
-  .button-payment-responsive {
+  .button-responsive {
     /* justify-content: center !important; */
     width: 100% !important;
   }
@@ -1414,6 +1414,30 @@ i.fa-star {
 
 .conteudo-area-cliente .order-details-box {
   display: flex;
+}
+
+.MuiFormControl-root {
+  margin: 8px 0 !important;
+}
+
+@media screen and (min-width: 320px) and (max-width: 720px) {
+  .Acesso-Container {
+    margin: 10px auto 10px !important;
+    width: calc(100% - 20px) !important;
+    padding: 0 !important;
+    max-width: 90% !important;
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: none !important;
+  }
+
+  .Login-Container h2 {
+    color: #555;
+    margin-bottom: 5px;
+  }
+  .MuiOutlinedInput-input {
+    padding: 14.5px 14px !important;
+  }
 }
 
 .menu-lateral {

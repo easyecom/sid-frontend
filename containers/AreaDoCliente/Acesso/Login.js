@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import actions from "../../../redux/actions";
 import FormSimples from "../../../components/Inputs/FormSimples";
+import TextField from "@material-ui/core/TextField";
 
 class LoginContainer extends Component {
   state = {
@@ -46,27 +47,30 @@ class LoginContainer extends Component {
     return (
       <div className="Login-Container">
         <h2 className="text-center">Minha Conta</h2>
-        <br />
-        <br />
-        <div className="form-input">
-          <FormSimples
-            value={email}
-            name="email"
-            type="email"
-            placeholder="Email"
-            onChange={(e) => this.onChangeInput("email", e)}
+        <div className="flex-1 text-field_input">
+          <TextField
+            id="outlined-required"
+            required
+            label="Email"
+            fullWidth={true}
+            variant="outlined"
+            value={email || " "}
+            onChange={(e) => this.onChangeInput("Email", e)}
           />
-          <FormSimples
-            value={senha}
-            name="senha"
-            type="password"
-            placeholder="Senha"
+          <TextField
+            id="outlined-required"
+            required
+            label="Senha"
+            fullWidth={true}
+            variant="outlined"
+            value={senha || " "}
             onChange={(e) => this.onChangeInput("senha", e)}
           />
+
           <br />
           <div className="flex flex-center">
             <button
-              className="btn btn-primary"
+              className="btn btn-primary button-responsive"
               onClick={() => this.handleLogin()}
             >
               ENTRAR

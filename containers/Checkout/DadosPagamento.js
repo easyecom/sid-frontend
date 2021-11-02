@@ -292,7 +292,7 @@ class DadosPagamento extends Component {
         <div className="flex flex-right Button-payment-responsive">
           {/* <Link href="/OrderFinishedPage"> */}
           <button
-            className="btn btn-cta btn-success button-payment-responsive"
+            className="btn btn-cta btn-success button-responsive"
             onClick={() => this.orderFinish()}
           >
             <span>CONCLUIR PEDIDO</span>
