@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import Link from "next/link";
 import { connect } from "react-redux";
-import actions from "../../redux/actions";
-import { fetchClient } from "../../redux/actions/clientActions";
 import { getToken } from "../../utils/token";
 import axios from "axios";
 import { API, loja } from "../../config";
@@ -89,7 +87,6 @@ class MenuResposive extends Component {
 
   render() {
     const { open } = this.state;
-    console.log(this.props, "props");
 
     return (
       <div className="menu-responsive">

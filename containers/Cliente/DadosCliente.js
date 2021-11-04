@@ -48,6 +48,7 @@ class DadosClienteContainer extends Component {
             fullWidth={true}
             variant="outlined"
             value={senha || " "}
+            hintText="Password"
             onChange={(event) =>
               this.onChangeInput("senha", event.target.value)
             }

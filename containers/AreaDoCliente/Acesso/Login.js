@@ -2,11 +2,13 @@ import React, { Component } from "react";
 
 import { connect } from "react-redux";
 import actions from "../../../redux/actions";
-import FormSimples from "../../../components/Inputs/FormSimples";
 import TextField from "@material-ui/core/TextField";
+import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 
 class LoginContainer extends Component {
   state = {
+    showPassword: false,
     email: "",
     senha: "",
     aviso: null,
@@ -32,7 +34,6 @@ class LoginContainer extends Component {
     this.props.autenticar({ email, password: senha }, false, (error) => {
       if (error) {
         this.setState({ aviso: { status: false, message: error.message } });
-        // alert("Usuario não existe, faça um cadastro ou entre com outra conta");
       }
       this.setState({ aviso: null });
     });
@@ -42,8 +43,13 @@ class LoginContainer extends Component {
     this.setState({ [field]: e.target.value });
   }
 
+  onChangeShowPassword = async () => {
+    this.setState({ showPassword: !this.state.showPassword });
+  };
+
   render() {
-    const { email, senha } = this.state;
+    const { email, senha, showPassword } = this.state;
+
     return (
       <div className="Login-Container">
         <h2 className="text-center">Minha Conta</h2>
@@ -54,8 +60,8 @@ class LoginContainer extends Component {
             label="Email"
             fullWidth={true}
             variant="outlined"
-            value={email || " "}
-            onChange={(e) => this.onChangeInput("Email", e)}
+            value={email}
+            onChange={(e) => this.onChangeInput("email", e)}
           />
           <TextField
             id="outlined-required"
@@ -63,8 +69,17 @@ class LoginContainer extends Component {
             label="Senha"
             fullWidth={true}
             variant="outlined"
-            value={senha || " "}
+            value={senha}
+            type={showPassword ? "text" : "Password"}
             onChange={(e) => this.onChangeInput("senha", e)}
+            InputProps={{
+              endAdornment: showPassword ? (
+                <RemoveRedEyeIcon />
+              ) : (
+                <VisibilityOffIcon />
+              ),
+              onClick: () => this.onChangeShowPassword(),
+            }}
           />
 
           <br />

@@ -31,6 +31,8 @@ class DadosDoCarrinho extends Component {
       }
     );
 
+    console.log(data, "check customer");
+
     this.setState({ [field]: value });
 
     if (this.state.cpf.length >= 11 && data.clientExist == true) {
@@ -58,7 +60,6 @@ class DadosDoCarrinho extends Component {
 
   async componentDidMount() {
     const { token, fetchClient } = this.props;
-    console.log(token, fetchClient(), "test dados carrinho");
     if (token) await fetchClient(token);
     this.setState({ localToken: getToken() });
   }
@@ -66,23 +67,16 @@ class DadosDoCarrinho extends Component {
   async handleLogin() {
     this.setState({ loading: true });
 
-    const { password } = this.state;
+    const { password, cpf } = this.state;
     const { autenticar, cliente } = this.props;
 
-    await autenticar(
-      // TODO - remove mock email
-      { email: "thiago1@gmail.com", password },
-      false,
-      (error) => {
-        if (error) {
-          this.setState({ aviso: { status: false, message: error.message } });
-          alert(
-            "Usuario não existe, faça um cadastro ou entre com outra conta"
-          );
-        }
-        this.setState({ aviso: null });
+    await autenticar({ cpf, password }, false, (error) => {
+      if (error) {
+        this.setState({ aviso: { status: false, message: error.message } });
+        alert("Usuario não existe, faça um cadastro ou entre com outra conta");
       }
-    );
+      this.setState({ aviso: null });
+    });
 
     if (cliente) {
       this.setState({ loading: false });

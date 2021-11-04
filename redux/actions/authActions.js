@@ -12,8 +12,6 @@ const getHeaders = (token) => ({
 
 export const getUser =
   // TODO - decidir se decodifica o token e pega userId e storeId, ou se faz a query no back pelo proprio token
-
-
     ({ token }) =>
     (dispatch) => {
       axios
@@ -25,10 +23,10 @@ export const getUser =
     };
 
 export const autenticar =
-  ({ email, password }, goTo = false, cb) =>
+  ({ email, cpf, password }, goTo = false, cb) =>
   (dispatch) => {
     axios
-      .post(`${API}/session`, { email, password })
+      .post(`${API}/session`, { email, cpf, password })
       .then((response) => {
         addToken(response.data.user.token);
         setCookie("token", response.data.user.token);
