@@ -289,15 +289,15 @@ class DadosPagamento extends Component {
           this.renderPagamentoComBoleto()}
         {opcaoPagamentoSelecionado === "cartao" &&
           this.renderPagamentoComCartao()}
-        <div className="flex flex-right Button-payment-responsive">
-          {/* <Link href="/OrderFinishedPage"> */}
+        <div className="flex flex-right">
+          <Link href="/OrderFinishedPage">
           <button
             className="btn btn-cta btn-success button-responsive"
             onClick={() => this.orderFinish()}
           >
             <span>CONCLUIR PEDIDO</span>
           </button>
-          {/* </Link> */}
+          </Link>
         </div>
         <ToastContainer
           position="top-center"
