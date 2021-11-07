@@ -8,7 +8,7 @@ import { getToken } from "../../utils/token";
 
 class AreaDoClienteContainer extends Component {
   render() {
-    const token = getToken();
+    const token = getToken && getToken();
     return token ? <PedidosContainer /> : <AcessoContainer />;
   }
 }

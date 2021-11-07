@@ -9,7 +9,7 @@ export default function initialize (ctx) {
     ctx.store.dispatch(actions.reauthenticate(getCookie("token", ctx.req)));
   } else if (ctx.store) {
     console.log(ctx);
-    const storageToken = getToken();
+    const storageToken = getToken && getToken();
     console.log(storageToken, "is getToken ====>");
     const token = ctx.store.getState().auth.token; // verify if token arrived here
     console.log(token, "no server ====>");

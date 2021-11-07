@@ -97,7 +97,7 @@ class DadosPagamento extends Component {
 
     fetchClient(this.state.token);
     this.setState({ cart: newCart });
-    this.setState({ token: getToken() });
+    this.setState({ token: getToken && getToken() });
     this.setState({ CPF: cliente && cliente.cpf });
     this.setState({ city: cliente && cliente.city });
     this.setState({ complement: cliente && cliente.complement });

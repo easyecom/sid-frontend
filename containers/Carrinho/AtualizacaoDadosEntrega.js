@@ -87,7 +87,7 @@ class AtualizacaoDadosEntrega extends Component {
   }
 
   async componentDidMount() {
-    const localToken = getToken();
+    const localToken = getToken && getToken();
     const { token } = await this.props;
 
     const { data } = await axios.get(
