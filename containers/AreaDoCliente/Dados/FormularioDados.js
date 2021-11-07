@@ -137,10 +137,10 @@ class FormularioDados extends Component {
               />
             </div>
           </div>
-          <br />
           <div className="flex horizontal">
             <div className="flex-3">
               <FormSimples
+                label="Endereço"
                 value={local}
                 name="local"
                 placeholder="Endereço"
@@ -149,6 +149,7 @@ class FormularioDados extends Component {
             </div>
             <div className="flex-1">
               <FormSimples
+                label="Número"
                 value={numero}
                 name="numero"
                 placeholder="Número"
@@ -159,6 +160,7 @@ class FormularioDados extends Component {
           <div className="flex horizontal">
             <div className="flex-1">
               <FormSimples
+                label="Bairro"
                 value={bairro}
                 name="bairro"
                 placeholder="Bairro"
@@ -167,6 +169,7 @@ class FormularioDados extends Component {
             </div>
             <div className="flex-1">
               <FormSimples
+                label="Complemento"
                 value={complemento}
                 name="complemento"
                 placeholder="Complemento"
@@ -179,6 +182,7 @@ class FormularioDados extends Component {
           <div className="flex horizontal">
             <div className="flex-1">
               <FormSimples
+                label="Cidade"
                 label="Cidade"
                 value={cidade}
                 name="cidade"

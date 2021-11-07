@@ -131,28 +131,31 @@ export const newClient = (payload, cb) => (dispatch) => {
 };
 
 export const newAddress = (payload, token, cb) => (dispatch) => {
-  axios
-    .post(
-      `${API}/stores/${loja}/addresses`,
-      {
-        zipcode: payload.CEP,
-        street: payload.local,
-        number: payload.numero,
-        complement: payload.complemento,
-        neighborhood: payload.cidade,
-        city: payload.cidade,
-        state: payload.estado,
-        state_code: "sp",
-        country: "Brasil",
-        storeIdToAddress: 1,
-        // TODO - criar ENUM com tipos de endereço no backend
-      },
-      getHeaders(token)
-    )
-    .then((response) => {
-      dispatch({ type: NEW_ADDRESS, payload: response.data });
-    })
-    .catch((e) => cb(errorHandling(e)));
+  if (payload.local) {
+    axios
+      .post(
+        `${API}/stores/${loja}/addresses`,
+        {
+          zipcode: payload.CEP,
+          street: payload.local,
+          number: payload.numero,
+          complement: payload.complemento,
+          neighborhood: payload.cidade,
+          city: payload.cidade,
+          state: payload.estado,
+          state_code: "sp",
+          country: "Brasil",
+          storeIdToAddress: 1,
+          // TODO - criar ENUM com tipos de endereço no backend
+        },
+        getHeaders(token)
+      )
+      .then((response) => {
+        console.log(response, "aciotn addres");
+        dispatch({ type: NEW_ADDRESS, payload: response.data });
+      })
+      .catch((e) => cb(errorHandling(e)));
+  }
 };
 
 export const updateAddress = (addressId, payload, token, cb) => (dispatch) => {

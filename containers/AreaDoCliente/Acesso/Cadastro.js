@@ -6,15 +6,16 @@ import actions from "../../../redux/actions";
 
 import { ESTADOS } from "../../../utils";
 import { getCookie } from "../../../utils/cookie";
+import { toast } from "react-toastify";
 
-import { 
-  formatCPF, 
+import cepData from "../../helper/cepData";
+
+import {
+  formatCPF,
   formatCEP,
-  formatDataDeNascimento, 
-  formatNumber, 
-  formatTelefone 
-} from '../../../utils/format';
-import { validateCPF, validateEmail } from '../../../utils/validate';
+  formatNumber,
+} from "../../../utils/format";
+import { validateCPF, validateEmail } from "../../../utils/validate";
 
 class CadastroContainer extends Component {
   state = {
@@ -34,10 +35,15 @@ class CadastroContainer extends Component {
     state_code: "",
     country: "",
     storeIdToAddress: 1,
+    showAddressInput: false,
   };
 
   onChangeInput(field, value) {
-    this.setState({ [field]:  value});
+    this.setState({ [field]: value });
+  }
+
+  showAddressInput() {
+    this.setState({ showAddressInput: true });
   }
 
   handleRegistryCustomer() {
@@ -48,164 +54,207 @@ class CadastroContainer extends Component {
     });
   }
 
-  render() {
+  async handleCepData(cep) {
+    this.setState({ zipcode: cep });
+
+    if (cep.length > 8) {
+      const addressComplete = await cepData(cep);
+      if (addressComplete.cep) {
+        this.setState({ CEP: addressComplete.cep || cep });
+        this.setState({ addressId: "" });
+
+        // this.setState({ newCep: addressComplete.cep });
+        this.setState({ street: addressComplete.logradouro });
+        this.setState({ neighborhood: addressComplete.bairro });
+        this.setState({ city: addressComplete.localidade });
+        this.setState({ state: addressComplete.uf });
+      }
+
+      if (addressComplete.erro) {
+        this.setState({ zipcode: cep });
+        this.setState({ street: "" });
+        this.setState({ neighborhood: "" });
+        this.setState({ city: "" });
+        this.setState({ state: "" });
+
+        return alert("Por favor, digite um CEP valido");
+      }
+    }
+  }
+
+  renderCustomer() {
+    const { email, password, userName, cpf, cellphone } = this.state;
+
+    return (
+      <div>
+        <FormSimples
+          label="Nome completo"
+          value={userName}
+          name="userName"
+          type="text"
+          placeholder="nome"
+          onChange={(e) => this.onChangeInput("userName", e.target.value)}
+        />
+        <FormSimples
+          label="CPF"
+          value={cpf}
+          name="cpf"
+          type="text"
+          placeholder="cpf"
+          onChange={(e) => this.onChangeInput("cpf", formatCPF(e.target.value))}
+        />
+        <FormSimples
+          label="Email"
+          value={email}
+          name="email"
+          type="email"
+          placeholder="email"
+          onChange={(e) => this.onChangeInput("email", e.target.value)}
+        />
+        <FormSimples
+          label="Senha"
+          value={password}
+          name="password"
+          type="password"
+          placeholder="senha"
+          onChange={(e) => this.onChangeInput("password", e.target.value)}
+        />
+        <FormSimples
+          label="Telefone"
+          value={cellphone}
+          name="cellphone"
+          type="text"
+          placeholder="11-9999-9999"
+          onChange={(e) => this.onChangeInput("cellphone", e.target.value)}
+        />
+      </div>
+    );
+  }
+
+  renderAddress() {
     const {
-      email,
-      password,
-      userName,
-      cpf,
-      cellphone,
-      dateOfBirth,
       zipcode,
       street,
       number,
       complement,
       neighborhood,
       city,
-      state,
       state_code,
-      country,
     } = this.state;
 
+    return (
+      <div>
+        {this.renderCustomer()}
+        <FormSimples
+          value={zipcode}
+          name="CEP"
+          placeholder="12345-678"
+          label="Cep"
+          onChange={(e) => this.handleCepData(formatCEP(e.target.value))}
+        />
+        <div className="flex horizontal">
+          <div className="flex-3">
+            <FormSimples
+              value={street}
+              name="street"
+              placeholder="Endereço"
+              label="Endereço"
+              onChange={(e) => this.onChangeInput("street", e.target.value)}
+            />
+          </div>
+          <div className="flex-1">
+            <FormSimples
+              value={number}
+              name="numero"
+              placeholder="Número"
+              label="Numero"
+              onChange={(e) =>
+                this.onChangeInput("number", formatNumber(e.target.value))
+              }
+            />
+          </div>
+        </div>
+        <div className="flex horizontal">
+          <div className="flex-1">
+            <FormSimples
+              value={neighborhood}
+              name="bairro"
+              placeholder="Bairro"
+              label="Bairro"
+              onChange={(e) =>
+                this.onChangeInput("neighborhood", e.target.value)
+              }
+            />
+          </div>
+          <div className="flex-1">
+            <FormSimples
+              value={complement}
+              name="complemento"
+              placeholder="Complemento"
+              label="Complemento"
+              onChange={(e) => this.onChangeInput("complement", e.target.value)}
+            />
+          </div>
+        </div>
+        <div className="flex horizontal">
+          <div className="flex-1">
+            <FormSimples
+              label="Cidade"
+              value={city}
+              name="cidade"
+              placeholder="Cidade"
+              label="Cidade"
+              onChange={(e) => this.onChangeInput("city", e.target.value)}
+            />
+          </div>
+          <div className="form-input">
+            <label>Estado</label>
+            <select
+              name="state_code"
+              value={state_code}
+              onChange={(e) => this.onChangeInput("state_code", e.target.value)}
+            >
+              <option>Selecione seu estado</option>
+              {Object.keys(ESTADOS).map((abbr) => (
+                <option key={abbr}>{ESTADOS[abbr]}</option>
+              ))}
+            </select>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  render() {
     return (
       <div className="Cadastro-Container">
         <h2 className="text-center">Criar Conta</h2>
         <br />
-        <br />
         <div className="from-cadastro">
-          <FormSimples
-            value={email}
-            name="email"
-            type="email"
-            placeholder="Email"
-            onChange={(e) => this.onChangeInput("email", e.target.value)}
-          />
-          <FormSimples
-            value={password}
-            name="password"
-            type="password"
-            placeholder="password"
-            onChange={(e) => this.onChangeInput("password", e.target.value)}
-          />
-          <br />
-          <FormSimples
-            value={userName}
-            name="userName"
-            type="text"
-            placeholder="userName"
-            onChange={(e) => this.onChangeInput("userName", e.target.value)}
-          />
-          <FormSimples
-            value={cpf}
-            name="cpf"
-            type="text"
-            placeholder="CPF"
-            onChange={(e) => this.onChangeInput("cpf", formatCPF(e.target.value))}
-          />
-          <div className="flex horizontal">
-            <div className="flex-1">
-              <FormSimples
-                label="cellphone"
-                value={cellphone}
-                name="cellphone"
-                type="text"
-                placeholder="cellphone"
-                onChange={(e) => this.onChangeInput("cellphone", e.target.value)}
-              />
-            </div>
-            <div className="flex-1">
-              <FormSimples
-                value={dateOfBirth}
-                name="dateOfBirth"
-                type="text"
-                placeholder="DD/MM/YYYY"
-                label="dateOfBirth"
-                onChange={(e) => this.onChangeInput("dateOfBirth", formatDataDeNascimento(e.target.value))}
-              />
-            </div>
-          </div>
-          <br />
-          <div className="flex horizontal">
-            <div className="flex-3">
-              <FormSimples
-                value={street}
-                name="street"
-                placeholder="Endereço"
-                label="street"
-                onChange={(e) => this.onChangeInput("street", e.target.value)}
-              />
-            </div>
-            <div className="flex-1">
-              <FormSimples
-                value={number}
-                name="numero"
-                placeholder="Número"
-                label="Numero"
-                onChange={(e) => this.onChangeInput("number", formatNumber(e.target.value))}
-              />
-            </div>
-          </div>
-          <div className="flex horizontal">
-            <div className="flex-1">
-              <FormSimples
-                value={neighborhood}
-                name="bairro"
-                placeholder="Bairro"
-                label="Bairro"
-                onChange={(e) => this.onChangeInput("neighborhood", e.target.value)}
-              />
-            </div>
-            <div className="flex-1">
-              <FormSimples
-                value={complement}
-                name="complemento"
-                placeholder="Complemento"
-                label="Complemento"
-                onChange={(e) => this.onChangeInput("complement", e.target.value)}
-              />
-            </div>
-          </div>
-          <div className="flex horizontal">
-            <div className="flex-1">
-              <FormSimples
-                label="Cidade"
-                value={city}
-                name="cidade"
-                placeholder="Cidade"
-                label="Cidade"
-                onChange={(e) => this.onChangeInput("city", e.target.value)}
-              />
-            </div>
-            <div className="form-input">
-              <label>Estado</label>
-              <select
-                name="state_code"
-                value={state_code}
-                onChange={(e) => this.onChangeInput("state_code", e.target.value)}
-              >
-                <option>Selecione seu estado</option>
-                {Object.keys(ESTADOS).map((abbr) => (
-                  <option key={abbr}>{ESTADOS[abbr]}</option>
-                ))}
-              </select>
-            </div>
-          </div>
+          {!this.state.showAddressInput
+            ? this.renderCustomer()
+            : this.renderAddress()}
 
-          <FormSimples
-            value={zipcode}
-            name="CEP"
-            placeholder="12345-678"
-            label="CEP"
-            onChange={(e) => this.onChangeInput("zipcode", formatCEP(e.target.value))}
-          />
-          <div className="flex flex-center">
-            <button
-              className="btn btn-primary"
-              onClick={() => this.handleRegistryCustomer()}
-            >
-              CADASTRAR
-            </button>
-          </div>
+          {!this.state.showAddressInput ? (
+            <div className="flex flex-center">
+              <button
+                className="btn btn-primary"
+                onClick={() => this.showAddressInput()}
+              >
+                {"CONTINUAR"}
+              </button>
+            </div>
+          ) : (
+            <div className="flex flex-center">
+              <button
+                className="btn btn-primary"
+                onClick={() => this.handleRegistryCustomer()}
+              >
+                {"CADASTRAR"}
+              </button>
+            </div>
+          )}
+
           <br />
           <hr />
           <div className="link-acesso text-center">
