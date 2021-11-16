@@ -50,10 +50,12 @@ class DadosDoCarrinho extends Component {
   }
 
   handleDirectCheckMyData() {
+    console.log(this.state.cpf, this.state.foundCPF);
     if (
       (this.state.cpf >= 11 && this.state.foundCPF == true) ||
       this.state.localToken
     ) {
+      console.log("estou aqui");
       Router.push("/atualizacaoDadosEntrega");
     }
   }
@@ -68,7 +70,9 @@ class DadosDoCarrinho extends Component {
     this.setState({ loading: true });
 
     const { password, cpf } = this.state;
-    const { autenticar, cliente } = this.props;
+    const { autenticar, cliente } = await this.props;
+
+    console.log(cliente, cpf, password, "cliente");
 
     await autenticar({ cpf, password }, false, (error) => {
       if (error) {
