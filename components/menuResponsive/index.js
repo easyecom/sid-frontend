@@ -13,7 +13,7 @@ class MenuResposive extends Component {
   };
 
   async componentDidMount() {
-    const token = getToken();
+    const token = getToken && getToken();
     if (token) {
       try {
         const { data } = await axios.get(

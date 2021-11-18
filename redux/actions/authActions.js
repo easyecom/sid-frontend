@@ -26,8 +26,9 @@ export const autenticar =
   ({ email, cpf, password }, goTo = false, cb) =>
   (dispatch) => {
     axios
-      .post(`${API}/session`, { email, cpf, password })
-      .then((response) => {
+    .post(`${API}/session`, { email, cpf, password })
+    .then((response) => {
+        console.log(response, cpf)
         addToken(response.data.user.token);
         setCookie("token", response.data.user.token);
         if (goTo) Router.push(goTo);

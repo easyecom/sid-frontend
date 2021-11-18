@@ -3,7 +3,8 @@ export const addToken = (token) => {
 };
 
 export const getToken = () => {
-  return JSON.parse(localStorage.getItem("@token"));
+  if (typeof window !== "undefined")
+    return JSON.parse(localStorage.getItem("@token"));
 };
 
 export const cleanToken = () => {

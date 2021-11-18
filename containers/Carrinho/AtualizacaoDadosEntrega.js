@@ -4,11 +4,14 @@ import { connect } from "react-redux";
 import axios from "axios";
 import Link from "next/link";
 import { getHeaders } from "../../redux/actions/helpers";
+import cepData from "../helper/cepData";
 
-import { ESTADOS } from "../../utils";
+import { ESTADOS } from "../../utils/";
+import { formatCEP, formatNumber } from "../../utils/format";
 import actions from "../../redux/actions";
 import { API, loja } from "../../config";
 import { getToken } from "../../utils/token";
+import { toast } from "react-toastify";
 
 class AtualizacaoDadosEntrega extends Component {
   constructor() {
@@ -30,31 +33,61 @@ class AtualizacaoDadosEntrega extends Component {
   onChange = (field, e) => this.setState({ [field]: e.target.value });
 
   handleCreateOrUpdateShipping() {
-    if (this.state.CEP !== this.state.newCep) {
+    const { CEP, newCep, local, numero, cidade } = this.state;
+
+    if ((CEP !== newCep && local.length, numero.length, cidade.length)) {
       this.props.newAddress(this.state, this.state.token, (error) => {
         if (error)
           this.setState({ aviso: { status: false, message: error.message } });
         else this.setState({ aviso: null });
       });
-      alert("criado com sucesso");
+      // alert("criado com sucesso");
     }
-    if (this.state.CEP == this.state.newCep) {
-      this.props.updateAddress(
-        this.state.addressId,
-        this.state,
-        this.state.token,
-        (error) => {
-          if (error)
-            this.setState({ aviso: { status: false, message: error.message } });
-          else this.setState({ aviso: null });
-        }
-      );
-      // alert("atualizado com sucesso");
+    // if (this.state.CEP == this.state.newCep) {
+    //   this.props.updateAddress(
+    //     this.state.addressId,
+    //     this.state,
+    //     this.state.token,
+    //     (error) => {
+    //       if (error)
+    //         this.setState({ aviso: { status: false, message: error.message } });
+    //       else this.setState({ aviso: null });
+    //     }
+    //   );
+    // }
+  }
+
+  async handleCepData(cep) {
+    this.setState({ CEP: cep });
+
+    if (cep.length > 8) {
+      const addressComplete = await cepData(cep);
+
+      if (addressComplete.cep) {
+        this.setState({ CEP: addressComplete.cep || cep });
+        this.setState({ addressId: "" });
+
+        // this.setState({ newCep: addressComplete.cep });
+        this.setState({ local: addressComplete.logradouro });
+        this.setState({ bairro: addressComplete.bairro });
+        this.setState({ cidade: addressComplete.localidade });
+        this.setState({ estado: addressComplete.uf });
+      }
+
+      if (addressComplete.erro) {
+        this.setState({ CEP: cep });
+        this.setState({ local: "" });
+        this.setState({ bairro: "" });
+        this.setState({ cidade: "" });
+        this.setState({ estado: "" });
+
+        return toast.error("Por favor, digite um CEP valido");
+      }
     }
   }
 
   async componentDidMount() {
-    const localToken = getToken();
+    const localToken = getToken && getToken();
     const { token } = await this.props;
 
     const { data } = await axios.get(
@@ -90,7 +123,7 @@ class AtualizacaoDadosEntrega extends Component {
             fullWidth={true}
             variant="outlined"
             value={CEP || " "}
-            onChange={(e) => this.onChange("CEP", e)}
+            onChange={(e) => this.handleCepData(formatCEP(e.target.value))}
           />
         </div>
         <div className="flex-1 flex horizontal">
@@ -113,7 +146,9 @@ class AtualizacaoDadosEntrega extends Component {
               fullWidth={true}
               variant="outlined"
               value={numero || " "}
-              onChange={(e) => this.onChange("numero", e)}
+              onChange={(e) =>
+                this.setState({ numero: formatNumber(e.target.value) })
+              }
             />
           </div>
         </div>
@@ -175,12 +210,12 @@ class AtualizacaoDadosEntrega extends Component {
           </div>
         </div>
         <Link href="/checkoutFinal">
-          <button
-            className="btn btn-success"
-            onClick={() => this.handleCreateOrUpdateShipping()}
-          >
-            Ir para pagamento
-          </button>
+        <button
+          className="btn btn-success"
+          onClick={() => this.handleCreateOrUpdateShipping()}
+        >
+          Ir para pagamento
+        </button>
         </Link>
       </div>
     );

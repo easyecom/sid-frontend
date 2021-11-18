@@ -124,7 +124,7 @@ class FormularioDados extends Component {
                 onChange={(e) => this.onChangeInput("telefone", e.target.value)}
               />
             </div>
-            <div className="flex-1">
+            {/* <div className="flex-1">
               <FormSimples
                 value={dataDeNascimento}
                 name="dataDeNascimento"
@@ -135,12 +135,12 @@ class FormularioDados extends Component {
                   this.onChangeInput("dataDeNascimento", e.target.value)
                 }
               />
-            </div>
+            </div> */}
           </div>
-          <br />
           <div className="flex horizontal">
             <div className="flex-3">
               <FormSimples
+                label="Endereço"
                 value={local}
                 name="local"
                 placeholder="Endereço"
@@ -149,6 +149,7 @@ class FormularioDados extends Component {
             </div>
             <div className="flex-1">
               <FormSimples
+                label="Número"
                 value={numero}
                 name="numero"
                 placeholder="Número"
@@ -159,6 +160,7 @@ class FormularioDados extends Component {
           <div className="flex horizontal">
             <div className="flex-1">
               <FormSimples
+                label="Bairro"
                 value={bairro}
                 name="bairro"
                 placeholder="Bairro"
@@ -167,6 +169,7 @@ class FormularioDados extends Component {
             </div>
             <div className="flex-1">
               <FormSimples
+                label="Complemento"
                 value={complemento}
                 name="complemento"
                 placeholder="Complemento"
@@ -180,13 +183,14 @@ class FormularioDados extends Component {
             <div className="flex-1">
               <FormSimples
                 label="Cidade"
+                label="Cidade"
                 value={cidade}
                 name="cidade"
                 placeholder="Cidade"
                 onChange={(e) => this.onChangeInput("cidade", e.target.value)}
               />
             </div>
-            <div className="form-input">
+            {/* <div className="form-input">
               <label>Estado</label>
               <select name="estado">
                 <option>Selecione seu estado</option>
@@ -196,7 +200,7 @@ class FormularioDados extends Component {
                   </option>
                 ))}
               </select>
-            </div>
+            </div> */}
           </div>
           <FormSimples
             value={cep}

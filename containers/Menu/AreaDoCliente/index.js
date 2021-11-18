@@ -7,7 +7,6 @@ import actions from "../../../redux/actions";
 import { fetchClient } from "../../../redux/actions/clientActions";
 import { cleanToken } from "../../../utils/token";
 
-import { getToken } from "../../../utils/token";
 import axios from "axios";
 import { API, loja } from "../../../config";
 import { getHeaders } from "../../../redux/actions/helpers";
